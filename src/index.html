@@ -11,49 +11,38 @@
 
 <body>
     <header class="site-header">
-        <div class="nav-container"
-            style="display: flex; align-items: center; justify-content: center; padding: 1.5rem 0;">
-            <img src="media/logo.svg" alt="WebTools Logo" style="width: 40px; height: 40px; margin-right: 12px;">
-            <span style="font-size: 2rem; font-weight: 700; color: #7c3aed; letter-spacing: 1px;">WebTools
-                Dashboard</span>
+        <div class="nav-container">
+            <img src="media/logo.svg" alt="WebTools Logo" class="logo">
+            <span class="site-title">WebTools Dashboard</span>
         </div>
     </header>
 
     <main class="dashboard-main">
-        <h1 class="dashboard-title">Welcome to WebTools</h1>
+        <h1 class="dashboard-title">Welcome to <span class="accent">WebTools</span></h1>
         <p class="dashboard-subtitle">Select a tool to get started.</p>
-
         <div class="dashboard-tools">
-
-            <a href="tools/File-Transfer/" class="tool-card"
-                style="background: #f8fafc; border: 2px solid #7c3aed; color: #1a202c;">
-                <img src="media/icon-transfer.png" alt="File Transfer Icon"
-                    style="filter: drop-shadow(0 0 8px #7c3aed33);">
-                <h3 style="color: #7c3aed;">Secure File Transfer</h3>
-                <p style="color: #6366f1;">Securely upload and share files with automatic deletion and PIN protection.
-                </p>
+            <a href="tools/File-Transfer/" class="tool-card">
+                <img src="media/icon-transfer.png" alt="File Transfer Icon" class="tool-icon">
+                <h3>Secure File Transfer</h3>
+                <p>Securely upload and share files with automatic deletion and PIN protection.</p>
             </a>
-
             <!-- Placeholder for other tools -->
-            <a href="#" class="tool-card" style="background: #f8fafc; border: 2px solid #7c3aed; color: #1a202c;">
-                <img src="#" alt="Alt text" style="filter: drop-shadow(0 0 8px #7c3aed33);">
-                <h3 style="color: #7c3aed;">Coming Soon</h3>
-                <p style="color: #6366f1;">Check back later for more tools and services.</p>
-            </a>
-
+            <div class="tool-card disabled">
+                <img src="media/icon-placeholder.png" alt="Placeholder Icon" class="tool-icon">
+                <h3>Coming Soon</h3>
+                <p>Check back later for more tools and services.</p>
+            </div>
         </div>
     </main>
 
     <footer class="site-footer">
-        <div class="footer-container" style="text-align: center; padding: 2rem 0;">
-            <img src="media/logo.svg" alt="WebTools Logo" style="width: 32px; height: 32px; margin-bottom: 8px;">
-            <div style="font-size: 1.1rem; color: #6366f1; font-weight: 500; margin-bottom: 8px;">WebTools &copy; 2025
+        <div class="footer-container">
+            <img src="media/logo.svg" alt="WebTools Logo" class="footer-logo">
+            <div class="footer-content">
+                <span class="footer-title">WebTools &copy; 2025</span>
+                <span class="footer-desc">A collection of simple, secure browser-based tools.</span>
+                <span class="footer-contact">All code and design by Phillip Roach. <a href="mailto:philliproach1111@gmail.com">philliproach1111@gmail.com</a></span>
             </div>
-            <div style="font-size: 0.95rem; color: #7c3aed; font-weight: 400;">A collection of simple, secure
-                browser-based tools.</div>
-                <div style="font-size: 0.85rem; color: #4f46e5; margin-top: 10px;">All code and design by Phillip Roach.<br>
-                    <span style="font-size: 0.95em; color: #6366f1; font-weight: 500;">Contact: <a href="mailto:philliproach1111@gmail.com" style="color: #6366f1; text-decoration: underline;">philliproach1111@gmail.com</a></span>
-                </div>
         </div>
     </footer>
 
