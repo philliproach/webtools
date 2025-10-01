@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript">
-    window.location.href = "public/";
-</script>
+<title>Redirecting...</title>
 </head>
 <body>
+<p id="redirect-message">Redirecting you to...</p>
+<script type="text/javascript">
+    const subdirectory = "public/";
+    const baseUrl = window.location.origin;
+    const destinationUrl = baseUrl + "/" + subdirectory;
+
+    document.getElementById("redirect-message").innerHTML = `Redirecting you to <a href="${destinationUrl}">${destinationUrl}</a>...`;
+
+    setTimeout(function() {
+        window.location.replace(destinationUrl);
+    }, 3000);
+</script>
 </body>
 </html>
