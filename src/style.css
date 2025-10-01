@@ -29,6 +29,15 @@ body {
     border-bottom: 1px solid var(--glass-border);
     transition: background 0.3s ease, border-color 0.3s ease;
 }
+    .site-header {
+        position: relative;
+        z-index: 1000;
+        background: var(--primary);
+        color: #fff;
+        border-bottom: 2px solid var(--secondary);
+        box-shadow: var(--shadow);
+        padding: 0.5rem 0;
+    }
 
 .nav-container {
     max-width: 1200px;
@@ -39,12 +48,26 @@ body {
     align-items: center;
     gap: 16px;
 }
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0.5rem 2rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0.75rem;
+    }
 
 .logo {
     width: 40px;
     height: 40px;
     margin-right: 12px;
 }
+    .logo {
+        width: 28px;
+        height: 28px;
+        margin-right: 0.75rem;
+    }
 
 .site-title {
     font-size: 2rem;
@@ -52,6 +75,12 @@ body {
     color: var(--accent-purple);
     letter-spacing: 1px;
 }
+    .site-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: 0.5px;
+    }
 
 .dashboard-main {
     flex: 1;
@@ -121,10 +150,40 @@ footer.site-footer {
     box-shadow: var(--shadow);
     padding: 0.75rem 0 0.5rem 0;
 }
+    .site-footer {
+        background: var(--primary);
+        color: #fff;
+        margin-top: auto;
+        width: 100%;
+        box-shadow: var(--shadow);
+        border-top: 2px solid var(--secondary);
+        padding: 0.5rem 0;
+    }
 .footer-logo {
     width: 24px;
     height: 24px;
     margin-bottom: 0.25rem;
+}
+    .footer-logo {
+        width: 20px;
+        height: 20px;
+        margin-bottom: 0;
+        margin-right: 0.5rem;
+    }
+/* Footer container for layout */
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+/* Footer content for text layout */
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
 }
 .footer-title {
     font-size: 1rem;
