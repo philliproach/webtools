@@ -1,4 +1,112 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+
+:root {
+    --primary: #7c3aed;
+    --secondary: #6366f1;
+    --background: #f8fafc;
+    --card-bg: #fff;
+    --text: #222;
+    --muted: #777;
+    --border-radius: 16px;
+    --shadow: 0 4px 16px rgba(0,0,0,0.07);
+}
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-header {
+    position: relative;
+    z-index: 1000;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+    .site-header {
+        position: relative;
+        z-index: 1000;
+        background: var(--primary);
+        color: #fff;
+        border-bottom: 2px solid var(--secondary);
+        box-shadow: var(--shadow);
+        padding: 0.5rem 0;
+    }
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem 1.5rem 2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+}
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0.5rem 2rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
+}
+    .logo {
+        width: 28px;
+        height: 28px;
+        margin-right: 0.75rem;
+    }
+
+.site-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent-purple);
+    letter-spacing: 1px;
+}
+    .site-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: 0.5px;
+    }
+
+.dashboard-main {
+    flex: 1;
+    padding: 40px 20px 0 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard-title {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.dashboard-title .accent {
+    color: var(--accent-purple);
+    font-weight: 700;
+}
+
+.dashboard-subtitle {
+    font-size: 1.2em;
+    color: #777;
+    margin-bottom: 40px;
+}
 
 .dashboard-tools {
     display: flex;
@@ -35,22 +143,27 @@ header.site-header {
     letter-spacing: 0.5px;
 }
 footer.site-footer {
-    background: #222;
+    background: var(--primary);
     color: #fff;
-    text-align: center;
-    padding: 1.25rem 0 1rem 0;
-    font-size: 1rem;
+
+
+
     margin-top: auto;
-    box-shadow: 0 -2px 12px rgba(0,0,0,0.07);
+    width: 100%;
+    box-shadow: var(--shadow);
+    padding: 0.75rem 0 0.5rem 0;
 }
     .site-footer {
-        background: #222;
+        background: var(--primary);
         color: #fff;
-        text-align: center;
-        padding: 1.25rem 0 1rem 0;
-        font-size: 1rem;
+
+
+
         margin-top: auto;
-        box-shadow: 0 -2px 12px rgba(0,0,0,0.07);
+        width: 100%;
+        box-shadow: var(--shadow);
+        border-top: 2px solid var(--secondary);
+        padding: 0.5rem 0;
     }
 .footer-logo {
     width: 24px;
@@ -90,15 +203,15 @@ footer.site-footer {
     font-weight: 400;
 }
 .footer-contact {
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 0.75rem;
+    color: #e0e7ff;
+
     margin-top: 0.25rem;
 }
 .footer-contact a {
-    color: #7c3aed;
+    color: #fff;
     text-decoration: underline;
-    font-weight: 600;
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -111,7 +224,7 @@ footer.site-footer {
         --text-muted: rgba(255, 255, 255, 0.6);
         --surface-light: rgba(255, 255, 255, 0.08);
         --surface-dark: rgba(0, 0, 0, 0.1);
-        
+
         --background-overlay-1: rgba(120, 119, 198, 0.3);
         --background-overlay-2: rgba(255, 119, 198, 0.3);
         --background-overlay-3: rgba(120, 200, 255, 0.2);
@@ -202,6 +315,7 @@ body::before {
     text-decoration: none;
     display: flex;
     align-items: center;
+
 }
 
 .brand img {
