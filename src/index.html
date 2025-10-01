@@ -4,95 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="media/logo.ico">
+    <link rel="icon" type="image/svg+xml" href="media/logo.svg">
     <title>WebTools Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header class="site-header">
-        <nav class="navbar">
-            <div class="nav-container">
-                <div class="nav-brand">
-                    <a href="index.html">
-                        <img src="media/logo.ico" alt="WebTools Logo"
-                            style="width: 40px; height: 40px; vertical-align: middle; margin-right: 10px;">
-                        WebTools
-                    </a>
-                </div>
-
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="active">Dashboard</a></li>
-                    <li><a href="PrivacyPolicy/">Privacy</a></li>
-                    <li><a href="TermsOfService/">Terms</a></li>
-                </ul>
-                <div class="nav-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </nav>
+        <div class="nav-container"
+            style="display: flex; align-items: center; justify-content: center; padding: 1.5rem 0;">
+            <img src="media/logo.svg" alt="WebTools Logo" style="width: 40px; height: 40px; margin-right: 12px;">
+            <span style="font-size: 2rem; font-weight: 700; color: #7c3aed; letter-spacing: 1px;">WebTools
+                Dashboard</span>
+        </div>
     </header>
 
     <main class="dashboard-main">
         <h1 class="dashboard-title">Welcome to WebTools</h1>
         <p class="dashboard-subtitle">Select a tool to get started.</p>
-        
+
         <div class="dashboard-tools">
-            <!-- File Transfer Tool Card -->
-            <a href="public/File-Transfer/" class="tool-card">
-                <img src="media/icon-transfer.png" alt="File Transfer Icon">
-                <h3>Secure File Transfer</h3>
-                <p>Securely upload and share files with automatic deletion and PIN protection.</p>
+
+            <a href="tools/File-Transfer/" class="tool-card"
+                style="background: #f8fafc; border: 2px solid #7c3aed; color: #1a202c;">
+                <img src="media/icon-transfer.png" alt="File Transfer Icon"
+                    style="filter: drop-shadow(0 0 8px #7c3aed33);">
+                <h3 style="color: #7c3aed;">Secure File Transfer</h3>
+                <p style="color: #6366f1;">Securely upload and share files with automatic deletion and PIN protection.
+                </p>
             </a>
-            
+
             <!-- Placeholder for other tools -->
-            <div class="tool-card disabled">
-                <img src="media/icon-placeholder.png" alt="Placeholder Icon">
-                <h3>Coming Soon</h3>
-                <p>Check back later for more tools and services.</p>
-            </div>
-            
+            <a href="#" class="tool-card" style="background: #f8fafc; border: 2px solid #7c3aed; color: #1a202c;">
+                <img src="#" alt="Alt text" style="filter: drop-shadow(0 0 8px #7c3aed33);">
+                <h3 style="color: #7c3aed;">Coming Soon</h3>
+                <p style="color: #6366f1;">Check back later for more tools and services.</p>
+            </a>
+
         </div>
     </main>
 
     <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>🔒 WebTools</h3>
-                    <p>A collection of simple, secure browser-based tools.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="PrivacyPolicy/">Privacy Policy</a></li>
-                        <li><a href="TermsOfService/">Terms of Service</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Service</h4>
-                    <ul>
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li>File Transfer</li>
-                        <li>More Tools</li>
-                    </ul>
-                </div>
+        <div class="footer-container" style="text-align: center; padding: 2rem 0;">
+            <img src="media/logo.svg" alt="WebTools Logo" style="width: 32px; height: 32px; margin-bottom: 8px;">
+            <div style="font-size: 1.1rem; color: #6366f1; font-weight: 500; margin-bottom: 8px;">WebTools &copy; 2025
             </div>
-            <div class="footer-bottom">
-                <div class="footer-copyright">
-                    <p>&copy; 2025 WebTools. All rights reserved.</p>
-                </div>
-                <div class="footer-credit">
-                    <p style="font-weight: bold; font-size: 12px;">All code, design elements, and functions were coded
-                        by Phillip Roach. Contact <a href="mailto:philliproach1111@gmail.com"
-                            target="_blank">philliproach1111@gmail.com</a> for your own website.</p>
-                </div>
-            </div>
+            <div style="font-size: 0.95rem; color: #7c3aed; font-weight: 400;">A collection of simple, secure
+                browser-based tools.</div>
+            <div style="font-size: 0.85rem; color: #4f46e5; margin-top: 10px;">All code and design by Phillip Roach. <a
+                    href="mailto:philliproach1111@gmail.com"
+                    style="color: #6366f1; text-decoration: underline;">Contact</a></div>
         </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
+
 </html>
