@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>URL Parser</title>
+    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <div style="background:#ffe066;color:#333;padding:0.5em 1em;text-align:center;font-weight:500;font-size:1.05em;">We're hard to find! <span style="font-weight:700;">Press CTRL + D</span> to bookmark this tool.</div>
+    <header>
+        <a href="../../index.html"><img src="../../media/logo.svg" alt="WebTools Logo" style="height:32px;vertical-align:middle;"></a>
+        <h1>URL Parser</h1>
+    </header>
+    <main>
+        <p>Break a URL into its components and inspect query params.</p>
+        <input type="text" id="urlInput" placeholder="Enter URL..." style="width:100%;max-width:400px;">
+        <button onclick="parseUrl()">Parse</button>
+        <div id="urlResult" style="margin-top:1em;word-break:break-all;"></div>
+        <script>
+        function parseUrl() {
+            try {
+                const url = new URL(document.getElementById('urlInput').value);
+                let html = `<b>Protocol:</b> ${url.protocol}<br>`;
+                html += `<b>Host:</b> ${url.host}<br>`;
+                html += `<b>Path:</b> ${url.pathname}<br>`;
+                html += `<b>Query:</b> ${url.search}<br>`;
+                html += `<b>Hash:</b> ${url.hash}<br>`;
+                if (url.searchParams && url.searchParams.toString()) {
+                    html += `<b>Params:</b><br>`;
+                    url.searchParams.forEach((v, k) => {
+                        html += `${k}: ${v}<br>`;
+                    });
+                }
+                document.getElementById('urlResult').innerHTML = html;
+            } catch (e) {
+                document.getElementById('urlResult').textContent = 'Invalid URL';
+            }
+        }
+        </script>
+    </main>
+</body>
+</html>

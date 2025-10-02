@@ -1,3 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Number Generator</title>
+    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="nav-container">
+            <a class="brand" href="../../index.html">
+                <img src="../../media/logo.svg" alt="WebTools Logo" class="logo">
+                <span class="site-title">WebTools</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="../../index.html">Home</a>
+                <a href="../../PrivacyPolicy/">Privacy</a>
+                <a href="../../TermsOfService/">Terms</a>
+            </nav>
+        </div>
+    </header>
+    <main class="tool-main">
+        <section class="tool-section">
+            <h1>Random Number Generator</h1>
+            <p>Generate secure random integers in a range.</p>
+            <input type="number" id="min" placeholder="Min" style="width:80px;">
+            <input type="number" id="max" placeholder="Max" style="width:80px;">
+            <button onclick="generateRandom()">Generate</button>
+            <div id="result" style="margin-top:1em;font-weight:bold;"></div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="../../media/logo.svg" alt="WebTools Logo" class="footer-logo">
+                <div class="footer-content">
+                    <span class="footer-title">WebTools &copy; 2025</span>
+                    <span class="footer-desc">A collection of simple, secure browser-based tools.</span>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="../../Contact/">Contact</a>
+                <a href="../../PrivacyPolicy/">Privacy Policy</a>
+                <a href="../../TermsOfService/">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function generateRandom() {
+            var min = parseInt(document.getElementById('min').value);
+            var max = parseInt(document.getElementById('max').value);
+            if (isNaN(min) || isNaN(max) || min > max) {
+                document.getElementById('result').textContent = 'Enter valid min and max values.';
+                return;
+            }
+            var rand = Math.floor(Math.random() * (max - min + 1)) + min;
+            document.getElementById('result').textContent = 'Random Number: ' + rand;
+        }
+    </script>
+</body>
+</html>
 <!doctype html>
 <html lang="en">
 
@@ -10,6 +72,7 @@
 </head>
 
 <body>
+    <div style="background:#ffe066;color:#333;padding:0.5em 1em;text-align:center;font-weight:500;font-size:1.05em;">We're hard to find! <span style="font-weight:700;">Press CTRL + D</span> to bookmark this tool.</div>
     <header class="site-header">
         <div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo"
                     alt="WebTools"><span class="site-title">WebTools</span></a>

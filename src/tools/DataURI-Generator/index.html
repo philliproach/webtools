@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data URI Generator</title>
+    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <div style="background:#ffe066;color:#333;padding:0.5em 1em;text-align:center;font-weight:500;font-size:1.05em;">We're hard to find! <span style="font-weight:700;">Press CTRL + D</span> to bookmark this tool.</div>
+    <header>
+        <a href="../../index.html"><img src="../../media/logo.svg" alt="WebTools Logo" style="height:32px;vertical-align:middle;"></a>
+        <h1>Data URI Generator</h1>
+    </header>
+    <main>
+        <p>Embed small images or text as data URIs for quick use.</p>
+        <textarea id="dataInput" placeholder="Paste text or select image..." style="width:100%;max-width:400px;height:80px;"></textarea>
+        <input type="file" id="fileInput" accept="image/*" style="margin-top:1em;">
+        <button onclick="generateDataURI()">Generate Data URI</button>
+        <div id="dataResult" style="margin-top:1em;word-break:break-all;"></div>
+        <script>
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(ev) {
+                document.getElementById('dataResult').textContent = ev.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+        function generateDataURI() {
+            const text = document.getElementById('dataInput').value;
+            const uri = 'data:text/plain;base64,' + btoa(unescape(encodeURIComponent(text)));
+            document.getElementById('dataResult').textContent = uri;
+        }
+        </script>
+    </main>
+</body>
+</html>

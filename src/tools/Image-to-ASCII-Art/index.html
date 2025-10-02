@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Image to ASCII Art — WebTools</title>
+    <meta name="description" content="Convert images to ASCII art directly in your browser.">
+    <meta name="keywords" content="image, ascii, art, converter, browser tool">
+    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <div style="background:#ffe066;color:#333;padding:0.5em 1em;text-align:center;font-weight:500;font-size:1.05em;">We're hard to find! <span style="font-weight:700;">Press CTRL + D</span> to bookmark this tool.</div>
+    <header class="site-header">
+        <div class="nav-container">
+            <a class="brand" href="../../index.html">
+                <img src="../../media/logo.svg" alt="WebTools Logo" class="logo">
+                <span class="site-title">WebTools</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="../../index.html">Home</a>
+                <a href="../../PrivacyPolicy/">Privacy</a>
+                <a href="../../TermsOfService/">Terms</a>
+            </nav>
+        </div>
+    </header>
+    <main class="tool-main">
+        <section class="tool-section">
+            <h1>Image to ASCII Art</h1>
+            <p>Convert images to ASCII art directly in your browser.</p>
+            <input type="file" id="imgInput" accept="image/*">
+            <button onclick="convertToAscii()">Convert</button>
+            <pre id="asciiResult" style="margin-top:1em;white-space:pre;font-size:10px;line-height:8px;"></pre>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="../../media/logo.svg" alt="WebTools Logo" class="footer-logo">
+                <div class="footer-content">
+                    <span class="footer-title">WebTools &copy; 2025</span>
+                    <span class="footer-desc">A collection of simple, secure browser-based tools.</span>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="../../Contact/">Contact</a>
+                <a href="../../PrivacyPolicy/">Privacy Policy</a>
+                <a href="../../TermsOfService/">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function convertToAscii() {
+            const file = document.getElementById('imgInput').files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const w = 80, h = Math.round(img.height * (80 / img.width));
+                    canvas.width = w; canvas.height = h;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, w, h);
+                    const data = ctx.getImageData(0, 0, w, h).data;
+                    const chars = '@%#*+=-:. ';
+                    let ascii = '';
+                    for (let y = 0; y < h; y++) {
+                        for (let x = 0; x < w; x++) {
+                            const i = (y * w + x) * 4;
+                            const avg = (data[i] + data[i+1] + data[i+2]) / 3;
+                            ascii += chars[Math.floor(avg / 256 * (chars.length-1))];
+                        }
+                        ascii += '\n';
+                    }
+                    document.getElementById('asciiResult').textContent = ascii;
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    </script>
+</body>
+</html>

@@ -67,4 +67,67 @@
     </script>
 </body>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON Validator</title>
+    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <div style="background:#ffe066;color:#333;padding:0.5em 1em;text-align:center;font-weight:500;font-size:1.05em;">We're hard to find! <span style="font-weight:700;">Press CTRL + D</span> to bookmark this tool.</div>
+    <header class="site-header">
+        <div class="nav-container">
+            <a class="brand" href="../../index.html">
+                <img src="../../media/logo.svg" alt="WebTools Logo" class="logo">
+                <span class="site-title">WebTools</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="../../index.html">Home</a>
+                <a href="../../PrivacyPolicy/">Privacy</a>
+                <a href="../../TermsOfService/">Terms</a>
+            </nav>
+        </div>
+    </header>
+    <main class="tool-main">
+        <section class="tool-section">
+            <h1>JSON Validator</h1>
+            <p>Validate and format JSON with a single click.</p>
+            <textarea id="jsonInput" placeholder="Paste JSON here..." style="width:100%;max-width:400px;height:120px;"></textarea>
+            <button onclick="validateJSON()">Validate</button>
+            <div id="jsonResult" style="margin-top:1em;"></div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="../../media/logo.svg" alt="WebTools Logo" class="footer-logo">
+                <div class="footer-content">
+                    <span class="footer-title">WebTools &copy; 2025</span>
+                    <span class="footer-desc">A collection of simple, secure browser-based tools.</span>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="../../Contact/">Contact</a>
+                <a href="../../PrivacyPolicy/">Privacy Policy</a>
+                <a href="../../TermsOfService/">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function validateJSON() {
+            var input = document.getElementById('jsonInput').value;
+            var resultDiv = document.getElementById('jsonResult');
+            try {
+                var obj = JSON.parse(input);
+                resultDiv.textContent = 'Valid JSON!';
+                resultDiv.style.color = 'green';
+            } catch (e) {
+                resultDiv.textContent = 'Invalid JSON: ' + e.message;
+                resultDiv.style.color = 'red';
+            }
+        }
+    </script>
+</body>
 </html>

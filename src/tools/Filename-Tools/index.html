@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filename & Slug Tools</title>
+    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <div style="background:#ffe066;color:#333;padding:0.5em 1em;text-align:center;font-weight:500;font-size:1.05em;">We're hard to find! <span style="font-weight:700;">Press CTRL + D</span> to bookmark this tool.</div>
+    <header>
+        <a href="../../index.html"><img src="../../media/logo.svg" alt="WebTools Logo" style="height:32px;vertical-align:middle;"></a>
+        <h1>Filename & Slug Tools</h1>
+    </header>
+    <main>
+        <p>Make safe filenames, remove accents, and normalize paths.</p>
+        <input type="text" id="filenameInput" placeholder="Enter filename..." style="width:100%;max-width:400px;">
+        <button onclick="makeSafeFilename()">Make Safe</button>
+        <div id="filenameResult" style="margin-top:1em;font-weight:bold;"></div>
+        <script>
+        function makeSafeFilename() {
+            let val = document.getElementById('filenameInput').value;
+            val = val.normalize('NFKD').replace(/\p{Diacritic}/gu, '').replace(/[^a-zA-Z0-9._-]/g, '_');
+            document.getElementById('filenameResult').textContent = val;
+        }
+        </script>
+    </main>
+</body>
+</html>

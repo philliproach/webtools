@@ -1,3 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lorem Generator</title>
+    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="nav-container">
+            <a class="brand" href="../../index.html">
+                <img src="../../media/logo.svg" alt="WebTools Logo" class="logo">
+                <span class="site-title">WebTools</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="../../index.html">Home</a>
+                <a href="../../PrivacyPolicy/">Privacy</a>
+                <a href="../../TermsOfService/">Terms</a>
+            </nav>
+        </div>
+    </header>
+    <main class="tool-main">
+        <section class="tool-section">
+            <h1>Lorem Generator</h1>
+            <p>Create placeholder paragraphs for mockups.</p>
+            <input type="number" id="paraCount" min="1" max="10" value="3" style="width:80px;">
+            <button onclick="generateLorem()">Generate</button>
+            <div id="loremResult" style="margin-top:1em;"></div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="../../media/logo.svg" alt="WebTools Logo" class="footer-logo">
+                <div class="footer-content">
+                    <span class="footer-title">WebTools &copy; 2025</span>
+                    <span class="footer-desc">A collection of simple, secure browser-based tools.</span>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="../../Contact/">Contact</a>
+                <a href="../../PrivacyPolicy/">Privacy Policy</a>
+                <a href="../../TermsOfService/">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function generateLorem() {
+            var count = parseInt(document.getElementById('paraCount').value) || 3;
+            var text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.";
+            var html = '';
+            for (var i = 0; i < count; i++) {
+                html += '<p>' + text + '</p>';
+            }
+            document.getElementById('loremResult').innerHTML = html;
+        }
+    </script>
+</body>
+</html>
 <!doctype html>
 <html lang="en">
 
@@ -10,6 +70,7 @@
 </head>
 
 <body>
+    <div style="background:#ffe066;color:#333;padding:0.5em 1em;text-align:center;font-weight:500;font-size:1.05em;">We're hard to find! <span style="font-weight:700;">Press CTRL + D</span> to bookmark this tool.</div>
     <header class="site-header">
         <div class="nav-container">
             <a class="brand" href="../../">
