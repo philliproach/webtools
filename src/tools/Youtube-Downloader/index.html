@@ -25,12 +25,12 @@
         </div>
     </header>
     <main class="tool-main">
-        <section class="tool-section">
-            <h1>Youtube Downloader</h1>
-            <p>Download Youtube videos to your device. (Note: Most browsers block direct downloads due to CORS and Youtube restrictions. This tool will attempt to fetch the video file, but may not work for all videos.)</p>
-            <input type="text" id="ytUrl" placeholder="Paste Youtube video URL..." style="width:100%;max-width:600px;">
-            <button onclick="downloadYoutube()">Download</button>
-            <div id="ytResult" style="margin-top:1em;"></div>
+        <section class="tool-section" style="max-width:500px;margin:2em auto;padding:2em;background:#fff;border-radius:16px;box-shadow:0 2px 16px 0 rgba(0,0,0,0.07);text-align:center;">
+            <h1 style="margin-bottom:0.5em;font-size:2em;color:#222;">Youtube Downloader</h1>
+            <p style="color:#555;margin-bottom:1.5em;">Download Youtube videos to your device.<br><span style="color:#c00;font-weight:500;">Note:</span> Most browsers block direct downloads due to CORS and Youtube restrictions. This tool will attempt to fetch the video file, but may not work for all videos.</p>
+            <input type="text" id="ytUrl" placeholder="Paste Youtube video URL..." style="width:100%;max-width:400px;padding:0.75em 1em;border-radius:8px;border:1px solid #ddd;font-size:1em;margin-bottom:1em;">
+            <button onclick="downloadYoutube()" style="padding:0.7em 2em;border-radius:8px;background:#ef4444;color:#fff;font-weight:600;border:none;box-shadow:0 1px 4px 0 rgba(0,0,0,0.07);cursor:pointer;">Download</button>
+            <div id="ytResult" style="margin-top:1.5em;font-size:1.1em;color:#333;"></div>
         </section>
     </main>
     <footer class="site-footer">

@@ -26,12 +26,19 @@
         </div>
     </header>
     <main class="tool-main">
-        <section class="tool-section">
-            <h1>Python Editor Online</h1>
-            <p>Edit and run Python code in your browser using Pyodide.</p>
-            <textarea id="pyInput" placeholder="Type Python code here..." style="width:100%;max-width:600px;height:120px;"></textarea>
-            <button onclick="runPython()">Run</button>
-            <pre id="pyOutput" style="margin-top:1em;white-space:pre-wrap;background:#f3f3f3;padding:1em;"></pre>
+        <section class="tool-section" style="max-width:900px;margin:2em auto;padding:2em;background:#fff;border-radius:16px;box-shadow:0 2px 16px 0 rgba(0,0,0,0.07);">
+            <h1 style="margin-bottom:1em;font-size:2em;color:#222;">Python Editor Online</h1>
+            <div style="display:flex;gap:2em;flex-wrap:wrap;align-items:flex-start;">
+                <div style="flex:1;min-width:300px;">
+                    <label for="pyInput" style="font-weight:600;">Python Code</label>
+                    <textarea id="pyInput" style="width:100%;height:300px;font-family:monospace;font-size:1em;padding:1em;border-radius:8px;border:1px solid #ddd;margin-top:0.5em;resize:vertical;background:#f9fafb;" placeholder="Type Python code here..."></textarea>
+                </div>
+                <div style="flex:1;min-width:300px;">
+                    <label style="font-weight:600;">Output</label>
+                    <pre id="pyOutput" style="width:100%;height:300px;border-radius:8px;border:1px solid #ddd;background:#fff;margin-top:0.5em;padding:1em;overflow:auto;font-family:monospace;font-size:1em;box-shadow:0 1px 8px 0 rgba(0,0,0,0.04);"></pre>
+                </div>
+            </div>
+            <button onclick="runPython()" style="margin-top:1.5em;padding:0.7em 2em;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;border:none;box-shadow:0 1px 4px 0 rgba(0,0,0,0.07);cursor:pointer;">Run</button>
         </section>
     </main>
     <footer class="site-footer">

@@ -25,12 +25,18 @@
         </div>
     </header>
     <main class="tool-main">
-        <section class="tool-section">
-            <h1>HTML Editor Online</h1>
-            <p>Edit and preview HTML code instantly in your browser.</p>
-            <textarea id="htmlInput" placeholder="Type HTML here..." style="width:100%;max-width:600px;height:120px;"></textarea>
-            <button onclick="previewHTML()">Preview</button>
-            <iframe id="htmlPreview" style="width:100%;max-width:600px;height:300px;margin-top:1em;border:1px solid #ccc;"></iframe>
+        <section class="tool-section" style="max-width:900px;margin:2em auto;padding:2em;background:#fff;border-radius:16px;box-shadow:0 2px 16px 0 rgba(0,0,0,0.07);">
+            <h1 style="margin-bottom:1em;font-size:2em;color:#222;">HTML Editor Online</h1>
+            <div style="display:flex;gap:2em;flex-wrap:wrap;align-items:flex-start;">
+                <div style="flex:1;min-width:300px;">
+                    <label for="htmlInput" style="font-weight:600;">HTML Code</label>
+                    <textarea id="htmlInput" style="width:100%;height:300px;font-family:monospace;font-size:1em;padding:1em;border-radius:8px;border:1px solid #ddd;margin-top:0.5em;resize:vertical;background:#f9fafb;" placeholder="Type HTML here..."></textarea>
+                </div>
+                <div style="flex:1;min-width:300px;">
+                    <label style="font-weight:600;">Live Preview</label>
+                    <iframe id="htmlPreview" style="width:100%;height:300px;border-radius:8px;border:1px solid #ddd;background:#fff;margin-top:0.5em;box-shadow:0 1px 8px 0 rgba(0,0,0,0.04);" sandbox="allow-scripts allow-same-origin"></iframe>
+                </div>
+            </div>
         </section>
     </main>
     <footer class="site-footer">
@@ -50,10 +56,11 @@
         </div>
     </footer>
     <script>
-        function previewHTML() {
-            const html = document.getElementById('htmlInput').value;
+        document.getElementById('htmlInput').addEventListener('input', function() {
+            // Always set a white background for the preview
+            const html = `<body style='background:#fff;margin:0;'>${this.value}</body>`;
             document.getElementById('htmlPreview').srcdoc = html;
-        }
+        });
     </script>
 </body>
 </html>
