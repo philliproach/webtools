@@ -1,3 +1,6 @@
+<!--
+Bookmark: CTRL + D
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,6 +27,176 @@
         }
         </script>
     <link rel="stylesheet" href="style.css">
+    <style>
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .hero-animated {
+            animation: slideIn 0.8s ease-out;
+        }
+
+        .tools-grid {
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        .tool-card {
+            animation: slideIn 0.6s ease-out both;
+            animation-delay: calc(var(--card-index) * 0.05s);
+        }
+
+        .dashboard-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 3rem 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .rotating-text {
+            display: inline-block;
+            color: var(--accent);
+            font-weight: 700;
+            min-width: 200px;
+            text-align: left;
+        }
+
+        .search-wrapper {
+            position: relative;
+            max-width: 600px;
+            margin: 2rem auto 1rem;
+        }
+
+        .search-wrapper::before {
+            content: '🔍';
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        #toolSearch {
+            padding-left: 3rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        #toolSearch:focus {
+            transform: translateY(-2px);
+        }
+
+        .stats-bar {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 0.75rem 1.5rem;
+            background: var(--surface-overlay);
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .stat-label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-top: 0.25rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 2rem 0 1.5rem;
+            color: var(--text);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-badge {
+            padding: 0.4rem 0.9rem;
+            background: var(--surface-overlay);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        @media (max-width: 720px) {
+            .stats-bar {
+                gap: 1rem;
+            }
+            
+            .stat-item {
+                padding: 0.5rem 1rem;
+            }
+            
+            .stat-number {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -33,6 +206,7 @@
                 <img src="media/logo.svg" alt="WebTools Logo" class="logo">
                 <span class="site-title">WebTools</span>
             </a>
+            <button class="mobile-toggle" aria-label="Toggle navigation">☰</button>
             <nav class="nav-menu">
                 <a href="." class="active">Home</a>
                 <a href="PrivacyPolicy/">Privacy</a>
@@ -42,25 +216,46 @@
     </header>
 
     <main class="dashboard-main">
-        <section class="dashboard-hero container">
-            <div>
-                <h1 class="dashboard-title">WebTools — Simple, secure utilities</h1>
-                <p class="dashboard-subtitle">Fast, privacy-first tools you can use in your browser. No account
-                    required.</p>
-            </div>
-            <div class="hero-cta">
-                <a class="btn-primary" href="#tools">Explore tools</a>
+        <section class="dashboard-hero container hero-animated">
+            <div class="hero-content">
+                <h1 class="dashboard-title">
+                    WebTools — <span class="rotating-text" id="rotatingText">Simple</span> utilities
+                </h1>
+                <p class="dashboard-subtitle">Fast, privacy-first tools you can use in your browser. No account required.</p>
+                
+                <div class="hero-badges">
+                    <span class="hero-badge">🔒 100% Private</span>
+                    <span class="hero-badge">⚡ Client-Side</span>
+                    <span class="hero-badge">🚀 No Sign-Up</span>
+                </div>
+
+                <div class="stats-bar">
+                    <div class="stat-item">
+                        <span class="stat-number" id="toolCount">45+</span>
+                        <span class="stat-label">Tools</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Free</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Data Stored</span>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="tools" class="container">
-            <div style="margin:1rem 0;display:flex;gap:.5rem;align-items:center">
+            <h2 class="section-title">Explore All Tools</h2>
+            
+            <div class="search-wrapper">
                 <input id="toolSearch" type="search" placeholder="Search tools (e.g., calculator, image, todo)"
-                    class="tool-input" style="flex:1">
-                <button id="clearSearch" class="tool-btn">Clear</button>
+                    class="tool-input">
             </div>
+
             <div class="tools-grid">
-                <a href="tools/File-Converter/" class="tool-card">
+                <a href="tools/File-Converter/" class="tool-card" style="--card-index: 0">
                     <div class="tool-card-head">
                         <div class="tool-badge">1</div>
                         <img src="https://placehold.co/256x256/FFA500/000000/svg?text=SFC"
@@ -68,11 +263,10 @@
                     </div>
                     <div class="tool-card-body">
                         <h3>Secure File Type Converter</h3>
-                        <p class="muted">Upload files, select a file type, and convert them to your needed file type.
-                        </p>
+                        <p class="muted">Upload files, select a file type, and convert them to your needed file type.</p>
                     </div>
                 </a>
-                <a href="tools/Markdown-Editor/" class="tool-card">
+                <a href="tools/Markdown-Editor/" class="tool-card" style="--card-index: 1">
                     <div class="tool-card-head">
                         <div class="tool-badge">MD</div>
                         <img src="https://placehold.co/256x256/00B37E/ffffff/svg?text=MD" alt="Markdown"
@@ -84,7 +278,7 @@
                     </div>
                 </a>
 
-                <a href="tools/CSV-to-JSON/" class="tool-card">
+                <a href="tools/CSV-to-JSON/" class="tool-card" style="--card-index: 2">
                     <div class="tool-card-head">
                         <div class="tool-badge">CSV</div>
                         <img src="https://placehold.co/256x256/0EA5A1/ffffff/svg?text=CSV" alt="CSV to JSON"
@@ -96,7 +290,7 @@
                     </div>
                 </a>
 
-                <a href="tools/QR-Generator/" class="tool-card">
+                <a href="tools/QR-Generator/" class="tool-card" style="--card-index: 3">
                     <div class="tool-card-head">
                         <div class="tool-badge">QR</div>
                         <img src="https://placehold.co/256x256/6366F1/ffffff/svg?text=QR" alt="QR Generator"
@@ -108,7 +302,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Pomodoro/" class="tool-card">
+                <a href="tools/Pomodoro/" class="tool-card" style="--card-index: 4">
                     <div class="tool-card-head">
                         <div class="tool-badge">PT</div>
                         <img src="https://placehold.co/256x256/F59E0B/ffffff/svg?text=PT" alt="Pomodoro"
@@ -119,7 +313,7 @@
                         <p class="muted">Simple Pomodoro timer to boost focus and productivity.</p>
                     </div>
                 </a>
-                <a href="tools/Timer/" class="tool-card">
+                <a href="tools/Timer/" class="tool-card" style="--card-index: 5">
                     <div class="tool-card-head">
                         <div class="tool-badge">T</div>
                         <img src="https://placehold.co/256x256/06B6D4/ffffff/svg?text=TIME" alt="Timer"
@@ -131,7 +325,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Base64-Encoder/" class="tool-card">
+                <a href="tools/Base64-Encoder/" class="tool-card" style="--card-index: 6">
                     <div class="tool-card-head">
                         <div class="tool-badge">B64</div>
                         <img src="https://placehold.co/256x256/8B5CF6/ffffff/svg?text=B64" alt="Base64"
@@ -143,7 +337,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Lorem-Generator/" class="tool-card">
+                <a href="tools/Lorem-Generator/" class="tool-card" style="--card-index: 7">
                     <div class="tool-card-head">
                         <div class="tool-badge">LI</div>
                         <img src="https://placehold.co/256x256/EC4899/ffffff/svg?text=LOREM" alt="Lorem"
@@ -154,7 +348,7 @@
                         <p class="muted">Quickly generate placeholder paragraphs for mockups and designs.</p>
                     </div>
                 </a>
-                <a href="tools/Password-Generator/" class="tool-card">
+                <a href="tools/Password-Generator/" class="tool-card" style="--card-index: 8">
                     <div class="tool-card-head">
                         <div class="tool-badge">PW</div>
                         <img src="https://placehold.co/256x256/111827/ffffff/svg?text=PW" alt="Password"
@@ -166,7 +360,7 @@
                     </div>
                 </a>
 
-                <a href="tools/JSON-Formatter/" class="tool-card">
+                <a href="tools/JSON-Formatter/" class="tool-card" style="--card-index: 9">
                     <div class="tool-card-head">
                         <div class="tool-badge">J</div>
                         <img src="https://placehold.co/256x256/065F46/ffffff/svg?text=JSON" alt="JSON Formatter"
@@ -178,7 +372,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Color-Picker/" class="tool-card">
+                <a href="tools/Color-Picker/" class="tool-card" style="--card-index: 10">
                     <div class="tool-card-head">
                         <div class="tool-badge">C</div>
                         <img src="https://placehold.co/256x256/3B82F6/ffffff/svg?text=COLO" alt="Color Picker"
@@ -189,7 +383,7 @@
                         <p class="muted">Pick colors, copy HEX and RGB values quickly.</p>
                     </div>
                 </a>
-                <a href="tools/UUID-Generator/" class="tool-card">
+                <a href="tools/UUID-Generator/" class="tool-card" style="--card-index: 11">
                     <div class="tool-card-head">
                         <div class="tool-badge">UUID</div>
                         <img src="https://placehold.co/256x256/0f172a/ffffff/svg?text=UUID" alt="UUID"
@@ -201,7 +395,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Timestamp-Converter/" class="tool-card">
+                <a href="tools/Timestamp-Converter/" class="tool-card" style="--card-index: 12">
                     <div class="tool-card-head">
                         <div class="tool-badge">TS</div>
                         <img src="https://placehold.co/256x256/0ea5a1/000000/svg?text=TS" alt="Timestamp"
@@ -213,7 +407,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Text-Case-Converter/" class="tool-card">
+                <a href="tools/Text-Case-Converter/" class="tool-card" style="--card-index: 13">
                     <div class="tool-card-head">
                         <div class="tool-badge">TX</div>
                         <img src="https://placehold.co/256x256/7c3aed/ffffff/svg?text=CASE" alt="Case"
@@ -225,7 +419,7 @@
                     </div>
                 </a>
 
-                <a href="tools/SHA256-Hasher/" class="tool-card">
+                <a href="tools/SHA256-Hasher/" class="tool-card" style="--card-index: 14">
                     <div class="tool-card-head">
                         <div class="tool-badge">SHA</div>
                         <img src="https://placehold.co/256x256/059669/ffffff/svg?text=SHA2" alt="SHA-256"
@@ -237,7 +431,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Word-Counter/" class="tool-card">
+                <a href="tools/Word-Counter/" class="tool-card" style="--card-index: 15">
                     <div class="tool-card-head">
                         <div class="tool-badge">WC</div>
                         <img src="https://placehold.co/256x256/ef4444/ffffff/svg?text=WC" alt="Word Count"
@@ -249,7 +443,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Base64-Encoder/" class="tool-card">
+                <a href="tools/Base64-Encoder/" class="tool-card" style="--card-index: 16">
                     <div class="tool-card-head">
                         <div class="tool-badge">B64</div>
                         <img src="https://placehold.co/256x256/8b5cf6/ffffff/svg?text=B64" alt="Base64"
@@ -261,7 +455,7 @@
                     </div>
                 </a>
 
-                <a href="tools/URL-Encoder/" class="tool-card">
+                <a href="tools/URL-Encoder/" class="tool-card" style="--card-index: 17">
                     <div class="tool-card-head">
                         <div class="tool-badge">URL</div>
                         <img src="https://placehold.co/256x256/0369a1/ffffff/svg?text=URL" alt="URL" class="tool-icon">
@@ -272,7 +466,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Slugify/" class="tool-card">
+                <a href="tools/Slugify/" class="tool-card" style="--card-index: 18">
                     <div class="tool-card-head">
                         <div class="tool-badge">SL</div>
                         <img src="https://placehold.co/256x256/f97316/ffffff/svg?text=SLUG" alt="Slugify"
@@ -284,7 +478,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Random-Number/" class="tool-card">
+                <a href="tools/Random-Number/" class="tool-card" style="--card-index: 19">
                     <div class="tool-card-head">
                         <div class="tool-badge">RND</div>
                         <img src="https://placehold.co/256x256/06b6d4/ffffff/svg?text=RAND" alt="Random"
@@ -296,7 +490,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Lorem-Generator/" class="tool-card">
+                <a href="tools/Lorem-Generator/" class="tool-card" style="--card-index: 20">
                     <div class="tool-card-head">
                         <div class="tool-badge">LP</div>
                         <img src="https://placehold.co/256x256/ec4899/ffffff/svg?text=LORE" alt="Lorem"
@@ -308,7 +502,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Regex-Tester/" class="tool-card">
+                <a href="tools/Regex-Tester/" class="tool-card" style="--card-index: 21">
                     <div class="tool-card-head">
                         <div class="tool-badge">RE</div>
                         <img src="https://placehold.co/256x256/7c3aed/ffffff/svg?text=REGX" alt="Regex"
@@ -320,7 +514,7 @@
                     </div>
                 </a>
 
-                <a href="tools/JSON-Formatter/" class="tool-card">
+                <a href="tools/JSON-Formatter/" class="tool-card" style="--card-index: 22">
                     <div class="tool-card-head">
                         <div class="tool-badge">JV</div>
                         <img src="https://placehold.co/256x256/065f46/ffffff/svg?text=JSON" alt="JSON"
@@ -332,7 +526,7 @@
                     </div>
                 </a>
 
-                <a href="tools/HEX-RGB/" class="tool-card">
+                <a href="tools/HEX-RGB/" class="tool-card" style="--card-index: 23">
                     <div class="tool-card-head">
                         <div class="tool-badge">HR</div>
                         <img src="https://placehold.co/256x256/3b82f6/ffffff/svg?text=HEXR" alt="HEX-RGB"
@@ -344,7 +538,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Clipboard-Helper/" class="tool-card">
+                <a href="tools/Clipboard-Helper/" class="tool-card" style="--card-index: 24">
                     <div class="tool-card-head">
                         <div class="tool-badge">CB</div>
                         <img src="https://placehold.co/256x256/111827/ffffff/svg?text=CLIP" alt="Clipboard"
@@ -356,7 +550,7 @@
                     </div>
                 </a>
 
-                <a href="tools/DataURI-Generator/" class="tool-card">
+                <a href="tools/DataURI-Generator/" class="tool-card" style="--card-index: 25">
                     <div class="tool-card-head">
                         <div class="tool-badge">DI</div>
                         <img src="https://placehold.co/256x256/0ea5a1/ffffff/svg?text=URID" alt="DataURI"
@@ -368,7 +562,7 @@
                     </div>
                 </a>
 
-                <a href="tools/URL-Parser/" class="tool-card">
+                <a href="tools/URL-Parser/" class="tool-card" style="--card-index: 26">
                     <div class="tool-card-head">
                         <div class="tool-badge">UP</div>
                         <img src="https://placehold.co/256x256/06b6d4/ffffff/svg?text=URLP" alt="URL Parse"
@@ -380,7 +574,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Filename-Tools/" class="tool-card">
+                <a href="tools/Filename-Tools/" class="tool-card" style="--card-index: 27">
                     <div class="tool-card-head">
                         <div class="tool-badge">UF</div>
                         <img src="https://placehold.co/256x256/111827/ffffff/svg?text=FT" alt="File Tools"
@@ -391,7 +585,7 @@
                         <p class="muted">Make safe filenames, remove accents, and normalize paths.</p>
                     </div>
                 </a>
-                <a href="tools/Color-Palette/" class="tool-card">
+                <a href="tools/Color-Palette/" class="tool-card" style="--card-index: 28">
                     <div class="tool-card-head">
                         <div class="tool-badge">CP</div>
                         <img src="https://placehold.co/256x256/ef4444/ffffff/svg?text=COLP" alt="Color Palette"
@@ -403,7 +597,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Image-Compress/" class="tool-card">
+                <a href="tools/Image-Compress/" class="tool-card" style="--card-index: 29">
                     <div class="tool-card-head">
                         <div class="tool-badge">IC</div>
                         <img src="https://placehold.co/256x256/f59e0b/000000/svg?text=COMP" alt="Image Compress"
@@ -415,7 +609,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Annotator/" class="tool-card">
+                <a href="tools/Annotator/" class="tool-card" style="--card-index: 30">
                     <div class="tool-card-head">
                         <div class="tool-badge">AN</div>
                         <img src="https://placehold.co/256x256/06b6d4/ffffff/svg?text=ANNO" alt="Annotator"
@@ -427,7 +621,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Text-Diff/" class="tool-card">
+                <a href="tools/Text-Diff/" class="tool-card" style="--card-index: 31">
                     <div class="tool-card-head">
                         <div class="tool-badge">TD</div>
                         <img src="https://placehold.co/256x256/7c3aed/ffffff/svg?text=TD" alt="Text Diff"
@@ -439,7 +633,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Readability-Analyzer/" class="tool-card">
+                <a href="tools/Readability-Analyzer/" class="tool-card" style="--card-index: 32">
                     <div class="tool-card-head">
                         <div class="tool-badge">RA</div>
                         <img src="https://placehold.co/256x256/0ea5a1/ffffff/svg?text=READ" alt="Readability"
@@ -451,7 +645,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Hash-Generator/" class="tool-card">
+                <a href="tools/Hash-Generator/" class="tool-card" style="--card-index: 33">
                     <div class="tool-card-head">
                         <div class="tool-badge">HG</div>
                         <img src="https://placehold.co/256x256/059669/ffffff/svg?text=HG" alt="Hash Generator"
@@ -463,7 +657,7 @@
                     </div>
                 </a>
 
-                <a href="tools/JWT-Decoder/" class="tool-card">
+                <a href="tools/JWT-Decoder/" class="tool-card" style="--card-index: 34">
                     <div class="tool-card-head">
                         <div class="tool-badge">JW</div>
                         <img src="https://placehold.co/256x256/111827/ffffff/svg?text=JWT" alt="JWT Decoder"
@@ -475,7 +669,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Feature-Detect/" class="tool-card">
+                <a href="tools/Feature-Detect/" class="tool-card" style="--card-index: 35">
                     <div class="tool-card-head">
                         <div class="tool-badge">FD</div>
                         <img src="https://placehold.co/256x256/0ea5a1/ffffff/svg?text=FD" alt="Feature Detect"
@@ -487,7 +681,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Notes/" class="tool-card">
+                <a href="tools/Notes/" class="tool-card" style="--card-index: 36">
                     <div class="tool-card-head">
                         <div class="tool-badge">NT</div>
                         <img src="https://placehold.co/256x256/ec4899/ffffff/svg?text=NO" alt="Notes"
@@ -499,7 +693,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Todo-List/" class="tool-card">
+                <a href="tools/Todo-List/" class="tool-card" style="--card-index: 37">
                     <div class="tool-card-head">
                         <div class="tool-badge">TDL</div>
                         <img src="https://placehold.co/256x256/16a34a/ffffff/svg?text=TL" alt="Todo List"
@@ -511,7 +705,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Sketch/" class="tool-card">
+                <a href="tools/Sketch/" class="tool-card" style="--card-index: 38">
                     <div class="tool-card-head">
                         <div class="tool-badge">SK</div>
                         <img src="https://placehold.co/256x256/ef4444/ffffff/svg?text=SK" alt="Sketch"
@@ -522,7 +716,7 @@
                         <p class="muted">A lightweight drawing canvas to sketch quick ideas.</p>
                     </div>
                 </a>
-                <a href="tools/Calculator/" class="tool-card">
+                <a href="tools/Calculator/" class="tool-card" style="--card-index: 39">
                     <div class="tool-card-head">
                         <div class="tool-badge">=</div>
                         <img src="https://placehold.co/256x256/111827/ffffff/svg?text=CALC" alt="Calculator"
@@ -534,7 +728,7 @@
                     </div>
                 </a>
 
-                <a href="tools/BMI-Calculator/" class="tool-card">
+                <a href="tools/BMI-Calculator/" class="tool-card" style="--card-index: 40">
                     <div class="tool-card-head">
                         <div class="tool-badge">BMI</div>
                         <img src="https://placehold.co/256x256/06b6d4/ffffff/svg?text=BMI" alt="BMI Calculator"
@@ -546,7 +740,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Unit-Converter/" class="tool-card">
+                <a href="tools/Unit-Converter/" class="tool-card" style="--card-index: 41">
                     <div class="tool-card-head">
                         <div class="tool-badge">UC</div>
                         <img src="https://placehold.co/256x256/f59e0b/000000/svg?text=UC" alt="Unit Converter"
@@ -558,7 +752,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Tip-Calculator/" class="tool-card">
+                <a href="tools/Tip-Calculator/" class="tool-card" style="--card-index: 42">
                     <div class="tool-card-head">
                         <div class="tool-badge">TIP</div>
                         <img src="https://placehold.co/256x256/16a34a/ffffff/svg?text=TC" alt="Tip Calculator"
@@ -570,7 +764,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Expense-Tracker/" class="tool-card">
+                <a href="tools/Expense-Tracker/" class="tool-card" style="--card-index: 43">
                     <div class="tool-card-head">
                         <div class="tool-badge">$</div>
                         <img src="https://placehold.co/256x256/ef4444/ffffff/svg?text=EC" alt="Expenses"
@@ -582,7 +776,7 @@
                     </div>
                 </a>
 
-                <a href="tools/TimeZone-Converter/" class="tool-card">
+                <a href="tools/TimeZone-Converter/" class="tool-card" style="--card-index: 44">
                     <div class="tool-card-head">
                         <div class="tool-badge">TZ</div>
                         <img src="https://placehold.co/256x256/0ea5a1/ffffff/svg?text=TZ" alt="Time Zone"
@@ -594,7 +788,7 @@
                     </div>
                 </a>
 
-                <a href="tools/Random-Name-Generator/" class="tool-card">
+                <a href="tools/Random-Name-Generator/" class="tool-card" style="--card-index: 45">
                     <div class="tool-card-head">
                         <div class="tool-badge">RN</div>
                         <img src="https://placehold.co/256x256/ec4899/ffffff/svg?text=RNG" alt="Random Name"
@@ -626,13 +820,52 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
     <script>
+        const words = ['Simple', 'Secure', 'Fast', 'Private', 'Modern', 'Powerful', 'Free', 'Easy'];
+        let currentIndex = 0;
+        const rotatingText = document.getElementById('rotatingText');
+        
+        function rotateText() {
+            if (!rotatingText) return;
+            rotatingText.style.opacity = '0';
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % words.length;
+                rotatingText.textContent = words[currentIndex];
+                rotatingText.style.opacity = '1';
+            }, 300);
+        }
+        
+        if (rotatingText) {
+            rotatingText.style.transition = 'opacity 0.3s ease';
+            setInterval(rotateText, 3000);
+        }
+
+        const toolCount = document.querySelectorAll('.tool-card').length;
+        const toolCountEl = document.getElementById('toolCount');
+        if (toolCountEl) {
+            toolCountEl.textContent = toolCount;
+        }
+
         const search = document.getElementById('toolSearch');
-        const clearBtn = document.getElementById('clearSearch');
-        function filterTools() { const q = (search.value || '').toLowerCase(); document.querySelectorAll('.tool-card').forEach(card => { const title = (card.querySelector('.tool-card-body h3') || {}).textContent || ''; const desc = (card.querySelector('.tool-card-body p') || {}).textContent || ''; const txt = (title + ' ' + desc).toLowerCase(); card.style.display = q && !txt.includes(q) ? 'none' : ''; }); }
-        search && search.addEventListener('input', filterTools);
-        clearBtn && clearBtn.addEventListener('click', () => { search.value = ''; filterTools(); search.focus(); });
+        function filterTools() {
+            const q = (search.value || '').toLowerCase();
+            document.querySelectorAll('.tool-card').forEach(card => {
+                const title = (card.querySelector('.tool-card-body h3') || {}).textContent || '';
+                const desc = (card.querySelector('.tool-card-body p') || {}).textContent || '';
+                const txt = (title + ' ' + desc).toLowerCase();
+                card.style.display = q && !txt.includes(q) ? 'none' : '';
+            });
+        }
+        if (search) {
+            search.addEventListener('input', filterTools);
+        }
+
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                document.body.classList.toggle('nav-open');
+            });
+        }
     </script>
 </body>
 

@@ -18,7 +18,6 @@
 
     function setupMobileToggle() {
         try {
-            // only create the mobile toggle when the viewport is small
             const navContainer = document.querySelector('.nav-container');
             if (!navContainer) return;
 
@@ -43,10 +42,8 @@
             }
 
             ensureToggle();
-            // keep toggle presence in sync with window size
             window.addEventListener('resize', ensureToggle);
 
-            // close menu when clicking outside or on a nav link
             document.addEventListener('click', (e) => {
                 if (!document.body.classList.contains('nav-open')) return;
                 const menu = document.querySelector('.nav-menu');
@@ -54,11 +51,9 @@
                 if (!menu) return;
                 if (e.target === toggle) return;
                 if (menu.contains(e.target)) {
-                    // if link clicked, close
                     if (e.target.tagName === 'A') document.body.classList.remove('nav-open');
                     return;
                 }
-                // click outside: close
                 if (!navContainer.contains(e.target)) document.body.classList.remove('nav-open');
             });
         } catch (e) { console.warn('mobile toggle setup failed', e) }
@@ -67,7 +62,6 @@
     document.addEventListener('DOMContentLoaded', () => {
         setActive();
         setupMobileToggle();
-        // ensure nav-open isn't stuck from previous dev edits
         if (document.body.classList.contains('nav-open') && !window.matchMedia('(max-width:720px)').matches) {
             document.body.classList.remove('nav-open');
         }

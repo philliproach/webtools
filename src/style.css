@@ -3,7 +3,6 @@
     --card: #ffffff;
     --surface: #ffffff;
     --accent: #06b6d4;
-    /* unchanged */
     --accent-2: #0369a1;
     --text: #0f1724;
     --muted: #64748b;
@@ -13,7 +12,6 @@
     --header-height: 72px;
     --footer-height: 72px;
     --surface-overlay: rgba(2, 6, 23, 0.04);
-    /* unchanged */
     --surface-text: #0f1724;
     --card-border: rgba(2, 6, 23, 0.04);
     --card-shadow: 0 12px 40px rgba(2, 6, 23, 0.06);
@@ -30,20 +28,14 @@
 @media (prefers-color-scheme:dark) {
     :root {
         --bg: #07262b;
-        /* cards and surfaces are made lighter for better contrast with white text */
         --card: #183b42;
-        /* lighter card color so panels stand out clearly */
         --surface: #133238;
-        /* slightly lighter page surface */
         --accent: #09d2cf;
         --accent-2: #18b9c3;
         --text: #ffffff;
-        /* force fully white readable text on dark mode */
         --muted: #d7eef3;
-        /* brighter muted text */
         --surface-overlay: rgba(255, 255, 255, 0.05);
         --surface-text: #ffffff;
-        /* higher contrast borders */
         --card-border: rgba(255, 255, 255, 0.18);
         --surface-border: rgba(255, 255, 255, 0.14);
         --card-shadow: 0 20px 60px rgba(0, 0, 0, 0.44);
@@ -55,7 +47,6 @@
         --footer-shadow: none;
     }
 
-    /* panel appearance */
     .tool-ui {
         background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
         border: 1px solid rgba(255, 255, 255, 0.14);
@@ -78,7 +69,6 @@
         background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
     }
 
-    /* make inputs visibly lighter in dark mode */
     .tool-input,
     textarea,
     input[type=text],
@@ -95,13 +85,11 @@
         border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    /* badge contrast on dark mode */
     .tool-badge {
         background: rgba(255, 255, 255, 0.04);
         color: var(--muted);
     }
 
-    /* Search input tweaks for the dashboard */
     #toolSearch {
         padding: .6rem .75rem;
         border-radius: 10px;
@@ -111,14 +99,12 @@
         color: var(--text);
     }
 
-    /* lighter placeholder so it's visible but subdued */
     #toolSearch::placeholder,
     .tool-input::placeholder {
         color: rgba(255, 255, 255, 0.72);
         opacity: 1;
     }
 
-    /* Make generic tool buttons readable on dark backgrounds */
     .tool-btn {
         color: var(--text);
         border: 1px solid rgba(255, 255, 255, 0.06);
@@ -126,14 +112,11 @@
         background: rgba(255, 255, 255, 0.015);
     }
 
-    /* Force all text elements in dark mode to use the theme variables so nothing is missed.
-           This overrides inline styles or per-page hard-coded colors that made text hard to read. */
     body,
     body * {
         color: var(--text) !important;
     }
 
-    /* Keep intentionally 'muted' text using the muted variable (e.g., descriptions) */
     .muted,
     .muted-small,
     .dashboard-subtitle,
@@ -144,7 +127,6 @@
         color: var(--muted) !important;
     }
 
-    /* Ensure inputs/placeholders keep correct brightness */
     .tool-input,
     textarea,
     input[type=text],
@@ -165,7 +147,6 @@
         color: rgba(255, 255, 255, 0.72) !important;
     }
 
-    /* SVG icons that have inline fills/strokes should be readable too */
     svg,
     svg * {
         fill: var(--text) !important;
@@ -189,7 +170,6 @@ body {
     height: 100%;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    /* enable native smooth scrolling for anchor links */
     scroll-behavior: smooth;
 }
 
@@ -261,7 +241,6 @@ body {
     align-items: center
 }
 
-/* hide mobile toggle by default on larger screens; it's enabled in the mobile media query */
 .mobile-toggle {
     display: none;
 }
@@ -474,7 +453,6 @@ body {
     border: 1px solid var(--card-border);
 }
 
-/* Tool-specific UI helpers */
 .tool-ui {
     background: var(--card);
     padding: 1rem;
@@ -503,7 +481,6 @@ select {
     padding: .6rem .75rem;
     border-radius: 10px;
     border: 1px solid var(--card-border);
-    /* use card background for inputs so they stand out against page surface */
     background: var(--card);
     color: var(--text);
     font-size: .95rem;
@@ -598,8 +575,6 @@ textarea {
 }
 
 @media (max-width:720px) {
-
-    /* compact header & footer sizes on small screens */
     :root {
         --header-height: 60px;
         --footer-height: 64px;
@@ -609,7 +584,6 @@ textarea {
         padding: 0 .75rem;
     }
 
-    /* hide the desktop nav; it will be toggled by the mobile button */
     .nav-menu {
         display: none;
         position: absolute;
@@ -625,12 +599,10 @@ textarea {
         gap: .5rem;
     }
 
-    /* visible when nav is opened (mobile only) */
     body.nav-open .nav-menu {
         display: flex;
     }
 
-    /* mobile menu toggle button */
     .mobile-toggle {
         display: inline-flex;
         align-items: center;
