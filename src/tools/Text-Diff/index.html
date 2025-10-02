@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Text Diff — WebTools</title>
+    <meta name="description" content="Compare two pieces of text and see differences." />
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo"
+                    alt="WebTools"><span class="site-title">WebTools</span></a>
+            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
+                    href="../../TermsOfService/">Terms</a></nav>
+        </div>
+    </header>
+    <main class="container">
+        <section class="tool-grid">
+            <div class="tool-panel">
+                <div class="tool-ui">
+                    <h1>Text Diff</h1><label class="muted-small">Original</label><textarea id="a"
+                        class="tool-textarea"></textarea><label class="muted-small">Modified</label><textarea id="b"
+                        class="tool-textarea"></textarea>
+                    <div style="margin-top:.5rem"><button id="run" class="tool-btn primary">Compare</button></div>
+                    <div id="out" style="margin-top:.75rem"></div>
+                </div>
+            </div>
+            <aside class="tool-panel">
+                <div class="tool-ui"><label class="muted-small">Notes</label>
+                    <p class="muted">Shows line-level diffs. This is a lightweight, in-browser diff.</p>
+                </div>
+            </aside>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
+                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
+                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+            </div>
+            <div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy
+                    Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
+        </div>
+    </footer>
+    <script>
+        function diffLines(a, b) { const A = a.split('\n'); const B = b.split('\n'); const out = []; const max = Math.max(A.length, B.length); for (let i = 0; i < max; i++) { const aa = A[i] || ''; const bb = B[i] || ''; if (aa === bb) out.push(`<div class="muted"> ${escapeHtml(aa)}</div>`); else out.push(`<div style="background:#ffeef0;border-left:4px solid #d73a49;padding:6px;margin-bottom:4px"><strong>-${escapeHtml(aa)}</strong><br><strong>+${escapeHtml(bb)}</strong></div>`); } return out.join(''); }
+        function escapeHtml(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+        document.getElementById('run').addEventListener('click', () => { const a = document.getElementById('a').value; const b = document.getElementById('b').value; document.getElementById('out').innerHTML = diffLines(a, b); });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Notes — WebTools</title>
+    <meta name="description" content="Simple note-taking app using localStorage." />
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo"
+                    alt="WebTools"><span class="site-title">WebTools</span></a>
+            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
+                    href="../../TermsOfService/">Terms</a></nav>
+        </div>
+    </header>
+    <main class="container">
+        <section class="tool-grid">
+            <div class="tool-panel">
+                <div class="tool-ui">
+                    <h1>Notes</h1><input id="title" class="tool-input" placeholder="Title"><textarea id="body"
+                        class="tool-textarea" placeholder="Write something..." style="height:160px"></textarea>
+                    <div style="margin-top:.5rem"><button id="save" class="tool-btn primary">Save Note</button></div>
+                    <div id="list" style="margin-top:1rem"></div>
+                </div>
+            </div>
+            <aside class="tool-panel">
+                <div class="tool-ui"><label class="muted-small">Storage</label>
+                    <p class="muted">Notes are saved locally in your browser only.</p>
+                </div>
+            </aside>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
+                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
+                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+            </div>
+            <div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy
+                    Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
+        </div>
+    </footer>
+    <script>
+        function saveNote() { const title = document.getElementById('title').value || 'Untitled'; const body = document.getElementById('body').value || ''; const notes = JSON.parse(localStorage.getItem('webtools-notes') || '[]'); notes.unshift({ id: Date.now(), title, body }); localStorage.setItem('webtools-notes', JSON.stringify(notes)); render(); }
+        function render() { const notes = JSON.parse(localStorage.getItem('webtools-notes') || '[]'); const list = document.getElementById('list'); list.innerHTML = notes.map(n => `<div style="padding:.6rem;border:1px solid rgba(0,0,0,.06);border-radius:6px;margin-bottom:.5rem"><strong>${escapeHtml(n.title)}</strong><div style="font-size:.9rem;margin-top:.35rem">${escapeHtml(n.body.slice(0, 200))}</div><div style="margin-top:.4rem"><button data-id="${n.id}" class="load tool-btn">Load</button><button data-id="${n.id}" class="del tool-btn">Delete</button></div></div>`).join(''); document.querySelectorAll('.load').forEach(b => b.addEventListener('click', e => { const id = e.target.dataset.id; const note = JSON.parse(localStorage.getItem('webtools-notes') || '[]').find(x => x.id == id); if (note) { document.getElementById('title').value = note.title; document.getElementById('body').value = note.body; } })); document.querySelectorAll('.del').forEach(b => b.addEventListener('click', e => { const id = e.target.dataset.id; let notes = JSON.parse(localStorage.getItem('webtools-notes') || '[]'); notes = notes.filter(x => x.id != id); localStorage.setItem('webtools-notes', JSON.stringify(notes)); render(); })); }
+        function escapeHtml(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+        document.getElementById('save').addEventListener('click', saveNote); render();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Pomodoro Timer — WebTools</title>
+    <meta name="description" content="Simple Pomodoro timer with start/pause/reset. Keeps time in the browser.">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="nav-container">
+            <a class="brand" href="../../">
+                <img src="../../media/logo.svg" alt="WebTools Logo" class="logo">
+                <span class="site-title">WebTools</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="../../">Home</a>
+                <a href="../../PrivacyPolicy/">Privacy</a>
+                <a href="../../TermsOfService/">Terms</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container" style="padding-top:2.25rem; padding-bottom:2.25rem;">
+        <section class="tool-grid">
+            <div class="tool-panel">
+                <div class="tool-ui" style="text-align:center">
+                    <h1>Pomodoro Timer</h1>
+                    <p class="muted">Simple 25-minute focused timer with start/pause/reset controls.</p>
+                    <div style="font-size:3rem;margin:1rem 0" id="time">25:00</div>
+                    <div class="tool-actions" style="justify-content:center;">
+                        <button id="start" class="tool-btn primary">Start</button>
+                        <button id="pause" class="tool-btn">Pause</button>
+                        <button id="reset" class="tool-btn ghost">Reset</button>
+                    </div>
+                </div>
+            </div>
+            <aside class="tool-panel">
+                <div class="tool-ui">
+                    <label class="muted-small">Presets</label>
+                    <div style="display:flex;gap:.5rem;margin-top:.5rem">
+                        <button id="preset-25" class="tool-btn">25m</button>
+                        <button id="preset-15" class="tool-btn">15m</button>
+                        <button id="preset-5" class="tool-btn">5m</button>
+                    </div>
+                    <p class="muted-small" style="margin-top:.75rem">Use presets to quickly change the session length.
+                    </p>
+                </div>
+            </aside>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="../../media/logo.svg" alt="WebTools Logo" class="footer-logo">
+                <div class="footer-content">
+                    <span class="footer-title">WebTools &copy; 2025</span>
+                    <span class="footer-desc">A collection of simple, secure browser-based tools.</span>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="../../Contact/">Contact</a>
+                <a href="../../PrivacyPolicy/">Privacy Policy</a>
+                <a href="../../TermsOfService/">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        let total = 25 * 60; let interval = null; const display = document.getElementById('time');
+        function fmt(s) { const m = Math.floor(s / 60); const sec = s % 60; return `${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')}` }
+        function tick() { if (total <= 0) { clearInterval(interval); interval = null; alert('Pomodoro finished'); return; } total--; display.textContent = fmt(total); }
+        document.getElementById('start').addEventListener('click', () => { if (!interval) interval = setInterval(tick, 1000); });
+        document.getElementById('pause').addEventListener('click', () => { if (interval) { clearInterval(interval); interval = null; } });
+        document.getElementById('reset').addEventListener('click', () => { total = 25 * 60; display.textContent = fmt(total); if (interval) { clearInterval(interval); interval = null; } });
+        document.getElementById('preset-25').addEventListener('click', () => { total = 25 * 60; display.textContent = fmt(total); });
+        document.getElementById('preset-15').addEventListener('click', () => { total = 15 * 60; display.textContent = fmt(total); });
+        document.getElementById('preset-5').addEventListener('click', () => { total = 5 * 60; display.textContent = fmt(total); });
+    </script>
+</body>
+
+</html>

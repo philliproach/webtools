@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Markdown Editor — WebTools</title>
+    <meta name="description"
+        content="Markdown editor with live preview. Edit Markdown and see a rendered preview in real time. Client-side only.">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="nav-container">
+            <a class="brand" href="../../">
+                <img src="../../media/logo.svg" class="logo" alt="WebTools">
+                <span class="site-title">WebTools</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="../../">Home</a>
+                <a href="../../PrivacyPolicy/">Privacy</a>
+                <a href="../../TermsOfService/">Terms</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container" style="padding-top:2.25rem; padding-bottom:2.25rem;">
+        <section class="tool-grid">
+            <div class="tool-panel">
+                <div class="tool-ui">
+                    <h1>Markdown Editor</h1>
+                    <p class="muted">Write Markdown on the left and see a live preview on the right.</p>
+                    <label class="muted-small">Markdown</label>
+                    <textarea id="md-input" class="tool-input" style="min-height:320px;"># Welcome to WebTools Markdown Editor
+
+Start typing...</textarea>
+                    <div class="tool-actions" style="margin-top:.5rem;">
+                        <button id="clear-md" class="tool-btn ghost">Clear</button>
+                        <button id="copy-md" class="tool-btn">Copy</button>
+                        <button id="download-md" class="tool-btn primary">Download .md</button>
+                    </div>
+                </div>
+            </div>
+            <aside class="tool-panel">
+                <div class="tool-ui">
+                    <label class="muted-small">Preview</label>
+                    <div id="md-preview" class="preview"></div>
+                </div>
+            </aside>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="../../media/logo.svg" alt="WebTools Logo" class="footer-logo">
+                <div class="footer-content">
+                    <span class="footer-title">WebTools &copy; 2025</span>
+                    <span class="footer-desc">A collection of simple, secure browser-based tools.</span>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="../../Contact/">Contact</a>
+                <a href="../../PrivacyPolicy/">Privacy Policy</a>
+                <a href="../../TermsOfService/">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        const ta = document.getElementById('md-input');
+        const pr = document.getElementById('md-preview');
+        function render() { pr.innerHTML = marked.parse(ta.value || 'Type some **Markdown** on the left...'); }
+        ta.addEventListener('input', render);
+        document.getElementById('clear-md').addEventListener('click', () => { ta.value = ''; render(); ta.focus(); });
+        document.getElementById('copy-md').addEventListener('click', async () => { await navigator.clipboard.writeText(ta.value); alert('Copied to clipboard'); });
+        document.getElementById('download-md').addEventListener('click', () => {
+            const blob = new Blob([ta.value], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a'); a.href = url; a.download = 'webtools.md'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+        });
+        render();
+    </script>
+</body>
+
+</html>

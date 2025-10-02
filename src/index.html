@@ -6,51 +6,634 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="media/logo.svg">
     <title>WebTools Dashboard</title>
+    <meta name="description"
+        content="WebTools: fast, privacy-first browser utilities — converters, image tools, calculators, notes and more.">
+    <meta name="keywords"
+        content="online tools, web tools, calculator, converter, image compressor, todo, notes, QR code, markdown editor, lorem generator, password generator">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "WebTools",
+            "url": "./",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "{siteUrl}/?s={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        }
+        </script>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header class="site-header">
         <div class="nav-container">
-            <img src="media/logo.svg" alt="WebTools Logo" class="logo">
-            <span class="site-title">WebTools Dashboard</span>
+            <a class="brand" href=".">
+                <img src="media/logo.svg" alt="WebTools Logo" class="logo">
+                <span class="site-title">WebTools</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="." class="active">Home</a>
+                <a href="PrivacyPolicy/">Privacy</a>
+                <a href="TermsOfService/">Terms</a>
+            </nav>
         </div>
-
-
-
-
     </header>
 
     <main class="dashboard-main">
-        <h1 class="dashboard-title">Welcome to <span class="accent">WebTools</span></h1>
-        <p class="dashboard-subtitle">Select a tool to get started.</p>
-        <div class="dashboard-tools">
-            <a href="tools/File-Transfer/" class="tool-card">
-                <img src="media/icon-transfer.png" alt="File Transfer Icon" class="tool-icon">
-                <h3>Secure File Transfer</h3>
-                <p>Securely upload and share files with automatic deletion and PIN protection.</p>
-            </a>
-            <!-- Placeholder for other tools -->
-            <div class="tool-card disabled">
-                <img src="media/icon-placeholder.png" alt="Placeholder Icon" class="tool-icon">
-                <h3>Coming Soon</h3>
-                <p>Check back later for more tools and services.</p>
+        <section class="dashboard-hero container">
+            <div>
+                <h1 class="dashboard-title">WebTools — Simple, secure utilities</h1>
+                <p class="dashboard-subtitle">Fast, privacy-first tools you can use in your browser. No account
+                    required.</p>
             </div>
-        </div>
+            <div class="hero-cta">
+                <a class="btn-primary" href="#tools">Explore tools</a>
+            </div>
+        </section>
+
+        <section id="tools" class="container">
+            <div style="margin:1rem 0;display:flex;gap:.5rem;align-items:center">
+                <input id="toolSearch" type="search" placeholder="Search tools (e.g., calculator, image, todo)"
+                    class="tool-input" style="flex:1">
+                <button id="clearSearch" class="tool-btn">Clear</button>
+            </div>
+            <div class="tools-grid">
+                <a href="tools/File-Converter/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">1</div>
+                        <img src="https://placehold.co/256x256/FFA500/000000/svg?text=SFC"
+                            alt="File Converter Icon" class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Secure File Type Converter</h3>
+                        <p class="muted">Upload files, select a file type, and convert them to your needed file type.
+                        </p>
+                    </div>
+                </a>
+                <a href="tools/Markdown-Editor/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">MD</div>
+                        <img src="https://placehold.co/256x256/00B37E/ffffff/svg?text=MD" alt="Markdown"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Markdown Editor</h3>
+                        <p class="muted">Live Markdown editor with instant preview. Client-side only.</p>
+                    </div>
+                </a>
+
+                <a href="tools/CSV-to-JSON/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">CSV</div>
+                        <img src="https://placehold.co/256x256/0EA5A1/ffffff/svg?text=CSV" alt="CSV to JSON"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>CSV → JSON</h3>
+                        <p class="muted">Paste or upload CSV files and convert them to JSON instantly, client-side.</p>
+                    </div>
+                </a>
+
+                <a href="tools/QR-Generator/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">QR</div>
+                        <img src="https://placehold.co/256x256/6366F1/ffffff/svg?text=QR" alt="QR Generator"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>QR Code Generator</h3>
+                        <p class="muted">Generate QR codes from URLs or text and download as PNG.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Pomodoro/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">PT</div>
+                        <img src="https://placehold.co/256x256/F59E0B/ffffff/svg?text=PT" alt="Pomodoro"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Pomodoro Timer</h3>
+                        <p class="muted">Simple Pomodoro timer to boost focus and productivity.</p>
+                    </div>
+                </a>
+                <a href="tools/Timer/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">T</div>
+                        <img src="https://placehold.co/256x256/06B6D4/ffffff/svg?text=TIME" alt="Timer"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Custom Timer</h3>
+                        <p class="muted">Set any minutes and seconds and run a countdown with notifications.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Base64-Encoder/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">B64</div>
+                        <img src="https://placehold.co/256x256/8B5CF6/ffffff/svg?text=B64" alt="Base64"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Base64 Encoder</h3>
+                        <p class="muted">Encode and decode Base64 strings client-side.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Lorem-Generator/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">LI</div>
+                        <img src="https://placehold.co/256x256/EC4899/ffffff/svg?text=LOREM" alt="Lorem"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Lorem Ipsum Generator</h3>
+                        <p class="muted">Quickly generate placeholder paragraphs for mockups and designs.</p>
+                    </div>
+                </a>
+                <a href="tools/Password-Generator/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">PW</div>
+                        <img src="https://placehold.co/256x256/111827/ffffff/svg?text=PW" alt="Password"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Password Generator</h3>
+                        <p class="muted">Generate secure random passwords client-side.</p>
+                    </div>
+                </a>
+
+                <a href="tools/JSON-Formatter/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">J</div>
+                        <img src="https://placehold.co/256x256/065F46/ffffff/svg?text=JSON" alt="JSON Formatter"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>JSON Formatter</h3>
+                        <p class="muted">Format, validate and minify JSON client-side.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Color-Picker/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">C</div>
+                        <img src="https://placehold.co/256x256/3B82F6/ffffff/svg?text=COLO" alt="Color Picker"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Color Picker</h3>
+                        <p class="muted">Pick colors, copy HEX and RGB values quickly.</p>
+                    </div>
+                </a>
+                <a href="tools/UUID-Generator/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">UUID</div>
+                        <img src="https://placehold.co/256x256/0f172a/ffffff/svg?text=UUID" alt="UUID"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>UUID Generator</h3>
+                        <p class="muted">Generate RFC4122 v4 UUIDs client-side.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Timestamp-Converter/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">TS</div>
+                        <img src="https://placehold.co/256x256/0ea5a1/000000/svg?text=TS" alt="Timestamp"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Timestamp Converter</h3>
+                        <p class="muted">Unix timestamp &rarr; human date and back.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Text-Case-Converter/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">TX</div>
+                        <img src="https://placehold.co/256x256/7c3aed/ffffff/svg?text=CASE" alt="Case"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Text Case Converter</h3>
+                        <p class="muted">Uppercase, lowercase, title case, snake_case, kebab-case.</p>
+                    </div>
+                </a>
+
+                <a href="tools/SHA256-Hasher/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">SHA</div>
+                        <img src="https://placehold.co/256x256/059669/ffffff/svg?text=SHA2" alt="SHA-256"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>SHA-256 Hasher</h3>
+                        <p class="muted">Compute a SHA-256 hash of text using the browser crypto API.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Word-Counter/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">WC</div>
+                        <img src="https://placehold.co/256x256/ef4444/ffffff/svg?text=WC" alt="Word Count"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Word & Character Counter</h3>
+                        <p class="muted">Count words, characters, lines and estimate reading time.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Base64-Encoder/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">B64</div>
+                        <img src="https://placehold.co/256x256/8b5cf6/ffffff/svg?text=B64" alt="Base64"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Base64 Encode / Decode</h3>
+                        <p class="muted">Encode text to Base64 or decode Base64 back to text.</p>
+                    </div>
+                </a>
+
+                <a href="tools/URL-Encoder/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">URL</div>
+                        <img src="https://placehold.co/256x256/0369a1/ffffff/svg?text=URL" alt="URL" class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>URL Encode / Decode</h3>
+                        <p class="muted">Encode or decode URL components safely.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Slugify/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">SL</div>
+                        <img src="https://placehold.co/256x256/f97316/ffffff/svg?text=SLUG" alt="Slugify"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Slugify</h3>
+                        <p class="muted">Create URL-friendly slugs from text.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Random-Number/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">RND</div>
+                        <img src="https://placehold.co/256x256/06b6d4/ffffff/svg?text=RAND" alt="Random"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Random Number</h3>
+                        <p class="muted">Generate secure random integers in a range.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Lorem-Generator/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">LP</div>
+                        <img src="https://placehold.co/256x256/ec4899/ffffff/svg?text=LORE" alt="Lorem"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Lorem Generator</h3>
+                        <p class="muted">Create placeholder paragraphs for mockups.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Regex-Tester/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">RE</div>
+                        <img src="https://placehold.co/256x256/7c3aed/ffffff/svg?text=REGX" alt="Regex"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Regex Tester</h3>
+                        <p class="muted">Test regular expressions against sample text.</p>
+                    </div>
+                </a>
+
+                <a href="tools/JSON-Formatter/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">JV</div>
+                        <img src="https://placehold.co/256x256/065f46/ffffff/svg?text=JSON" alt="JSON"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>JSON Validator</h3>
+                        <p class="muted">Validate and format JSON with a single click.</p>
+                    </div>
+                </a>
+
+                <a href="tools/HEX-RGB/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">HR</div>
+                        <img src="https://placehold.co/256x256/3b82f6/ffffff/svg?text=HEXR" alt="HEX-RGB"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>HEX &lt;-&gt; RGB</h3>
+                        <p class="muted">Convert between HEX and RGB color formats quickly.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Clipboard-Helper/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">CB</div>
+                        <img src="https://placehold.co/256x256/111827/ffffff/svg?text=CLIP" alt="Clipboard"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Clipboard Helper</h3>
+                        <p class="muted">Quick copy/paste and history for browser clipboard operations.</p>
+                    </div>
+                </a>
+
+                <a href="tools/DataURI-Generator/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">DI</div>
+                        <img src="https://placehold.co/256x256/0ea5a1/ffffff/svg?text=URID" alt="DataURI"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Data URI Generator</h3>
+                        <p class="muted">Embed small images or text as data URIs for quick use.</p>
+                    </div>
+                </a>
+
+                <a href="tools/URL-Parser/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">UP</div>
+                        <img src="https://placehold.co/256x256/06b6d4/ffffff/svg?text=URLP" alt="URL Parse"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>URL Parser</h3>
+                        <p class="muted">Break a URL into its components and inspect query params.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Filename-Tools/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">UF</div>
+                        <img src="https://placehold.co/256x256/111827/ffffff/svg?text=FT" alt="File Tools"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Filename & Slug Tools</h3>
+                        <p class="muted">Make safe filenames, remove accents, and normalize paths.</p>
+                    </div>
+                </a>
+                <a href="tools/Color-Palette/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">CP</div>
+                        <img src="https://placehold.co/256x256/ef4444/ffffff/svg?text=COLP" alt="Color Palette"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Color Palette Extractor</h3>
+                        <p class="muted">Extract a palette from any image directly in your browser.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Image-Compress/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">IC</div>
+                        <img src="https://placehold.co/256x256/f59e0b/000000/svg?text=COMP" alt="Image Compress"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Image Compressor</h3>
+                        <p class="muted">Resize and re-encode images for smaller file sizes, client-side.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Annotator/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">AN</div>
+                        <img src="https://placehold.co/256x256/06b6d4/ffffff/svg?text=ANNO" alt="Annotator"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Screenshot Annotator</h3>
+                        <p class="muted">Annotate screenshots with shapes, text and highlights.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Text-Diff/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">TD</div>
+                        <img src="https://placehold.co/256x256/7c3aed/ffffff/svg?text=TD" alt="Text Diff"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Text Diff</h3>
+                        <p class="muted">Compare two texts and highlight line-level differences.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Readability-Analyzer/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">RA</div>
+                        <img src="https://placehold.co/256x256/0ea5a1/ffffff/svg?text=READ" alt="Readability"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Readability Analyzer</h3>
+                        <p class="muted">Estimate reading level, Flesch score and reading time.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Hash-Generator/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">HG</div>
+                        <img src="https://placehold.co/256x256/059669/ffffff/svg?text=HG" alt="Hash Generator"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Hash Generator</h3>
+                        <p class="muted">Compute SHA-1 / SHA-256 and (placeholder) MD5 hashes locally.</p>
+                    </div>
+                </a>
+
+                <a href="tools/JWT-Decoder/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">JW</div>
+                        <img src="https://placehold.co/256x256/111827/ffffff/svg?text=JWT" alt="JWT Decoder"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>JWT Decoder</h3>
+                        <p class="muted">Decode JWT headers and payloads locally without sending data.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Feature-Detect/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">FD</div>
+                        <img src="https://placehold.co/256x256/0ea5a1/ffffff/svg?text=FD" alt="Feature Detect"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Feature Detector</h3>
+                        <p class="muted">Check which modern browser APIs are available right now.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Notes/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">NT</div>
+                        <img src="https://placehold.co/256x256/ec4899/ffffff/svg?text=NO" alt="Notes"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Notes</h3>
+                        <p class="muted">Quick notes saved locally in your browser.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Todo-List/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">TDL</div>
+                        <img src="https://placehold.co/256x256/16a34a/ffffff/svg?text=TL" alt="Todo List"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Todo List</h3>
+                        <p class="muted">Simple task list stored in localStorage.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Sketch/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">SK</div>
+                        <img src="https://placehold.co/256x256/ef4444/ffffff/svg?text=SK" alt="Sketch"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Sketch</h3>
+                        <p class="muted">A lightweight drawing canvas to sketch quick ideas.</p>
+                    </div>
+                </a>
+                <a href="tools/Calculator/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">=</div>
+                        <img src="https://placehold.co/256x256/111827/ffffff/svg?text=CALC" alt="Calculator"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Calculator</h3>
+                        <p class="muted">Basic calculator for everyday arithmetic, percentages and parentheses.</p>
+                    </div>
+                </a>
+
+                <a href="tools/BMI-Calculator/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">BMI</div>
+                        <img src="https://placehold.co/256x256/06b6d4/ffffff/svg?text=BMI" alt="BMI Calculator"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>BMI Calculator</h3>
+                        <p class="muted">Quick Body Mass Index calculator (kg / m²).</p>
+                    </div>
+                </a>
+
+                <a href="tools/Unit-Converter/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">UC</div>
+                        <img src="https://placehold.co/256x256/f59e0b/000000/svg?text=UC" alt="Unit Converter"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Unit Converter</h3>
+                        <p class="muted">Convert common units (length, mass, temperature) quickly.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Tip-Calculator/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">TIP</div>
+                        <img src="https://placehold.co/256x256/16a34a/ffffff/svg?text=TC" alt="Tip Calculator"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Tip Calculator</h3>
+                        <p class="muted">Calculate tip amounts and split bills between people.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Expense-Tracker/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">$</div>
+                        <img src="https://placehold.co/256x256/ef4444/ffffff/svg?text=EC" alt="Expenses"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Expense Tracker</h3>
+                        <p class="muted">Track simple expenses locally in your browser.</p>
+                    </div>
+                </a>
+
+                <a href="tools/TimeZone-Converter/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">TZ</div>
+                        <img src="https://placehold.co/256x256/0ea5a1/ffffff/svg?text=TZ" alt="Time Zone"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Time Zone Converter</h3>
+                        <p class="muted">Convert datetimes between IANA time zones using your browser.</p>
+                    </div>
+                </a>
+
+                <a href="tools/Random-Name-Generator/" class="tool-card">
+                    <div class="tool-card-head">
+                        <div class="tool-badge">RN</div>
+                        <img src="https://placehold.co/256x256/ec4899/ffffff/svg?text=RNG" alt="Random Name"
+                            class="tool-icon">
+                    </div>
+                    <div class="tool-card-body">
+                        <h3>Random Name Generator</h3>
+                        <p class="muted">Generate random names for placeholders or characters.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
     </main>
 
     <footer class="site-footer">
         <div class="footer-container">
-            <img src="media/logo.svg" alt="WebTools Logo" class="footer-logo">
-            <div class="footer-content">
-                <span class="footer-title">WebTools &copy; 2025</span>
-                <span class="footer-desc">A collection of simple, secure browser-based tools.</span>
-                <span class="footer-contact">All code and design by Phillip Roach. <a href="mailto:philliproach1111@gmail.com">philliproach1111@gmail.com</a></span>
+            <div class="footer-left">
+                <img src="media/logo.svg" alt="WebTools Logo" class="footer-logo">
+                <div class="footer-content">
+                    <span class="footer-title">WebTools &copy; 2025</span>
+                    <span class="footer-desc">A collection of simple, secure browser-based tools.</span>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="Contact/">Contact</a>
+                <a href="PrivacyPolicy/">Privacy Policy</a>
+                <a href="TermsOfService/">Terms of Service</a>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        const search = document.getElementById('toolSearch');
+        const clearBtn = document.getElementById('clearSearch');
+        function filterTools() { const q = (search.value || '').toLowerCase(); document.querySelectorAll('.tool-card').forEach(card => { const title = (card.querySelector('.tool-card-body h3') || {}).textContent || ''; const desc = (card.querySelector('.tool-card-body p') || {}).textContent || ''; const txt = (title + ' ' + desc).toLowerCase(); card.style.display = q && !txt.includes(q) ? 'none' : ''; }); }
+        search && search.addEventListener('input', filterTools);
+        clearBtn && clearBtn.addEventListener('click', () => { search.value = ''; filterTools(); search.focus(); });
+    </script>
 </body>
 
 </html>

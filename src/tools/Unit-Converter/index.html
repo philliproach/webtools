@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Unit Converter — WebTools</title>
+    <meta name="description" content="Convert common units of length, mass and temperature in your browser." />
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo"
+                    alt="WebTools"><span class="site-title">WebTools</span></a>
+            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
+                    href="../../TermsOfService/">Terms</a></nav>
+        </div>
+    </header>
+    <main class="container">
+        <section class="tool-grid">
+            <div class="tool-panel">
+                <div class="tool-ui">
+                    <h1>Unit Converter</h1><label class="muted-small">Value</label><input id="value" class="tool-input"
+                        type="number" value="1"><label class="muted-small">From</label><select id="from"
+                        class="tool-input">
+                        <option value="m">Meters (m)</option>
+                        <option value="km">Kilometers (km)</option>
+                        <option value="mi">Miles (mi)</option>
+                        <option value="ft">Feet (ft)</option>
+                        <option value="kg">Kilograms (kg)</option>
+                        <option value="lb">Pounds (lb)</option>
+                        <option value="c">Celsius (°C)</option>
+                        <option value="f">Fahrenheit (°F)</option>
+                    </select><label class="muted-small">To</label><select id="to" class="tool-input">
+                        <option value="m">Meters (m)</option>
+                        <option value="km">Kilometers (km)</option>
+                        <option value="mi">Miles (mi)</option>
+                        <option value="ft">Feet (ft)</option>
+                        <option value="kg">Kilograms (kg)</option>
+                        <option value="lb">Pounds (lb)</option>
+                        <option value="c">Celsius (°C)</option>
+                        <option value="f">Fahrenheit (°F)</option>
+                    </select>
+                    <div style="margin-top:.5rem"><button id="conv" class="tool-btn primary">Convert</button></div>
+                    <div id="out" style="margin-top:.5rem" class="muted-small"></div>
+                </div>
+            </div>
+            <aside class="tool-panel">
+                <div class="tool-ui"><label class="muted-small">Notes</label>
+                    <p class="muted">Simple, offline conversions for common units.</p>
+                </div>
+            </aside>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
+                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
+                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+            </div>
+            <div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy
+                    Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
+        </div>
+    </footer>
+    <script>
+        function convert() {
+            const v = parseFloat(document.getElementById('value').value) || 0; const from = document.getElementById('from').value; const to = document.getElementById('to').value; let meters = v; // normalize
+            if (from === 'km') meters = v * 1000; if (from === 'm') meters = v; if (from === 'mi') meters = v * 1609.344; if (from === 'ft') meters = v * 0.3048;
+            if (from === 'kg' || from === 'lb' || to === 'kg' || to === 'lb') { // mass conversion
+                let kg = v; if (from === 'lb') kg = v * 0.45359237; if (to === 'kg') return document.getElementById('out').textContent = `${kg.toFixed(4)} kg`; if (to === 'lb') return document.getElementById('out').textContent = `${(kg / 0.45359237).toFixed(4)} lb`;
+            }
+            if ((from === 'c' || from === 'f') || (to === 'c' || to === 'f')) { if (from === 'c' && to === 'f') return document.getElementById('out').textContent = `${(v * 9 / 5 + 32).toFixed(2)} °F`; if (from === 'f' && to === 'c') return document.getElementById('out').textContent = `${((v - 32) * 5 / 9).toFixed(2)} °C`; return document.getElementById('out').textContent = `${v} °${from.toUpperCase()}`; }
+            // length conversion
+            let result = meters; if (to === 'km') result = meters / 1000; if (to === 'm') result = meters; if (to === 'mi') result = meters / 1609.344; if (to === 'ft') result = meters / 0.3048; document.getElementById('out').textContent = result.toFixed(4) + ' ' + (to);
+        }
+        document.getElementById('conv').addEventListener('click', convert);
+    </script>
+</body>
+
+</html>

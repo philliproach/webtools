@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Calculator — WebTools</title>
+    <meta name="description"
+        content="A simple, privacy-first calculator for everyday use (basic arithmetic, percent, parentheses).">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo"
+                    alt="WebTools"><span class="site-title">WebTools</span></a>
+            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
+                    href="../../TermsOfService/">Terms</a></nav>
+        </div>
+    </header>
+    <main class="container">
+        <section class="tool-grid">
+            <div class="tool-panel">
+                <div class="tool-ui">
+                    <h1>Calculator</h1>
+                    <div style="display:flex;flex-direction:column;gap:.5rem;"><input id="display" class="tool-input"
+                            placeholder="0" readonly
+                            style="text-align:right;font-size:1.25rem;height:48px;padding-right:.75rem"></div>
+                    <div style="margin-top:.5rem;display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem">
+                        <button class="calc-btn" data-val="7">7</button>
+                        <button class="calc-btn" data-val="8">8</button>
+                        <button class="calc-btn" data-val="9">9</button>
+                        <button class="calc-btn op" data-val="/">÷</button>
+                        <button class="calc-btn" data-val="4">4</button>
+                        <button class="calc-btn" data-val="5">5</button>
+                        <button class="calc-btn" data-val="6">6</button>
+                        <button class="calc-btn op" data-val="*">×</button>
+                        <button class="calc-btn" data-val="1">1</button>
+                        <button class="calc-btn" data-val="2">2</button>
+                        <button class="calc-btn" data-val="3">3</button>
+                        <button class="calc-btn op" data-val="-">−</button>
+                        <button class="calc-btn" data-val="0">0</button>
+                        <button class="calc-btn" data-val=".">.</button>
+                        <button class="calc-btn" id="equals">=</button>
+                        <button class="calc-btn op" data-val="+">+</button>
+                        <button class="calc-btn" id="clear">C</button>
+                        <button class="calc-btn" id="back">⌫</button>
+                        <button class="calc-btn" data-val="(">(</button>
+                        <button class="calc-btn" data-val=")">)</button>
+                    </div>
+                    <div style="margin-top:.6rem" class="muted-small">Keyboard: type numbers and + - * / ( ) and Enter
+                        for equals.</div>
+                </div>
+            </div>
+            <aside class="tool-panel">
+                <div class="tool-ui"><label class="muted-small">Privacy</label>
+                    <p class="muted">All calculations happen locally in your browser.</p>
+                </div>
+            </aside>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
+                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
+                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+            </div>
+            <div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy
+                    Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
+        </div>
+    </footer>
+    <script>
+        const display = document.getElementById('display');
+        let expr = '';
+        function update() { display.value = expr || '0'; }
+        function safeAppend(ch) { expr += ch; update(); }
+        document.querySelectorAll('.calc-btn').forEach(b => { b.addEventListener('click', e => { const id = b.id; if (id === 'clear') { expr = ''; update(); return; } if (id === 'back') { expr = expr.slice(0, -1); update(); return; } if (id === 'equals') { evaluate(); return; } const v = b.dataset.val; if (v) safeAppend(v); }); });
+        function evaluate() {
+            try { // only allow digits, operators, dots, parentheses and spaces
+                if (!/^[0-9+\-*/(). %]+$/.test(expr)) { alert('Invalid characters'); return; }
+                // handle percent: replace 'number%' with '(number/100)'
+                const withPercent = expr.replace(/(\d+(?:\.\d+)?)%/g, '($1/100)');
+                const result = Function('return (' + withPercent + ')')(); expr = String(result); update();
+            } catch (e) { alert('Error in expression'); }
+        }
+        // keyboard support
+        window.addEventListener('keydown', e => { if (e.key === 'Enter') { evaluate(); e.preventDefault(); return; } if (e.key === 'Backspace') { expr = expr.slice(0, -1); update(); return; } if (/^[0-9+\-*/().%]$/.test(e.key)) { expr += e.key; update(); } });
+        update();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Random Name Generator — WebTools</title>
+    <meta name="description" content="Generate random names for characters and placeholders." />
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo"
+                    alt="WebTools"><span class="site-title">WebTools</span></a>
+            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
+                    href="../../TermsOfService/">Terms</a></nav>
+        </div>
+    </header>
+    <main class="container">
+        <section class="tool-grid">
+            <div class="tool-panel">
+                <div class="tool-ui">
+                    <h1>Random Name Generator</h1><label class="muted-small">Gender</label><select id="g"
+                        class="tool-input">
+                        <option value="any">Any</option>
+                        <option value="m">Male</option>
+                        <option value="f">Female</option>
+                    </select><label class="muted-small">Count</label><input id="count" type="number" class="tool-input"
+                        value="5" min="1" max="50">
+                    <div style="margin-top:.5rem"><button id="gen" class="tool-btn primary">Generate</button></div>
+                    <div id="out" style="margin-top:1rem"></div>
+                </div>
+            </div>
+            <aside class="tool-panel">
+                <div class="tool-ui"><label class="muted-small">Note</label>
+                    <p class="muted">Names are randomly combined from a small built-in list.</p>
+                </div>
+            </aside>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
+                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
+                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+            </div>
+            <div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy
+                    Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
+        </div>
+    </footer>
+    <script>
+        const first = ['Alex', 'Sam', 'Jamie', 'Taylor', 'Jordan', 'Casey', 'Riley', 'Morgan', 'Avery', 'Charlie'];
+        const last = ['Smith', 'Johnson', 'Brown', 'Taylor', 'Anderson', 'Thomas', 'Jackson', 'White', 'Harris', 'Martin'];
+        document.getElementById('gen').addEventListener('click', () => { const cnt = Math.min(50, Math.max(1, parseInt(document.getElementById('count').value) || 5)); const out = document.getElementById('out'); out.innerHTML = ''; for (let i = 0; i < cnt; i++) { const name = first[Math.floor(Math.random() * first.length)] + ' ' + last[Math.floor(Math.random() * last.length)]; const el = document.createElement('div'); el.textContent = name; out.appendChild(el); } });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Text Case Converter — WebTools</title>
+    <meta name="description" content="Convert text to various cases: uppercase, lowercase, title, snake, kebab.">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo"
+                    alt="WebTools"><span class="site-title">WebTools</span></a>
+            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
+                    href="../../TermsOfService/">Terms</a></nav>
+        </div>
+    </header>
+    <main class="container" style="padding-top:2.25rem;padding-bottom:2.25rem;">
+        <section class="tool-grid">
+            <div class="tool-panel">
+                <div class="tool-ui">
+                    <h1>Text Case Converter</h1>
+                    <p class="muted">Convert text between common case formats.</p><label
+                        class="muted-small">Input</label><textarea id="in" class="tool-input"
+                        style="min-height:160px"></textarea>
+                    <div class="tool-actions" style="margin-top:.5rem"><button id="upper"
+                            class="tool-btn">UPPER</button><button id="lower" class="tool-btn">lower</button><button
+                            id="title" class="tool-btn">Title Case</button><button id="snake"
+                            class="tool-btn">snake_case</button><button id="kebab" class="tool-btn">kebab-case</button>
+                    </div>
+                    <pre id="out" class="preview" style="margin-top:.6rem;min-height:80px"></pre>
+                </div>
+            </div>
+            <aside class="tool-panel">
+                <div class="tool-ui"><label class="muted-small">Notes</label>
+                    <p class="muted">Title case uses simple capitalisation (not locale-aware). Snake and kebab replace
+                        spaces with underscores or dashes.</p>
+                </div>
+            </aside>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
+                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
+                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+            </div>
+            <div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy
+                    Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
+        </div>
+    </footer>
+    <script>
+        const inEl = document.getElementById('in'); const out = document.getElementById('out');
+        function titleCase(s) { return s.replace(/\w\S*/g, t => t.charAt(0).toUpperCase() + t.substr(1).toLowerCase()); }
+        document.getElementById('upper').addEventListener('click', () => { out.textContent = inEl.value.toUpperCase(); });
+        document.getElementById('lower').addEventListener('click', () => { out.textContent = inEl.value.toLowerCase(); });
+        document.getElementById('title').addEventListener('click', () => { out.textContent = titleCase(inEl.value); });
+        document.getElementById('snake').addEventListener('click', () => { out.textContent = inEl.value.trim().replace(/\s+/g, '_').toLowerCase(); });
+        document.getElementById('kebab').addEventListener('click', () => { out.textContent = inEl.value.trim().replace(/\s+/g, '-').toLowerCase(); });
+    </script>
+</body>
+
+</html>

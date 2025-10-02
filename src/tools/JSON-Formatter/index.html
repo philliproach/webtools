@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JSON Formatter — WebTools</title>
+    <meta name="description" content="Format, validate, and minify JSON client-side.">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo"
+                    alt="WebTools"><span class="site-title">WebTools</span></a>
+            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
+                    href="../../TermsOfService/">Terms</a></nav>
+        </div>
+    </header>
+    <main class="container" style="padding-top:2.25rem;padding-bottom:2.25rem;">
+        <section class="tool-grid">
+            <div class="tool-panel">
+                <div class="tool-ui">
+                    <h1>JSON Formatter</h1>
+                    <p class="muted">Paste JSON to format, validate, or minify it.</p>
+                    <label class="muted-small">Input</label>
+                    <textarea id="in" class="tool-input" style="min-height:260px"></textarea>
+                    <div class="tool-actions" style="margin-top:.5rem"><button id="fmt"
+                            class="tool-btn primary">Format</button><button id="min"
+                            class="tool-btn">Minify</button><button id="val" class="tool-btn">Validate</button></div>
+                </div>
+            </div>
+            <aside class="tool-panel">
+                <div class="tool-ui">
+                    <label class="muted-small">Output</label>
+                    <pre id="out" class="preview" style="min-height:260px"></pre>
+                </div>
+            </aside>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="../../media/logo.svg" alt="WebTools Logo" class="footer-logo">
+                <div class="footer-content">
+                    <span class="footer-title">WebTools &copy; 2025</span>
+                    <span class="footer-desc">A collection of simple, secure browser-based tools.</span>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="../../Contact/">Contact</a>
+                <a href="../../PrivacyPolicy/">Privacy Policy</a>
+                <a href="../../TermsOfService/">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('fmt').addEventListener('click', () => {
+            try { const j = JSON.parse(document.getElementById('in').value); document.getElementById('out').textContent = JSON.stringify(j, null, 2); } catch (e) { alert('Invalid JSON: ' + e) }
+        });
+        document.getElementById('min').addEventListener('click', () => {
+            try { const j = JSON.parse(document.getElementById('in').value); document.getElementById('out').textContent = JSON.stringify(j); } catch (e) { alert('Invalid JSON: ' + e) }
+        });
+        document.getElementById('val').addEventListener('click', () => {
+            try { JSON.parse(document.getElementById('in').value); alert('Valid JSON'); } catch (e) { alert('Invalid JSON: ' + e) }
+        });
+    </script>
+</body>
+
+</html>

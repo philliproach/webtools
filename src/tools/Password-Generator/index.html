@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Password Generator — WebTools</title>
+    <meta name="description" content="Generate secure random passwords with adjustable length and character sets.">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="nav-container">
+            <a class="brand" href="../../"><img src="../../media/logo.svg" class="logo" alt="WebTools"><span
+                    class="site-title">WebTools</span></a>
+            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
+                    href="../../TermsOfService/">Terms</a></nav>
+        </div>
+    </header>
+    <main class="container" style="padding-top:2.25rem;padding-bottom:2.25rem;">
+        <section class="tool-grid">
+            <div class="tool-panel">
+                <div class="tool-ui">
+                    <h1>Password Generator</h1>
+                    <p class="muted">Create strong random passwords. Choose length and character sets.</p>
+                    <label class="muted-small">Length</label>
+                    <input id="length" type="number" min="4" max="128" value="16" class="tool-input">
+                    <div style="margin-top:.5rem;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center">
+                        <label><input id="upper" type="checkbox" checked> Uppercase</label>
+                        <label><input id="lower" type="checkbox" checked> Lowercase</label>
+                        <label><input id="numbers" type="checkbox" checked> Numbers</label>
+                        <label><input id="symbols" type="checkbox"> Symbols</label>
+                    </div>
+                    <div class="tool-actions" style="margin-top:.6rem"><button id="gen"
+                            class="tool-btn primary">Generate</button><button id="copy" class="tool-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+            <aside class="tool-panel">
+                <div class="tool-ui">
+                    <label class="muted-small">Password</label>
+                    <div id="out" class="preview"
+                        style="min-height:80px;display:flex;align-items:center;padding:.8rem;font-family:monospace">
+                    </div>
+                </div>
+            </aside>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="../../media/logo.svg" alt="WebTools Logo" class="footer-logo">
+                <div class="footer-content">
+                    <span class="footer-title">WebTools &copy; 2025</span>
+                    <span class="footer-desc">A collection of simple, secure browser-based tools.</span>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="../../Contact/">Contact</a>
+                <a href="../../PrivacyPolicy/">Privacy Policy</a>
+                <a href="../../TermsOfService/">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function randInt(n) { return Math.floor(Math.random() * n) }
+        function gen(len, sets) {
+            const all = sets.join(''); let out = ''; for (let i = 0; i < len; i++) out += all[randInt(all.length)]; return out;
+        }
+        document.getElementById('gen').addEventListener('click', () => {
+            const len = Math.max(4, Math.min(128, parseInt(document.getElementById('length').value || 16)));
+            const sets = [];
+            if (document.getElementById('upper').checked) sets.push('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+            if (document.getElementById('lower').checked) sets.push('abcdefghijklmnopqrstuvwxyz');
+            if (document.getElementById('numbers').checked) sets.push('0123456789');
+            if (document.getElementById('symbols').checked) sets.push('!@#$%^&*()-_=+[]{}|;:,.<>?');
+            if (sets.length === 0) { alert('Select at least one character set'); return }
+            const pw = gen(len, sets);
+            document.getElementById('out').textContent = pw;
+        });
+        document.getElementById('copy').addEventListener('click', async () => { await navigator.clipboard.writeText(document.getElementById('out').textContent); alert('Copied'); });
+    </script>
+</body>
+
+</html>
