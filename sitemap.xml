@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://wtoolkit.org/src/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/.</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/PrivacyPolicy/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/TermsOfService/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/File-Converter/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Markdown-Editor/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/CSV-to-JSON/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/QR-Generator/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Pomodoro/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Timer/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Base64-Encoder/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Lorem-Generator/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Password-Generator/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/JSON-Formatter/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Color-Picker/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/UUID-Generator/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Timestamp-Converter/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Text-Case-Converter/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/SHA256-Hasher/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Word-Counter/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/URL-Encoder/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Slugify/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Random-Number/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Regex-Tester/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/HEX-RGB/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Clipboard-Helper/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/DataURI-Generator/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/URL-Parser/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Filename-Tools/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Color-Palette/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Image-Compress/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Annotator/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Text-Diff/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Readability-Analyzer/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Hash-Generator/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/JWT-Decoder/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Feature-Detect/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Notes/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Todo-List/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Sketch/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Calculator/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/BMI-Calculator/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Unit-Converter/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Tip-Calculator/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Expense-Tracker/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/TimeZone-Converter/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Random-Name-Generator/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/HTML-Editor/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Python-Editor/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Image-to-ASCII-Art/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Youtube-Downloader/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/Contact/</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/index.html</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/Contact/.</loc>
+  <lastmod>2025-10-08T01:39:28+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>
