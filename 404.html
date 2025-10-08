@@ -7,14 +7,130 @@
     <title>404 — WebTools</title>
     <meta name="description" content="Page not found — WebTools">
     <link rel="icon" type="image/svg+xml" href="src/media/logo.svg">
-    <link rel="stylesheet" href="src/style.css">
+    <style>
+        /* Critical fallback styles so 404 looks correct even if external CSS fails to load from a deep path */
+        :root {
+            --header-height: 56px;
+            --footer-height: 64px
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            margin: 0;
+            color: #111;
+            background: #fff
+        }
+
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            z-index: 30
+        }
+
+        .nav-container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: inherit
+        }
+
+        .brand .site-title {
+            margin-left: .5rem;
+            font-weight: 600
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: calc(var(--header-height) + 1rem) 1rem calc(var(--footer-height) + 1rem)
+        }
+
+        .tool-ui {
+            padding: 1rem
+        }
+
+        .tool-btn {
+            padding: .5rem .75rem;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            background: #f8f8f8
+        }
+
+        .tool-btn.primary {
+            background: #0b74de;
+            color: #fff;
+            border-color: #0b74de
+        }
+
+        .site-footer {
+            position: fixed;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            height: var(--footer-height);
+            background: #fafafa;
+            border-top: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            z-index: 30
+        }
+
+        .footer-container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .bookmark-banner {
+            display: block;
+            background: #ffe066;
+            color: #333;
+            padding: .5em 1em;
+            text-align: center;
+            font-weight: 500
+        }
+
+        .muted {
+            color: #666
+        }
+
+        .muted-small {
+            color: #666;
+            font-size: .9rem
+        }
+    </style>
+    <link id="main-css" rel="stylesheet" href="src/style.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
         crossorigin="anonymous"></script>
 </head>
 
 <body>
     <header class="site-header">
-        <div class="nav-container"><a class="brand" href="src/"><img src="src/media/logo.svg" class="logo"
+        <div class="nav-container"><a class="brand" href="src/"><img data-src="src/media/logo.svg" class="logo"
                     alt="WebTools"><span class="site-title">WebTools</span></a>
             <nav class="nav-menu"><a href="src/">Home</a><a href="src/PrivacyPolicy/">Privacy</a><a
                     href="src/TermsOfService/">Terms</a></nav>
@@ -37,7 +153,7 @@
 
     <footer class="site-footer">
         <div class="footer-container">
-            <div class="footer-left"><img src="src/media/logo.svg" class="footer-logo">
+            <div class="footer-left"><img data-src="src/media/logo.svg" class="footer-logo">
                 <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
                         class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
             </div>
@@ -46,7 +162,6 @@
         </div>
     </footer>
 
-    <script src="src/script.js"></script>
     <script>
         (function () {
             try {
@@ -75,6 +190,27 @@
                 Promise.race([timeout, probe]).then(function (r) {
                     if (r && r.ok) rootBase = '/';
                     else rootBase = '/src/';
+
+                    // Rewrite asset paths (stylesheet, favicon, images) so they load from the detected root.
+                    try {
+                        var css = document.getElementById('main-css');
+                        if (css) css.href = rootBase.replace(/\/$/, '') + '/src/style.css'.replace(/^\//, '').replace(/\/src\/src\//, '/src/');
+
+                        // favicon
+                        var icons = document.querySelectorAll('link[rel~="icon"]');
+                        icons.forEach(function (lnk) {
+                            var href = lnk.getAttribute('href') || '';
+                            if (!/^https?:\/\//.test(href) && !/^\//.test(href)) {
+                                lnk.href = rootBase.replace(/\/$/, '') + '/' + href.replace(/^\.?\/?/, '');
+                            }
+                        });
+
+                        // images with data-src
+                        document.querySelectorAll('img[data-src]').forEach(function (img) {
+                            var src = img.getAttribute('data-src');
+                            img.src = rootBase.replace(/\/$/, '') + '/' + src.replace(/^\.?\/?/, '');
+                        });
+                    } catch (e) { console.warn('asset rewrite failed', e); }
 
                     rewriteLinks(rootBase);
 
