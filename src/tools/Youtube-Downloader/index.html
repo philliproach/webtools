@@ -1,41 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Youtube Downloader — WebTools</title>
-    <meta name="description" content="Download Youtube videos to your device instantly. Free online Youtube downloader, client-side fetch, no server required.">
+    <meta name="description"
+        content="Download Youtube videos to your device instantly. Free online Youtube downloader, client-side fetch, no server required.">
     <meta name="keywords" content="youtube downloader, video downloader, online tool, client-side, fetch video">
     <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
     <link rel="stylesheet" href="../../style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
+        crossorigin="anonymous"></script>
     <style>
         body {
             background: #fff;
             color: #222;
         }
+
         @media (prefers-color-scheme: dark) {
             body {
                 background: #18181b;
                 color: #f3f3f3;
             }
+
             .tool-section {
                 background: #23232a !important;
                 color: #f3f3f3 !important;
             }
-            input, button, div#ytResult {
+
+            input,
+            button,
+            div#ytResult {
                 background: #18181b !important;
                 color: #f3f3f3 !important;
                 border-color: #333 !important;
             }
-            label, h1 {
+
+            label,
+            h1 {
                 color: #f3f3f3 !important;
             }
         }
     </style>
 </head>
+
 <body>
-    <div style="background:#ffe066;color:#333;padding:0.5em 1em;text-align:center;font-weight:500;font-size:1.05em;">We're hard to find! <span style="font-weight:700;">Press CTRL + D</span> to bookmark this tool.</div>
+    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
     <header class="site-header">
         <div class="nav-container">
             <a class="brand" href="../../index.html">
@@ -50,11 +61,17 @@
         </div>
     </header>
     <main class="tool-main">
-        <section class="tool-section" style="max-width:500px;margin:2em auto;padding:2em;background:#fff;border-radius:16px;box-shadow:0 2px 16px 0 rgba(0,0,0,0.07);text-align:center;">
+        <section class="tool-section"
+            style="max-width:500px;margin:2em auto;padding:2em;background:#fff;border-radius:16px;box-shadow:0 2px 16px 0 rgba(0,0,0,0.07);text-align:center;">
             <h1 style="margin-bottom:0.5em;font-size:2em;color:#222;">Youtube Downloader</h1>
-            <p style="color:#555;margin-bottom:1.5em;">Download Youtube videos to your device.<br><span style="color:#c00;font-weight:500;">Note:</span> Most browsers block direct downloads due to CORS and Youtube restrictions. This tool will attempt to fetch the video file, but may not work for all videos.</p>
-            <input type="text" id="ytUrl" placeholder="Paste Youtube video URL..." style="width:100%;max-width:400px;padding:0.75em 1em;border-radius:8px;border:1px solid #ddd;font-size:1em;margin-bottom:1em;">
-            <button onclick="downloadYoutube()" style="padding:0.7em 2em;border-radius:8px;background:#ef4444;color:#fff;font-weight:600;border:none;box-shadow:0 1px 4px 0 rgba(0,0,0,0.07);cursor:pointer;">Download</button>
+            <p style="color:#555;margin-bottom:1.5em;">Download Youtube videos to your device.<br><span
+                    style="color:#c00;font-weight:500;">Note:</span> Most browsers block direct downloads due to CORS
+                and Youtube restrictions. This tool will attempt to fetch the video file, but may not work for all
+                videos.</p>
+            <input type="text" id="ytUrl" placeholder="Paste Youtube video URL..."
+                style="width:100%;max-width:400px;padding:0.75em 1em;border-radius:8px;border:1px solid #ddd;font-size:1em;margin-bottom:1em;">
+            <button onclick="downloadYoutube()"
+                style="padding:0.7em 2em;border-radius:8px;background:#ef4444;color:#fff;font-weight:600;border:none;box-shadow:0 1px 4px 0 rgba(0,0,0,0.07);cursor:pointer;">Download</button>
             <div id="ytResult" style="margin-top:1.5em;font-size:1.1em;color:#333;"></div>
         </section>
     </main>
@@ -86,4 +103,5 @@
         }
     </script>
 </body>
+
 </html>

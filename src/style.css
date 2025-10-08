@@ -659,6 +659,13 @@ textarea {
     .footer-content {
         align-items: flex-start;
     }
+
+    /* Ensure content can scroll above fixed footer on small screens */
+    main,
+    .dashboard-main,
+    .container {
+        padding-bottom: calc(var(--footer-height) + 1rem);
+    }
 }
 
 @media (max-width:420px) {
@@ -710,4 +717,30 @@ main,
 .dashboard-main,
 .container {
     min-height: calc(100vh - var(--header-height) - var(--footer-height));
+    /* ensure the final content can be scrolled above the fixed footer */
+    padding-bottom: calc(var(--footer-height) + 1rem);
+}
+
+/* Bookmark banner: default hidden on small screens, visible on desktop */
+.bookmark-banner {
+    background: #ffe066;
+    color: #333;
+    padding: 0.5em 1em;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.05em;
+    display: none;
+    /* hide by default (mobile-first) */
+}
+
+.bookmark-banner span {
+    font-weight: 700;
+}
+
+@media (min-width: 721px) {
+
+    /* show banner on desktop widths */
+    .bookmark-banner {
+        display: block;
+    }
 }

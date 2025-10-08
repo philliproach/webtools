@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Filename & Slug Tools — WebTools</title>
-    <meta name="description" content="Generate and analyze filenames and slugs for SEO and web development. Free online filename and slug tools.">
+    <meta name="description"
+        content="Generate and analyze filenames and slugs for SEO and web development. Free online filename and slug tools.">
     <meta name="keywords" content="filename tools, slug tools, seo, web development, online tool, file name analyzer">
     <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../style.css">
 </head>
+
 <body>
-    <div style="background:#ffe066;color:#333;padding:0.5em 1em;text-align:center;font-weight:500;font-size:1.05em;">We're hard to find! <span style="font-weight:700;">Press CTRL + D</span> to bookmark this tool.</div>
+    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
     <header>
-        <a href="../../index.html"><img src="../../media/logo.svg" alt="WebTools Logo" style="height:32px;vertical-align:middle;"></a>
+        <a href="../../index.html"><img src="../../media/logo.svg" alt="WebTools Logo"
+                style="height:32px;vertical-align:middle;"></a>
         <h1>Filename & Slug Tools</h1>
     </header>
     <main>
@@ -21,12 +26,13 @@
         <button onclick="makeSafeFilename()">Make Safe</button>
         <div id="filenameResult" style="margin-top:1em;font-weight:bold;"></div>
         <script>
-        function makeSafeFilename() {
-            let val = document.getElementById('filenameInput').value;
-            val = val.normalize('NFKD').replace(/\p{Diacritic}/gu, '').replace(/[^a-zA-Z0-9._-]/g, '_');
-            document.getElementById('filenameResult').textContent = val;
-        }
+            function makeSafeFilename() {
+                let val = document.getElementById('filenameInput').value;
+                val = val.normalize('NFKD').replace(/\p{Diacritic}/gu, '').replace(/[^a-zA-Z0-9._-]/g, '_');
+                document.getElementById('filenameResult').textContent = val;
+            }
         </script>
     </main>
 </body>
+
 </html>

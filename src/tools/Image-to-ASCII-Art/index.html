@@ -1,41 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Image to ASCII Art — WebTools</title>
-    <meta name="description" content="Convert images to ASCII art instantly in your browser. Free online image to ASCII converter for fun and creativity.">
+    <meta name="description"
+        content="Convert images to ASCII art instantly in your browser. Free online image to ASCII converter for fun and creativity.">
     <meta name="keywords" content="image to ascii, ascii art, image converter, online tool, creative tools, fun">
     <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
     <link rel="stylesheet" href="../../style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
+        crossorigin="anonymous"></script>
     <style>
         body {
             background: #fff;
             color: #222;
         }
+
         @media (prefers-color-scheme: dark) {
             body {
                 background: #18181b;
                 color: #f3f3f3;
             }
+
             .tool-section {
                 background: #23232a !important;
                 color: #f3f3f3 !important;
             }
-            input, button, pre {
+
+            input,
+            button,
+            pre {
                 background: #18181b !important;
                 color: #f3f3f3 !important;
                 border-color: #333 !important;
             }
-            label, h1 {
+
+            label,
+            h1 {
                 color: #f3f3f3 !important;
             }
         }
     </style>
 </head>
+
 <body>
-    <div style="background:#ffe066;color:#333;padding:0.5em 1em;text-align:center;font-weight:500;font-size:1.05em;">We're hard to find! <span style="font-weight:700;">Press CTRL + D</span> to bookmark this tool.</div>
+    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
     <header class="site-header">
         <div class="nav-container">
             <a class="brand" href="../../index.html">
@@ -50,12 +61,16 @@
         </div>
     </header>
     <main class="tool-main">
-        <section class="tool-section" style="max-width:600px;margin:2em auto;padding:2em;background:#fff;border-radius:16px;box-shadow:0 2px 16px 0 rgba(0,0,0,0.07);text-align:center;">
+        <section class="tool-section"
+            style="max-width:600px;margin:2em auto;padding:2em;background:#fff;border-radius:16px;box-shadow:0 2px 16px 0 rgba(0,0,0,0.07);text-align:center;">
             <h1 style="margin-bottom:0.5em;font-size:2em;color:#222;">Image to ASCII Art</h1>
             <p style="color:#555;margin-bottom:1.5em;">Convert images to ASCII art directly in your browser.</p>
-            <input type="file" id="imgInput" accept="image/*" style="margin-bottom:1em;padding:0.5em 1em;border-radius:8px;border:1px solid #ddd;font-size:1em;">
-            <button onclick="convertToAscii()" style="padding:0.7em 2em;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;border:none;box-shadow:0 1px 4px 0 rgba(0,0,0,0.07);cursor:pointer;">Convert</button>
-            <pre id="asciiResult" style="margin-top:1.5em;background:#fff;padding:1em;border-radius:8px;overflow:auto;font-size:0.9em;line-height:1.1em;box-shadow:0 1px 8px 0 rgba(0,0,0,0.04);"></pre>
+            <input type="file" id="imgInput" accept="image/*"
+                style="margin-bottom:1em;padding:0.5em 1em;border-radius:8px;border:1px solid #ddd;font-size:1em;">
+            <button onclick="convertToAscii()"
+                style="padding:0.7em 2em;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;border:none;box-shadow:0 1px 4px 0 rgba(0,0,0,0.07);cursor:pointer;">Convert</button>
+            <pre id="asciiResult"
+                style="margin-top:1.5em;background:#fff;padding:1em;border-radius:8px;overflow:auto;font-size:0.9em;line-height:1.1em;box-shadow:0 1px 8px 0 rgba(0,0,0,0.04);"></pre>
         </section>
     </main>
     <footer class="site-footer">
@@ -79,9 +94,9 @@
             const file = document.getElementById('imgInput').files[0];
             if (!file) return;
             const reader = new FileReader();
-            reader.onload = function(e) {
+            reader.onload = function (e) {
                 const img = new Image();
-                img.onload = function() {
+                img.onload = function () {
                     const canvas = document.createElement('canvas');
                     const w = 80, h = Math.round(img.height * (80 / img.width));
                     canvas.width = w; canvas.height = h;
@@ -93,8 +108,8 @@
                     for (let y = 0; y < h; y++) {
                         for (let x = 0; x < w; x++) {
                             const i = (y * w + x) * 4;
-                            const avg = (data[i] + data[i+1] + data[i+2]) / 3;
-                            ascii += chars[Math.floor(avg / 256 * (chars.length-1))];
+                            const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+                            ascii += chars[Math.floor(avg / 256 * (chars.length - 1))];
                         }
                         ascii += '\n';
                     }
@@ -106,4 +121,5 @@
         }
     </script>
 </body>
+
 </html>

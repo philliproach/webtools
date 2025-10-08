@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>404 — WebTools</title>
+    <meta name="description" content="Page not found — WebTools">
+    <link rel="icon" type="image/svg+xml" href="src/media/logo.svg">
+    <link rel="stylesheet" href="src/style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="nav-container"><a class="brand" href="src/"><img src="src/media/logo.svg" class="logo"
+                    alt="WebTools"><span class="site-title">WebTools</span></a>
+            <nav class="nav-menu"><a href="src/">Home</a><a href="src/PrivacyPolicy/">Privacy</a><a
+                    href="src/TermsOfService/">Terms</a></nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top:2.25rem; padding-bottom:2.25rem;">
+        <section class="tool-ui">
+            <h1>404 — Page not found</h1>
+            <p class="muted">The link you followed does not exist on this site.</p>
+            <p>Requested URL: <code id="missingPath"></code></p>
+
+            <div style="margin-top:1.25rem;display:flex;gap:.5rem;align-items:center">
+                <a class="tool-btn primary home-link" href="src/">Go to Home</a>
+                <button class="tool-btn" id="goBack">Go back</button>
+                <span id="countdown" class="muted-small" style="margin-left:1rem">Redirecting to home in 6s…</span>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-left"><img src="src/media/logo.svg" class="footer-logo">
+                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
+                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+            </div>
+            <div class="footer-links"><a href="src/Contact/">Contact</a><a href="src/PrivacyPolicy/">Privacy
+                    Policy</a><a href="src/TermsOfService/">Terms of Service</a></div>
+        </div>
+    </footer>
+
+    <script src="src/script.js"></script>
+    <script>
+        (function () {
+            try {
+                // Show the requested path
+                var pathEl = document.getElementById('missingPath');
+                if (pathEl) pathEl.textContent = location.pathname + location.search;
+
+                var rootBase = '/src/'; // default for root 404
+
+                function rewriteLinks(base) {
+                    var home = document.querySelector('.home-link');
+                    if (home) home.setAttribute('href', base);
+                    var brand = document.querySelector('.brand');
+                    if (brand) brand.setAttribute('href', base);
+                    document.querySelectorAll('.nav-menu a, .footer-links a').forEach(function (a) {
+                        var href = a.getAttribute('href') || '';
+                        if (/^\//.test(href) || /^https?:\/\//.test(href)) return;
+                        a.setAttribute('href', base + href.replace(/^\.?\/?/, ''));
+                    });
+                }
+
+                // Probe /index.html to see if root publishes from /. If it exists, prefer '/'.
+                var timeout = new Promise(function (res) { setTimeout(function () { res({ ok: false, timeout: true }); }, 800); });
+                var probe = fetch('/index.html', { method: 'HEAD' }).then(function (r) { return r; }).catch(function () { return { ok: false }; });
+
+                Promise.race([timeout, probe]).then(function (r) {
+                    if (r && r.ok) rootBase = '/';
+                    else rootBase = '/src/';
+
+                    rewriteLinks(rootBase);
+
+                    var countdownEl = document.getElementById('countdown');
+                    var t = 6;
+                    var interval = setInterval(function () {
+                        t -= 1;
+                        if (countdownEl) countdownEl.textContent = 'Redirecting to home in ' + t + 's…';
+                        if (t <= 0) {
+                            clearInterval(interval);
+                            location.href = rootBase;
+                        }
+                    }, 1000);
+
+                    var backBtn = document.getElementById('goBack');
+                    if (backBtn) backBtn.addEventListener('click', function () { history.back(); });
+                    var homeLink = document.querySelector('.home-link');
+                    if (homeLink) homeLink.addEventListener('click', function () { clearInterval(interval); });
+                });
+
+            } catch (e) { console.warn(e); }
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,43 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Clipboard Helper</title>
     <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../style.css">
 </head>
+
 <body>
-    <div style="background:#ffe066;color:#333;padding:0.5em 1em;text-align:center;font-weight:500;font-size:1.05em;">We're hard to find! <span style="font-weight:700;">Press CTRL + D</span> to bookmark this tool.</div>
+    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
     <header>
-        <a href="../../index.html"><img src="../../media/logo.svg" alt="WebTools Logo" style="height:32px;vertical-align:middle;"></a>
+        <a href="../../index.html"><img src="../../media/logo.svg" alt="WebTools Logo"
+                style="height:32px;vertical-align:middle;"></a>
         <h1>Clipboard Helper</h1>
     </header>
     <main>
         <p>Quick copy/paste and history for browser clipboard operations.</p>
-        <textarea id="clipInput" placeholder="Paste or type here..." style="width:100%;max-width:400px;height:80px;"></textarea>
+        <textarea id="clipInput" placeholder="Paste or type here..."
+            style="width:100%;max-width:400px;height:80px;"></textarea>
         <button onclick="copyToClipboard()">Copy</button>
         <button onclick="pasteFromClipboard()">Paste</button>
         <div id="history" style="margin-top:1em;"></div>
         <script>
-        let clipHistory = [];
-        function copyToClipboard() {
-            const val = document.getElementById('clipInput').value;
-            navigator.clipboard.writeText(val);
-            clipHistory.unshift(val);
-            updateHistory();
-        }
-        function pasteFromClipboard() {
-            navigator.clipboard.readText().then(text => {
-                document.getElementById('clipInput').value = text;
-                clipHistory.unshift(text);
+            let clipHistory = [];
+            function copyToClipboard() {
+                const val = document.getElementById('clipInput').value;
+                navigator.clipboard.writeText(val);
+                clipHistory.unshift(val);
                 updateHistory();
-            });
-        }
-        function updateHistory() {
-            document.getElementById('history').innerHTML = '<b>History:</b><br>' + clipHistory.slice(0,5).map(h => `<div style='border-bottom:1px solid #eee;'>${h}</div>`).join('');
-        }
+            }
+            function pasteFromClipboard() {
+                navigator.clipboard.readText().then(text => {
+                    document.getElementById('clipInput').value = text;
+                    clipHistory.unshift(text);
+                    updateHistory();
+                });
+            }
+            function updateHistory() {
+                document.getElementById('history').innerHTML = '<b>History:</b><br>' + clipHistory.slice(0, 5).map(h => `<div style='border-bottom:1px solid #eee;'>${h}</div>`).join('');
+            }
         </script>
     </main>
 </body>
+
 </html>

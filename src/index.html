@@ -1,17 +1,3 @@
-
-
-
-<!--
-Bookmark: CTRL + D
-
-Tool ideas:
-
-
--->
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +5,8 @@ Tool ideas:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="media/logo.svg">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
+        crossorigin="anonymous"></script>
     <title>WebTools Dashboard</title>
     <meta name="description"
         content="WebTools: fast, privacy-first browser utilities — converters, image tools, calculators, notes and more.">
@@ -45,6 +32,7 @@ Tool ideas:
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -55,15 +43,19 @@ Tool ideas:
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px);
             }
+
             50% {
                 transform: translateY(-10px);
             }
@@ -198,11 +190,11 @@ Tool ideas:
             .stats-bar {
                 gap: 1rem;
             }
-            
+
             .stat-item {
                 padding: 0.5rem 1rem;
             }
-            
+
             .stat-number {
                 font-size: 1.4rem;
             }
@@ -211,6 +203,7 @@ Tool ideas:
 </head>
 
 <body>
+    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
     <header class="site-header">
         <div class="nav-container">
             <a class="brand" href=".">
@@ -228,12 +221,14 @@ Tool ideas:
 
     <main class="dashboard-main">
         <section class="dashboard-hero container hero-animated">
-            <div class="hero-content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 400px; text-align: center;">
+            <div class="hero-content"
+                style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 400px; text-align: center;">
                 <h1 class="dashboard-title">
                     WebTools — <span class="rotating-text" id="rotatingText">Simple</span> utilities
                 </h1>
-                <p class="dashboard-subtitle">Fast, privacy-first tools you can use in your browser. No account required.</p>
-                
+                <p class="dashboard-subtitle">Fast, privacy-first tools you can use in your browser. No account
+                    required.</p>
+
                 <div class="hero-badges">
                     <span class="hero-badge">🔒 100% Private</span>
                     <span class="hero-badge">⚡ Client-Side</span>
@@ -259,7 +254,7 @@ Tool ideas:
 
         <section id="tools" class="container">
             <h2 class="section-title">Explore All Tools</h2>
-            
+
             <div class="search-wrapper">
                 <input id="toolSearch" type="search" placeholder="Search tools (e.g., calculator, image, todo)"
                     class="tool-input">
@@ -269,12 +264,13 @@ Tool ideas:
                 <a href="tools/File-Converter/" class="tool-card" style="--card-index: 0">
                     <div class="tool-card-head">
                         <div class="tool-badge">1</div>
-                        <img src="https://placehold.co/256x256/FFA500/000000/svg?text=SFC"
-                            alt="File Converter Icon" class="tool-icon">
+                        <img src="https://placehold.co/256x256/FFA500/000000/svg?text=SFC" alt="File Converter Icon"
+                            class="tool-icon">
                     </div>
                     <div class="tool-card-body">
                         <h3>Secure File Type Converter</h3>
-                        <p class="muted">Upload files, select a file type, and convert them to your needed file type.</p>
+                        <p class="muted">Upload files, select a file type, and convert them to your needed file type.
+                        </p>
                     </div>
                 </a>
                 <a href="tools/Markdown-Editor/" class="tool-card" style="--card-index: 1">
@@ -695,8 +691,7 @@ Tool ideas:
                 <a href="tools/Notes/" class="tool-card" style="--card-index: 36">
                     <div class="tool-card-head">
                         <div class="tool-badge">NT</div>
-                        <img src="https://placehold.co/256x256/ec4899/ffffff/svg?text=NO" alt="Notes"
-                            class="tool-icon">
+                        <img src="https://placehold.co/256x256/ec4899/ffffff/svg?text=NO" alt="Notes" class="tool-icon">
                     </div>
                     <div class="tool-card-body">
                         <h3>Notes</h3>
@@ -813,7 +808,8 @@ Tool ideas:
                 <a href="tools/HTML-Editor/" class="tool-card" style="--card-index: 46">
                     <div class="tool-card-head">
                         <div class="tool-badge">HTM</div>
-                        <img src="https://placehold.co/256x256/6366F1/ffffff/svg?text=HTML" alt="HTML Editor" class="tool-icon">
+                        <img src="https://placehold.co/256x256/6366F1/ffffff/svg?text=HTML" alt="HTML Editor"
+                            class="tool-icon">
                     </div>
                     <div class="tool-card-body">
                         <h3>HTML Editor Online</h3>
@@ -823,7 +819,8 @@ Tool ideas:
                 <a href="tools/Python-Editor/" class="tool-card" style="--card-index: 47">
                     <div class="tool-card-head">
                         <div class="tool-badge">PY</div>
-                        <img src="https://placehold.co/256x256/0EA5A1/ffffff/svg?text=PY" alt="Python Editor" class="tool-icon">
+                        <img src="https://placehold.co/256x256/0EA5A1/ffffff/svg?text=PY" alt="Python Editor"
+                            class="tool-icon">
                     </div>
                     <div class="tool-card-body">
                         <h3>Python Editor Online</h3>
@@ -833,7 +830,8 @@ Tool ideas:
                 <a href="tools/Image-to-ASCII-Art/" class="tool-card" style="--card-index: 48">
                     <div class="tool-card-head">
                         <div class="tool-badge">ASC</div>
-                        <img src="https://placehold.co/256x256/FFA500/000000/svg?text=ASC" alt="Image to ASCII Art" class="tool-icon">
+                        <img src="https://placehold.co/256x256/FFA500/000000/svg?text=ASC" alt="Image to ASCII Art"
+                            class="tool-icon">
                     </div>
                     <div class="tool-card-body">
                         <h3>Image to ASCII Art</h3>
@@ -843,7 +841,8 @@ Tool ideas:
                 <a href="tools/Youtube-Downloader/" class="tool-card" style="--card-index: 49">
                     <div class="tool-card-head">
                         <div class="tool-badge">YT</div>
-                        <img src="https://placehold.co/256x256/ef4444/ffffff/svg?text=YT" alt="Youtube Downloader" class="tool-icon">
+                        <img src="https://placehold.co/256x256/ef4444/ffffff/svg?text=YT" alt="Youtube Downloader"
+                            class="tool-icon">
                     </div>
                     <div class="tool-card-body">
                         <h3>Youtube Downloader</h3>
@@ -875,7 +874,7 @@ Tool ideas:
         const words = ['Simple', 'Secure', 'Fast', 'Private', 'Modern', 'Powerful', 'Free', 'Easy'];
         let currentIndex = 0;
         const rotatingText = document.getElementById('rotatingText');
-        
+
         function rotateText() {
             if (!rotatingText) return;
             rotatingText.style.opacity = '0';
@@ -885,7 +884,7 @@ Tool ideas:
                 rotatingText.style.opacity = '1';
             }, 300);
         }
-        
+
         if (rotatingText) {
             rotatingText.style.transition = 'opacity 0.3s ease';
             setInterval(rotateText, 3000);
