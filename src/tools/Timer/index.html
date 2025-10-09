@@ -2,118 +2,85 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Custom Timer — WebTools</title>
-    <meta name="description"
-        content="Custom timer where you can set any minutes and seconds, start/pause/reset, and get notified when time is up.">
-    <meta name="keywords" content="timer, countdown, alarm, browser tool">
-    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../style.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Custom Timer — WebTools</title>
+	<meta name="description" content="Custom timer where you can set any minutes and seconds, start/pause/reset, and get notified when time is up.">
+	<meta name="keywords" content="timer, countdown, alarm, browser tool">
+	<link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
-    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
-    <header class="site-header">
-        <div class="nav-container">
-            <a class="brand" href="../../">
-                <img src="../../media/logo.svg" class="logo" alt="WebTools">
-                <span class="site-title">WebTools</span>
-            </a>
-            <nav class="nav-menu">
-                <a href="../../">Home</a>
-                <a href="../../PrivacyPolicy/">Privacy</a>
-                <a href="../../TermsOfService/">Terms</a>
-            </nav>
-        </div>
-    </header>
-
-    <main class="container" style="padding-top:2.25rem;padding-bottom:2.25rem;">
-        <section class="tool-grid">
-            <div class="tool-panel">
-                <div class="tool-ui" style="text-align:center">
-                    <h1>Custom Timer</h1>
-                    <p class="muted">Set a custom countdown in minutes and seconds, then start. Works fully client-side.
-                    </p>
-                    <div style="display:flex;gap:.5rem;margin-top:.75rem;justify-content:center;">
-                        <input id="minutes" type="number" min="0" value="1"
-                            style="width:80px;padding:.5rem;border-radius:8px;border:1px solid var(--card-border);">
-                        <input id="seconds" type="number" min="0" max="59" value="0"
-                            style="width:80px;padding:.5rem;border-radius:8px;border:1px solid var(--card-border);">
-                    </div>
-                    <div style="margin-top:.6rem">
-                        <label class="muted-small">Label (optional)</label>
-                        <input id="label" type="text" placeholder="Session name" class="tool-input">
-                    </div>
-                    <div style="font-size:2.5rem;margin:1rem 0" id="display">01:00</div>
-                    <div class="tool-actions" style="justify-content:center;">
-                        <button id="start" class="tool-btn primary">Start</button>
-                        <button id="pause" class="tool-btn">Pause</button>
-                        <button id="reset" class="tool-btn ghost">Reset</button>
-                    </div>
-                </div>
-            </div>
-            <aside class="tool-panel">
-                <div class="tool-ui">
-                    <label class="muted-small">Quick Presets</label>
-                    <div style="display:flex;gap:.5rem;margin-top:.5rem;flex-wrap:wrap">
-                        <button class="tool-btn" data-min="1">1m</button>
-                        <button class="tool-btn" data-min="5">5m</button>
-                        <button class="tool-btn" data-min="10">10m</button>
-                        <button class="tool-btn" data-min="15">15m</button>
-                        <button class="tool-btn" data-min="30">30m</button>
-                    </div>
-                    <p class="muted-small" style="margin-top:.75rem">When the timer finishes a notification will be
-                        shown (browser permission required).</p>
-                </div>
-            </aside>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-left">
-                <img src="../../media/logo.svg" alt="WebTools Logo" class="footer-logo">
-                <div class="footer-content">
-                    <span class="footer-title">WebTools &copy; 2025</span>
-                    <span class="footer-desc">A collection of simple, secure browser-based tools.</span>
-                </div>
-            </div>
-            <div class="footer-links">
-                <a href="../../Contact/">Contact</a>
-                <a href="../../PrivacyPolicy/">Privacy Policy</a>
-                <a href="../../TermsOfService/">Terms of Service</a>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        const mins = document.getElementById('minutes');
-        const secs = document.getElementById('seconds');
-        const display = document.getElementById('display');
-        const labelInput = document.getElementById('label');
-        let total = parseInt(mins.value || 0) * 60 + parseInt(secs.value || 0);
-        let interval = null;
-        function fmt(s) { const m = Math.floor(s / 60); const sec = s % 60; return `${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')}` }
-        function updateDisplay() { display.textContent = fmt(total); }
-        mins.addEventListener('change', () => { total = parseInt(mins.value || 0) * 60 + parseInt(secs.value || 0); updateDisplay(); });
-        secs.addEventListener('change', () => { total = parseInt(mins.value || 0) * 60 + parseInt(secs.value || 0); updateDisplay(); });
-        document.querySelectorAll('[data-min]').forEach(b => b.addEventListener('click', (e) => { const m = parseInt(e.currentTarget.dataset.min); mins.value = m; secs.value = 0; total = m * 60; updateDisplay(); }));
-        function tick() { if (total <= 0) { clearInterval(interval); interval = null; notifyFinish(); return; } total--; updateDisplay(); }
-        document.getElementById('start').addEventListener('click', () => { if (!interval) { interval = setInterval(tick, 1000); } });
-        document.getElementById('pause').addEventListener('click', () => { if (interval) { clearInterval(interval); interval = null; } });
-        document.getElementById('reset').addEventListener('click', () => { if (interval) { clearInterval(interval); interval = null; } total = parseInt(mins.value || 0) * 60 + parseInt(secs.value || 0); updateDisplay(); });
-        function notifyFinish() {
-            const label = labelInput.value || 'Timer';
-            if (typeof Notification !== 'undefined' && Notification.permission === 'granted') { new Notification(`${label} finished`); }
-            else if (typeof Notification !== 'undefined' && Notification.permission !== 'denied') { Notification.requestPermission().then(p => { if (p === 'granted') new Notification(`${label} finished`); else alert(`${label} finished`); }); }
-            else { alert(`${label} finished`); }
-        }
-        updateDisplay();
-    </script>
-
+	<div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
+	<header class="site-header">
+		<div class="nav-container">
+			<a class="brand" href="../../">
+				<img src="../../media/logo.svg" class="logo" alt="WebTools">
+				<span class="site-title">WebTools</span>
+			</a>
+			<nav class="nav-menu">
+				<a href="../../">Home</a>
+				<a href="../../PrivacyPolicy/">Privacy</a>
+				<a href="../../TermsOfService/">Terms</a>
+			</nav>
+		</div>
+	</header>
+	<main class="container" style="padding-top:2.25rem;padding-bottom:2.25rem;">
+		<section class="tool-grid">
+			<div class="tool-panel">
+				<div class="tool-ui" style="text-align:center">
+					<h1>Custom Timer</h1>
+					<p class="muted">Set a custom countdown in minutes and seconds, then start. Works fully client-side. </p>
+					<div style="display:flex;gap:.5rem;margin-top:.75rem;justify-content:center;">
+						<input id="minutes" type="number" min="0" value="1" style="width:80px;padding:.5rem;border-radius:8px;border:1px solid var(--card-border);">
+						<input id="seconds" type="number" min="0" max="59" value="0" style="width:80px;padding:.5rem;border-radius:8px;border:1px solid var(--card-border);">
+					</div>
+					<div style="margin-top:.6rem">
+						<label class="muted-small">Label (optional)</label>
+						<input id="label" type="text" placeholder="Session name" class="tool-input">
+					</div>
+					<div style="font-size:2.5rem;margin:1rem 0" id="display">01:00</div>
+					<div class="tool-actions" style="justify-content:center;">
+						<button id="start" class="tool-btn primary">Start</button>
+						<button id="pause" class="tool-btn">Pause</button>
+						<button id="reset" class="tool-btn ghost">Reset</button>
+					</div>
+				</div>
+			</div>
+			<aside class="tool-panel">
+				<div class="tool-ui">
+					<label class="muted-small">Quick Presets</label>
+					<div style="display:flex;gap:.5rem;margin-top:.5rem;flex-wrap:wrap">
+						<button class="tool-btn" data-min="1">1m</button>
+						<button class="tool-btn" data-min="5">5m</button>
+						<button class="tool-btn" data-min="10">10m</button>
+						<button class="tool-btn" data-min="15">15m</button>
+						<button class="tool-btn" data-min="30">30m</button>
+					</div>
+					<p class="muted-small" style="margin-top:.75rem">When the timer finishes a notification will be shown (browser permission required).</p>
+				</div>
+			</aside>
+		</section>
+	</main>
+	<footer class="site-footer">
+		<div class="footer-container">
+			<div class="footer-left">
+				<img src="../../media/logo.svg" alt="WebTools Logo" class="footer-logo">
+				<div class="footer-content">
+					<span class="footer-title">WebTools &copy; 2025</span>
+					<span class="footer-desc">A collection of simple, secure browser-based tools.</span>
+				</div>
+			</div>
+			<div class="footer-links">
+				<a href="../../Contact/">Contact</a>
+				<a href="../../PrivacyPolicy/">Privacy Policy</a>
+				<a href="../../TermsOfService/">Terms of Service</a>
+			</div>
+		</div>
+	</footer>
+	<script src="script.js"></script>
 </body>
 
 </html>

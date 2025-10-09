@@ -2,312 +2,74 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Code Formatter — WebTools</title>
-    <meta name="description"
-        content="Beautify and minify code in multiple languages. Use ?type=js|html|css|json|xml|python to open the specific formatter landing.">
-    <meta name="keywords" content="format, beautify, prettify, code formatter, js, css, html, json, xml, python">
-    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
-    <link rel="stylesheet" href="../../style.css">
-    <style>
-        .tool-controls {
-            display: flex;
-            gap: .5rem;
-            align-items: center;
-            flex-wrap: wrap
-        }
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Code Formatter — WebTools</title>
+	<meta name="description" content="Beautify and minify code in multiple languages. Use ?type=js|html|css|json|xml|python to open the specific formatter landing.">
+	<meta name="keywords" content="format, beautify, prettify, code formatter, js, css, html, json, xml, python">
+	<link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+	<link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="style.css">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
 
-        .lang-choices {
-            display: flex;
-            gap: .25rem;
-            flex-wrap: wrap
-        }
-
-        .editor {
-            width: 100%;
-            height: 420px;
-            font-family: monospace;
-            padding: .75rem
-        }
-
-        .muted-note {
-            color: #666
-        }
-
-        .tool-btn.active {
-            outline: 2px solid #0b74de;
-            background: #0b74de;
-            color: #fff
-        }
-
-        @media (prefers-color-scheme:dark) {
-            .editor {
-                background: #071021;
-                color: #e6eef6;
-                border: 1px solid #233040
-            }
-        }
-    </style>
 </head>
 
 <body>
-    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
-    <header class="site-header">
-        <div class="nav-container">
-            <a class="brand" href="../../"><img src="../../media/logo.svg" class="logo" alt="WebTools"><span
-                    class="site-title">WebTools</span></a>
-            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
-                    href="../../TermsOfService/">Terms</a></nav>
-        </div>
-    </header>
-
-    <main class="container">
-        <section class="tool-ui">
-            <h1>Code Formatter</h1>
-            <p class="muted">Beautify or minify code. Choose a language or open the landing directly via
-                <code>?type=js</code>, <code>?type=html</code>, <code>?type=json</code>, etc.
-            </p>
-
-            <div class="tool-controls">
-                <div class="lang-choices" id="langChoices">
-                    <button class="tool-btn" data-lang="html">HTML</button>
-                    <button class="tool-btn" data-lang="css">CSS</button>
-                    <button class="tool-btn" data-lang="js">JavaScript</button>
-                    <button class="tool-btn" data-lang="json">JSON</button>
-                    <button class="tool-btn" data-lang="xml">XML</button>
-                    <button class="tool-btn" data-lang="python">Python</button>
-                </div>
-                <div style="margin-left:auto;display:flex;gap:.5rem">
-                    <button id="beautifyBtn" class="tool-btn primary">Beautify</button>
-                    <button id="minifyBtn" class="tool-btn">Minify</button>
-                    <button id="copyBtn" class="tool-btn">Copy</button>
-                </div>
-            </div>
-
-            <div id="landing"
-                style="margin-top:1rem;padding:1rem;border-radius:8px;background:var(--landing-bg,transparent);border:1px solid rgba(11,116,222,0.08)">
-            </div>
-
-            <textarea id="codeIn" class="editor" placeholder="Paste your code here..."></textarea>
-            <div style="margin-top:.5rem;display:flex;gap:.5rem;align-items:center">
-                <label class="muted-note">Result (formatted):</label>
-            </div>
-            <textarea id="codeOut" class="editor" placeholder="Formatted output appears here..." readonly></textarea>
-            <div style="margin-top:.5rem;display:flex;gap:.5rem;align-items:center">
-                <label class="muted-note">Output:</label>
-                <select id="indentSize">
-                    <option value="2">2 spaces</option>
-                    <option value="4">4 spaces</option>
-                </select>
-                <span id="status" class="muted-note" style="margin-left:auto">Status: Ready</span>
-            </div>
-
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
-                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
-                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
-            </div>
-            <div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy
-                    Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
-        </div>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.8/beautify.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.8/beautify-html.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.8/beautify-css.min.js"></script>
-    <script>
-        (function () {
-            const params = new URLSearchParams(location.search);
-            let lang = params.get('type') || 'js';
-            const codeIn = document.getElementById('codeIn');
-            const codeOut = document.getElementById('codeOut');
-            const langButtons = document.querySelectorAll('[data-lang]');
-            const beautifyBtn = document.getElementById('beautifyBtn');
-            const minifyBtn = document.getElementById('minifyBtn');
-            const copyBtn = document.getElementById('copyBtn');
-            const indentSize = document.getElementById('indentSize');
-            const landing = document.getElementById('landing');
-            const statusEl = document.getElementById('status');
-
-            const SAMPLES = {
-                js: `// JavaScript sample\nfunction greet(name){console.log('Hello '+name);}greet('World');`,
-                html: `<!-- HTML sample -->\n<!doctype html>\n<html><head><meta charset="utf-8"></head><body><h1>Hello</h1></body></html>`,
-                css: `/* CSS sample */\nbody{margin:0;font-family:system-ui}h1{color:#0b74de}`,
-                json: `{"name":"WebTools","version":1,"items":[1,2,3]}`,
-                xml: `<?xml version="1.0"?><note><to>User</to><from>WebTools</from><body>Hello</body></note>`,
-                python: `# Python sample\ndef greet(name):\n    print(f"Hello {name}")\n\nif __name__ == '__main__':\n    greet('World')\n`
-            };
-
-            function setActive(l) {
-                lang = l;
-                langButtons.forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') === l));
-                codeIn.placeholder = 'Paste your ' + l + ' code here...';
-                renderLanding(l);
-                try { const u = new URL(location); u.searchParams.set('type', l); history.replaceState({}, '', u); } catch (e) { }
-            }
-
-            function renderLanding(l) {
-                const titles = { js: 'JavaScript', html: 'HTML', css: 'CSS', json: 'JSON', xml: 'XML', python: 'Python' };
-                const desc = {
-                    js: 'Format JavaScript code using js-beautify. Supports beautify and a basic minify.',
-                    html: 'Format HTML markup. Beautify will indent nested elements.',
-                    css: 'Format CSS rules and selectors.',
-                    json: 'Pretty-print or minify JSON. Invalid JSON will throw an error.',
-                    xml: 'Pretty-print or compact XML. XML formatter is a simple, client-side implementation.',
-                    python: 'Basic Python whitespace normalizer: converts tabs to spaces, trims trailing whitespace, and collapses extra blank lines. For full formatting use a server-side tool like Black.'
-                };
-                landing.innerHTML = `
-                    <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem">
-                      <div>
-                        <strong style="font-size:1.05rem">${titles[l]} Formatter</strong>
-                        <div class="muted-note" style="margin-top:.25rem">${desc[l]}</div>
-                      </div>
-                      <div style="display:flex;gap:.5rem">
-                        <button class="tool-btn" id="loadSample">Load sample</button>
-                        <button class="tool-btn" id="clearBtn">Clear</button>
-                      </div>
-                    </div>
-                `;
-                document.getElementById('loadSample').addEventListener('click', () => { codeIn.value = SAMPLES[l]; codeIn.focus(); });
-                document.getElementById('clearBtn').addEventListener('click', () => { codeIn.value = ''; codeIn.focus(); });
-            }
-
-            langButtons.forEach(b => b.addEventListener('click', () => setActive(b.getAttribute('data-lang'))));
-            setActive(lang);
-
-            function beautify() {
-                const indent = parseInt(indentSize.value, 10) || 2;
-                const val = codeIn.value;
-                try {
-                    let out = val;
-                    if (lang === 'js') {
-                        out = (typeof js_beautify === 'function') ? js_beautify(val, { indent_size: indent }) : val;
-                    } else if (lang === 'html') {
-                        if (typeof html_beautify === 'function') {
-                            out = html_beautify(val, { indent_size: indent });
-                        } else if (typeof js_beautify === 'function') {
-                            out = js_beautify(val, { indent_size: indent });
-                        } else {
-                            throw new Error('HTML beautifier not available');
-                        }
-                    } else if (lang === 'css') {
-                        if (typeof css_beautify === 'function') {
-                            out = css_beautify(val, { indent_size: indent });
-                        } else if (typeof js_beautify === 'function') {
-                            out = js_beautify(val, { indent_size: indent });
-                        } else {
-                            throw new Error('CSS beautifier not available');
-                        }
-                    } else if (lang === 'json') {
-                        const parsed = JSON.parse(val);
-                        out = JSON.stringify(parsed, null, indent);
-                    } else if (lang === 'xml') {
-                        out = formatXml(val, indent);
-                    } else if (lang === 'python') {
-                        out = val.replace(/\t/g, '    ');
-                        out = out.split('\n').map(l => l.replace(/[ \t]+$/, '')).join('\n');
-                        out = out.replace(/\n{3,}/g, '\n\n');
-                    }
-                    codeOut.value = out;
-                    statusEl.textContent = 'Status: OK';
-                    statusEl.style.color = 'var(--ok-color, green)';
-                    try { codeOut.scrollIntoView({ behavior: 'smooth', block: 'center' }); codeOut.focus({ preventScroll: true }); } catch (e) { /* ignore in older browsers */ }
-                } catch (e) { statusEl.textContent = 'Status: Error'; statusEl.style.color = 'var(--danger-color, red)'; alert('Format error: ' + e.message); console.error(e); }
-            }
-
-            function minify() {
-                const val = codeIn.value;
-                try {
-                    let out = val;
-                    if (lang === 'js') {
-                        out = (typeof js_beautify === 'function') ? js_beautify(val, { indent_size: 0, max_preserve_newlines: 0, space_in_empty_paren: false }).replace(/\n+/g, '') : val.replace(/\n+/g, '');
-                    } else if (lang === 'html') {
-                        if (typeof html_beautify === 'function') {
-                            out = html_beautify(val, { indent_size: 0 }).replace(/\n+/g, '');
-                        } else if (typeof js_beautify === 'function') {
-                            out = js_beautify(val, { indent_size: 0 }).replace(/\n+/g, '');
-                        } else {
-                            out = val.replace(/\n+/g, '');
-                        }
-                    } else if (lang === 'css') {
-                        if (typeof css_beautify === 'function') {
-                            out = css_beautify(val, { indent_size: 0 }).replace(/\n+/g, '');
-                        } else if (typeof js_beautify === 'function') {
-                            out = js_beautify(val, { indent_size: 0 }).replace(/\n+/g, '');
-                        } else {
-                            out = val.replace(/\n+/g, '');
-                        }
-                    } else if (lang === 'json') {
-                        const parsed = JSON.parse(val);
-                        out = JSON.stringify(parsed);
-                    } else if (lang === 'xml') {
-                        out = val.replace(/>\s+</g, '><').trim();
-                    } else if (lang === 'python') {
-                        out = val.replace(/\t/g, '    ');
-                        out = out.split('\n').map(l => l.replace(/[ \t]+$/, '')).join('\n');
-                        out = out.replace(/\n{3,}/g, '\n\n').trim();
-                    }
-                    codeOut.value = out;
-                    statusEl.textContent = 'Status: OK';
-                    statusEl.style.color = 'var(--ok-color, green)';
-                    try { codeOut.scrollIntoView({ behavior: 'smooth', block: 'center' }); codeOut.focus({ preventScroll: true }); } catch (e) { /* ignore in older browsers */ }
-                } catch (e) { statusEl.textContent = 'Status: Error'; statusEl.style.color = 'var(--danger-color, red)'; alert('Minify error: ' + e.message); console.error(e); }
-            }
-
-            function formatXml(xml, indent) {
-                const PADDING = ' '.repeat(indent);
-                const reg = /(>)(<)(\/?)/g;
-                let xmlStr = xml.replace(/\r?\n/g, '').replace(reg, '$1\n$2$3');
-                const lines = xmlStr.split('\n');
-                let level = 0;
-                for (let i = 0; i < lines.length; i++) {
-                    const line = lines[i].trim();
-                    if (/<\/.+>/.test(line)) level--;
-                    lines[i] = PADDING.repeat(level) + line;
-                    if (/<[^!].*[^\/]$/.test(line) && !/^<\?/.test(line) && !/<\/.+>/.test(line)) level++;
-                }
-                return lines.join('\n');
-            }
-
-            beautifyBtn.addEventListener('click', beautify);
-            minifyBtn.addEventListener('click', minify);
-            copyBtn.addEventListener('click', () => {
-                const text = codeOut.value || codeIn.value;
-                if (!text) return alert('Nothing to copy');
-                navigator.clipboard.writeText(text).then(() => {
-                    copyBtn.textContent = 'Copied';
-                    setTimeout(() => copyBtn.textContent = 'Copy', 1500);
-                });
-            });
-
-            function checkAvailability() {
-                const missing = [];
-                if (typeof js_beautify !== 'function') missing.push('js_beautify');
-                if (typeof html_beautify !== 'function') missing.push('html_beautify');
-                if (typeof css_beautify !== 'function') missing.push('css_beautify');
-                if (missing.length) {
-                    statusEl.textContent = 'Status: Partial (missing ' + missing.join(', ') + ')';
-                    statusEl.style.color = 'orange';
-                } else {
-                    statusEl.textContent = 'Status: Ready';
-                    statusEl.style.color = 'var(--ok-color, green)';
-                }
-            }
-
-            if (params.get('type')) {
-                setActive(params.get('type'));
-                codeIn.focus();
-            }
-
-            setTimeout(checkAvailability, 500);
-
-        })();
-    </script>
+	<div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
+	<header class="site-header">
+		<div class="nav-container">
+			<a class="brand" href="../../"><img src="../../media/logo.svg" class="logo" alt="WebTools"><span class="site-title">WebTools</span></a>
+			<nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a href="../../TermsOfService/">Terms</a></nav>
+		</div>
+	</header>
+	<main class="container">
+		<section class="tool-ui">
+			<h1>Code Formatter</h1>
+			<p class="muted">Beautify or minify code. Choose a language or open the landing directly via <code>?type=js</code>, <code>?type=html</code>, <code>?type=json</code>, etc. </p>
+			<div class="tool-controls">
+				<div class="lang-choices" id="langChoices">
+					<button class="tool-btn" data-lang="html">HTML</button>
+					<button class="tool-btn" data-lang="css">CSS</button>
+					<button class="tool-btn" data-lang="js">JavaScript</button>
+					<button class="tool-btn" data-lang="json">JSON</button>
+					<button class="tool-btn" data-lang="xml">XML</button>
+					<button class="tool-btn" data-lang="python">Python</button>
+				</div>
+				<div style="margin-left:auto;display:flex;gap:.5rem">
+					<button id="beautifyBtn" class="tool-btn primary">Beautify</button>
+					<button id="minifyBtn" class="tool-btn">Minify</button>
+					<button id="copyBtn" class="tool-btn">Copy</button>
+				</div>
+			</div>
+			<div id="landing" style="margin-top:1rem;padding:1rem;border-radius:8px;background:var(--landing-bg,transparent);border:1px solid rgba(11,116,222,0.08)">
+			</div>
+			<textarea id="codeIn" class="editor" placeholder="Paste your code here..."></textarea>
+			<div style="margin-top:.5rem;display:flex;gap:.5rem;align-items:center">
+				<label class="muted-note">Result (formatted):</label>
+			</div>
+			<textarea id="codeOut" class="editor" placeholder="Formatted output appears here..." readonly></textarea>
+			<div style="margin-top:.5rem;display:flex;gap:.5rem;align-items:center">
+				<label class="muted-note">Output:</label>
+				<select id="indentSize">
+					<option value="2">2 spaces</option>
+					<option value="4">4 spaces</option>
+				</select>
+				<span id="status" class="muted-note" style="margin-left:auto">Status: Ready</span>
+			</div>
+		</section>
+	</main>
+	<footer class="site-footer">
+		<div class="footer-container">
+			<div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
+				<div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+			</div>
+			<div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
+		</div>
+	</footer>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.8/beautify.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.8/beautify-html.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.8/beautify-css.min.js"></script>
+	<script src="script.js"></script>
 </body>
 
 </html>

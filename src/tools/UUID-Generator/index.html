@@ -2,78 +2,55 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>UUID Generator — WebTools</title>
-    <meta name="description"
-        content="Generate RFC4122 v4 UUIDs instantly in your browser. Secure, privacy-first UUID generator for developers.">
-    <meta name="keywords" content="uuid, generator, rfc4122, browser tool, unique id, online uuid, random id">
-    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../style.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>UUID Generator — WebTools</title>
+	<meta name="description" content="Generate RFC4122 v4 UUIDs instantly in your browser. Secure, privacy-first UUID generator for developers.">
+	<meta name="keywords" content="uuid, generator, rfc4122, browser tool, unique id, online uuid, random id">
+	<link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
-    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
-    <header class="site-header">
-        <div class="nav-container">
-            <a class="brand" href="../../"><img src="../../media/logo.svg" class="logo" alt="WebTools"><span
-                    class="site-title">WebTools</span></a>
-            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
-                    href="../../TermsOfService/">Terms</a></nav>
-        </div>
-    </header>
-
-    <main class="container" style="padding-top:2.25rem;padding-bottom:2.25rem;">
-        <section class="tool-grid">
-            <div class="tool-panel">
-                <div class="tool-ui">
-                    <h1>UUID Generator</h1>
-                    <p class="muted">Generate RFC4122 v4 UUIDs in your browser.</p>
-                    <div style="display:flex;gap:.5rem;margin-top:.75rem;align-items:center">
-                        <button id="gen" class="tool-btn primary">Generate</button>
-                        <button id="copy" class="tool-btn">Copy</button>
-                        <button id="clear" class="tool-btn ghost">Clear</button>
-                    </div>
-                    <pre id="out" class="preview" style="margin-top:.75rem;min-height:60px"></pre>
-                </div>
-            </div>
-            <aside class="tool-panel">
-                <div class="tool-ui">
-                    <label class="muted-small">About</label>
-                    <p class="muted">UUID v4 uses random values from the browser crypto API. No data leaves your device.
-                    </p>
-                </div>
-            </aside>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
-                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
-                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
-            </div>
-            <div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy
-                    Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
-        </div>
-    </footer>
-
-    <script>
-        function uuidv4() {
-            // from https://stackoverflow.com/a/2117523
-            const arr = new Uint8Array(16);
-            crypto.getRandomValues(arr);
-            arr[6] = (arr[6] & 0x0f) | 0x40;
-            arr[8] = (arr[8] & 0x3f) | 0x80;
-            const hex = [...arr].map(b => b.toString(16).padStart(2, '0')).join('');
-            return `${hex.substr(0, 8)}-${hex.substr(8, 4)}-${hex.substr(12, 4)}-${hex.substr(16, 4)}-${hex.substr(20, 12)}`;
-        }
-        document.getElementById('gen').addEventListener('click', () => { const u = uuidv4(); document.getElementById('out').textContent = u; });
-        document.getElementById('copy').addEventListener('click', async () => { const t = document.getElementById('out').textContent; if (t) { await navigator.clipboard.writeText(t); alert('Copied'); } });
-        document.getElementById('clear').addEventListener('click', () => { document.getElementById('out').textContent = ''; });
-    </script>
+	<div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
+	<header class="site-header">
+		<div class="nav-container">
+			<a class="brand" href="../../"><img src="../../media/logo.svg" class="logo" alt="WebTools"><span class="site-title">WebTools</span></a>
+			<nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a href="../../TermsOfService/">Terms</a></nav>
+		</div>
+	</header>
+	<main class="container" style="padding-top:2.25rem;padding-bottom:2.25rem;">
+		<section class="tool-grid">
+			<div class="tool-panel">
+				<div class="tool-ui">
+					<h1>UUID Generator</h1>
+					<p class="muted">Generate RFC4122 v4 UUIDs in your browser.</p>
+					<div style="display:flex;gap:.5rem;margin-top:.75rem;align-items:center">
+						<button id="gen" class="tool-btn primary">Generate</button>
+						<button id="copy" class="tool-btn">Copy</button>
+						<button id="clear" class="tool-btn ghost">Clear</button>
+					</div>
+					<pre id="out" class="preview" style="margin-top:.75rem;min-height:60px"></pre>
+				</div>
+			</div>
+			<aside class="tool-panel">
+				<div class="tool-ui">
+					<label class="muted-small">About</label>
+					<p class="muted">UUID v4 uses random values from the browser crypto API. No data leaves your device. </p>
+				</div>
+			</aside>
+		</section>
+	</main>
+	<footer class="site-footer">
+		<div class="footer-container">
+			<div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
+				<div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+			</div>
+			<div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
+		</div>
+	</footer>
+	<script src="script.js"></script>
 </body>
 
 </html>

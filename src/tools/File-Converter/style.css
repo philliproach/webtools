@@ -1,0 +1,134 @@
+	:root {
+		--fc-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), #fbfdff);
+		--fc-accent: var(--accent);
+		--fc-accent-2: var(--accent-2)
+	}
+
+	.legal-document {
+		max-width: 880px;
+		margin: 0 auto
+	}
+
+	.fc-grid {
+		display: grid;
+		grid-template-columns: 1fr 320px;
+		gap: 1.25rem;
+		align-items: start
+	}
+
+	@media (max-width:900px) {
+		.fc-grid {
+			grid-template-columns: 1fr
+		}
+	}
+
+	.dropzone {
+		border-radius: 12px;
+		border: 2px dashed var(--card-border);
+		background: var(--card);
+		padding: 1.25rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: .5rem;
+		cursor: pointer;
+		transition: box-shadow .18s ease, border-color .18s ease
+	}
+
+	.dropzone p {
+		margin: 0;
+		font-weight: 600
+	}
+
+	.dropzone .muted {
+		font-size: .92rem
+	}
+
+	.dropzone.dragover {
+		border-color: var(--fc-accent-2);
+		box-shadow: 0 12px 36px rgba(3, 105, 161, 0.08);
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.00));
+	}
+
+	.select-styled {
+		appearance: none;
+		background: var(--card);
+		color: var(--text);
+		border: 1px solid var(--card-border);
+		padding: .6rem .9rem;
+		border-radius: 10px;
+		width: 100%;
+		font-weight: 700;
+		position: relative;
+		padding-right: 2.5rem;
+		background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+		background-position: calc(100% - 18px) calc(50% - 6px), calc(100% - 12px) calc(50% - 6px);
+		background-size: 6px 6px, 6px 6px;
+		background-repeat: no-repeat
+	}
+
+	.select-styled option {
+		background: var(--card);
+		color: var(--text)
+	}
+
+	.select-styled:focus {
+		outline: none;
+		box-shadow: 0 6px 20px rgba(3, 105, 161, 0.12);
+		border-color: var(--accent-2)
+	}
+
+	.controls {
+		display: flex;
+		flex-direction: column;
+		gap: .75rem
+	}
+
+	.btn-primary {
+		display: inline-flex;
+		align-items: center;
+		gap: .5rem;
+		padding: .6rem .9rem;
+		border-radius: 10px;
+		border: none;
+		color: #fff;
+		font-weight: 800;
+		background: linear-gradient(90deg, var(--fc-accent), var(--fc-accent-2));
+		box-shadow: 0 8px 24px rgba(3, 105, 161, 0.12);
+		text-decoration: none
+	}
+
+	.btn-primary.secondary {
+		background: transparent;
+		color: var(--surface-text);
+		border: 1px solid var(--card-border);
+		box-shadow: none
+	}
+
+	#downloadLink {
+		display: none
+	}
+
+	#preview img {
+		max-width: 100%;
+		border-radius: 8px;
+		border: 1px solid var(--card-border);
+		background: var(--input-bg, transparent);
+		display: block;
+		margin: 0 auto;
+	}
+
+	#fileMeta {
+		font-size: .95rem
+	}
+
+	.quality-row {
+		display: flex;
+		align-items: center;
+		gap: .5rem
+	}
+
+	.quality-row input[type=range] {
+		flex: 1
+	}

@@ -1,0 +1,18 @@
+	#display.tool-input {
+		background: var(--surface, var(--surface-overlay));
+		color: var(--text);
+		border: 1px solid var(--card-border);
+	}
+
+	.calc-btn {
+		background: var(--surface-overlay);
+		color: var(--text);
+		border: 1px solid var(--card-border);
+		padding: .6rem .5rem;
+		font-size: 1rem;
+		border-radius: 6px;
+	}
+
+	.calc-btn.op {
+		background: var(--surface);
+	}

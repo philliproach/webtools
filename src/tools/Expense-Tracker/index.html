@@ -2,66 +2,50 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Expense Tracker — WebTools</title>
-    <meta name="description" content="Track simple expenses locally in your browser.">
-    <meta name="keywords" content="expense, tracker, budget, browser tool">
-    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
-        crossorigin="anonymous"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../style.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Expense Tracker — WebTools</title>
+	<meta name="description" content="Track simple expenses locally in your browser.">
+	<meta name="keywords" content="expense, tracker, budget, browser tool">
+	<link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
-    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
-    <header class="site-header">
-        <div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo"
-                    alt="WebTools"><span class="site-title">WebTools</span></a>
-            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
-                    href="../../TermsOfService/">Terms</a></nav>
-        </div>
-    </header>
-    <main class="container">
-        <section class="tool-grid">
-            <div class="tool-panel">
-                <div class="tool-ui">
-                    <h1>Expense Tracker</h1>
-                    <div style="display:flex;gap:.5rem"><input id="desc" class="tool-input"
-                            placeholder="Description"><input id="amt" class="tool-input" type="number"
-                            placeholder="Amount"></div>
-                    <div style="margin-top:.5rem"><button id="add" class="tool-btn primary">Add Expense</button><button
-                            id="clear" class="tool-btn">Clear All</button></div>
-                    <div id="list" style="margin-top:1rem"></div>
-                    <div id="total" style="margin-top:.5rem;font-weight:600"></div>
-                </div>
-            </div>
-            <aside class="tool-panel">
-                <div class="tool-ui"><label class="muted-small">Privacy</label>
-                    <p class="muted">All data remains in your browser storage only.</p>
-                </div>
-            </aside>
-        </section>
-    </main>
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
-                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
-                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
-            </div>
-            <div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy
-                    Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
-        </div>
-    </footer>
-    <script>
-        function render() { const arr = JSON.parse(localStorage.getItem('webtools-expenses') || '[]'); const list = document.getElementById('list'); list.innerHTML = arr.map(e => `<div style="display:flex;justify-content:space-between;padding:.5rem;border:1px solid rgba(0,0,0,.06);border-radius:6px;margin-bottom:.4rem"><div><strong>${escapeHtml(e.desc)}</strong><div class="muted-small">${new Date(e.t).toLocaleString()}</div></div><div>$${Number(e.amt).toFixed(2)} <button data-id="${e.id}" class="del tool-btn">Del</button></div></div>`).join(''); document.getElementById('total').textContent = 'Total: $' + arr.reduce((s, x) => s + Number(x.amt), 0).toFixed(2); document.querySelectorAll('.del').forEach(b => b.addEventListener('click', e => { const id = e.target.dataset.id; let a = JSON.parse(localStorage.getItem('webtools-expenses') || '[]'); a = a.filter(x => x.id != id); localStorage.setItem('webtools-expenses', JSON.stringify(a)); render(); })); }
-        function escapeHtml(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
-        document.getElementById('add').addEventListener('click', () => { const desc = document.getElementById('desc').value || 'Expense'; const amt = document.getElementById('amt').value || 0; const arr = JSON.parse(localStorage.getItem('webtools-expenses') || '[]'); arr.unshift({ id: Date.now(), desc, amt, t: Date.now() }); localStorage.setItem('webtools-expenses', JSON.stringify(arr)); document.getElementById('desc').value = ''; document.getElementById('amt').value = ''; render(); });
-        document.getElementById('clear').addEventListener('click', () => { if (confirm('Clear all expenses?')) { localStorage.removeItem('webtools-expenses'); render(); } });
-        render();
-    </script>
+	<div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
+	<header class="site-header">
+		<div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo" alt="WebTools"><span class="site-title">WebTools</span></a>
+			<nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a href="../../TermsOfService/">Terms</a></nav>
+		</div>
+	</header>
+	<main class="container">
+		<section class="tool-grid">
+			<div class="tool-panel">
+				<div class="tool-ui">
+					<h1>Expense Tracker</h1>
+					<div style="display:flex;gap:.5rem"><input id="desc" class="tool-input" placeholder="Description"><input id="amt" class="tool-input" type="number" placeholder="Amount"></div>
+					<div style="margin-top:.5rem"><button id="add" class="tool-btn primary">Add Expense</button><button id="clear" class="tool-btn">Clear All</button></div>
+					<div id="list" style="margin-top:1rem"></div>
+					<div id="total" style="margin-top:.5rem;font-weight:600"></div>
+				</div>
+			</div>
+			<aside class="tool-panel">
+				<div class="tool-ui"><label class="muted-small">Privacy</label>
+					<p class="muted">All data remains in your browser storage only.</p>
+				</div>
+			</aside>
+		</section>
+	</main>
+	<footer class="site-footer">
+		<div class="footer-container">
+			<div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
+				<div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+			</div>
+			<div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
+		</div>
+	</footer>
+	<script src="script.js"></script>
 </body>
 
 </html>

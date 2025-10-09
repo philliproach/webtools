@@ -2,62 +2,48 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Image Compressor — WebTools</title>
-    <meta name="description" content="Compress or resize images client-side.">
-    <meta name="keywords" content="image, compressor, resize, browser tool">
-    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
-    <link rel="stylesheet" href="../../style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
-        crossorigin="anonymous"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Image Compressor — WebTools</title>
+	<meta name="description" content="Compress or resize images client-side.">
+	<meta name="keywords" content="image, compressor, resize, browser tool">
+	<link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+	<link rel="stylesheet" href="../../style.css">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
-    <header class="site-header">
-        <div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo"
-                    alt="WebTools"><span class="site-title">WebTools</span></a>
-            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
-                    href="../../TermsOfService/">Terms</a></nav>
-        </div>
-    </header>
-    <main class="container">
-        <section class="tool-grid">
-            <div class="tool-panel">
-                <div class="tool-ui">
-                    <h1>Image Compressor</h1><input id="file" type="file" accept="image/*"><label
-                        class="muted-small">Max width (px)</label><input id="width" class="tool-input" type="number"
-                        value="1024"><label class="muted-small">Quality (0.1 - 1.0)</label><input id="quality"
-                        class="tool-input" type="number" step="0.1" min="0.1" max="1" value="0.8">
-                    <div class="tool-actions" style="margin-top:.5rem"><button id="compress"
-                            class="tool-btn primary">Compress</button><a id="download" style="display:none"
-                            class="tool-btn primary">Download</a></div>
-                    <div id="info" style="margin-top:.5rem" class="muted-small"></div>
-                </div>
-            </div>
-            <aside class="tool-panel">
-                <div class="tool-ui"><label class="muted-small">How it works</label>
-                    <p class="muted">Resize and re-encode images using canvas; works for JPEG/PNG/WebP in modern
-                        browsers.</p>
-                </div>
-            </aside>
-        </section>
-    </main>
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
-                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
-                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
-            </div>
-            <div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy
-                    Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
-        </div>
-    </footer>
-    <script>
-        function loadImage(file) { return new Promise((res, rej) => { const fr = new FileReader(); fr.onload = () => { const img = new Image(); img.onload = () => res(img); img.onerror = rej; img.src = fr.result; }; fr.readAsDataURL(file); }); }
-        document.getElementById('compress').addEventListener('click', async () => { const f = document.getElementById('file').files[0]; if (!f) { alert('Select an image'); return; } const img = await loadImage(f); const maxw = Math.max(1, parseInt(document.getElementById('width').value) || 1024); const q = Math.max(0.1, Math.min(1, parseFloat(document.getElementById('quality').value) || 0.8)); const scale = Math.min(1, maxw / img.width); const w = Math.round(img.width * scale); const h = Math.round(img.height * scale); const c = document.createElement('canvas'); c.width = w; c.height = h; const ctx = c.getContext('2d'); ctx.drawImage(img, 0, 0, w, h); c.toBlob(blob => { const url = URL.createObjectURL(blob); const a = document.getElementById('download'); a.href = url; a.download = f.name.replace(/\.[^/.]+$/, '') + '-compressed.jpg'; a.style.display = 'inline-flex'; document.getElementById('info').textContent = `Original: ${Math.round(f.size / 1024)}KB -> ${Math.round(blob.size / 1024)}KB`; }, 'image/jpeg', q); });
-    </script>
+	<div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
+	<header class="site-header">
+		<div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo" alt="WebTools"><span class="site-title">WebTools</span></a>
+			<nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a href="../../TermsOfService/">Terms</a></nav>
+		</div>
+	</header>
+	<main class="container">
+		<section class="tool-grid">
+			<div class="tool-panel">
+				<div class="tool-ui">
+					<h1>Image Compressor</h1><input id="file" type="file" accept="image/*"><label class="muted-small">Max width (px)</label><input id="width" class="tool-input" type="number" value="1024"><label class="muted-small">Quality (0.1 - 1.0)</label><input id="quality" class="tool-input" type="number" step="0.1" min="0.1" max="1" value="0.8">
+					<div class="tool-actions" style="margin-top:.5rem"><button id="compress" class="tool-btn primary">Compress</button><a id="download" style="display:none" class="tool-btn primary">Download</a></div>
+					<div id="info" style="margin-top:.5rem" class="muted-small"></div>
+				</div>
+			</div>
+			<aside class="tool-panel">
+				<div class="tool-ui"><label class="muted-small">How it works</label>
+					<p class="muted">Resize and re-encode images using canvas; works for JPEG/PNG/WebP in modern browsers.</p>
+				</div>
+			</aside>
+		</section>
+	</main>
+	<footer class="site-footer">
+		<div class="footer-container">
+			<div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
+				<div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+			</div>
+			<div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
+		</div>
+	</footer>
+	<script src="script.js"></script>
 </body>
 
 </html>

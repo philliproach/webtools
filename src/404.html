@@ -2,247 +2,237 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>404 — WebTools</title>
-    <meta name="description" content="Page not found — WebTools">
-    <link rel="icon" type="image/svg+xml" href="media/logo.svg">
-    <style>
-        /* Critical fallback styles so 404 looks correct even if external CSS fails to load from a deep path */
-        :root {
-            --header-height: 56px;
-            --footer-height: 64px
-        }
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>404 — WebTools</title>
+	<meta name="description" content="Page not found — WebTools">
+	<link rel="icon" type="image/svg+xml" href="media/logo.svg">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
+	<style>
+	:root {
+		--header-height: 56px;
+		--footer-height: 64px
+	}
 
-        html,
-        body {
-            height: 100%
-        }
+	html,
+	body {
+		height: 100%
+	}
 
-        body {
-            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-            margin: 0;
-            color: #111;
-            background: #fff
-        }
+	body {
+		font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+		margin: 0;
+		color: #111;
+		background: #fff
+	}
 
-        .site-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: var(--header-height);
-            background: #fff;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            align-items: center;
-            z-index: 30
-        }
+	.site-header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: var(--header-height);
+		background: #fff;
+		border-bottom: 1px solid #eee;
+		display: flex;
+		align-items: center;
+		z-index: 30
+	}
 
-        .nav-container {
-            max-width: 980px;
-            margin: 0 auto;
-            padding: 0 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between
-        }
+	.nav-container {
+		max-width: 980px;
+		margin: 0 auto;
+		padding: 0 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between
+	}
 
-        .brand {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: inherit
-        }
+	.brand {
+		display: flex;
+		align-items: center;
+		text-decoration: none;
+		color: inherit
+	}
 
-        .brand .site-title {
-            margin-left: .5rem;
-            font-weight: 600
-        }
+	.brand .site-title {
+		margin-left: .5rem;
+		font-weight: 600
+	}
 
-        .container {
-            max-width: 980px;
-            margin: 0 auto;
-            padding: calc(var(--header-height) + 1rem) 1rem calc(var(--footer-height) + 1rem)
-        }
+	.container {
+		max-width: 980px;
+		margin: 0 auto;
+		padding: calc(var(--header-height) + 1rem) 1rem calc(var(--footer-height) + 1rem)
+	}
 
-        .tool-ui {
-            padding: 1rem
-        }
+	.tool-ui {
+		padding: 1rem
+	}
 
-        .tool-btn {
-            padding: .5rem .75rem;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            background: #f8f8f8
-        }
+	.tool-btn {
+		padding: .5rem .75rem;
+		border-radius: 6px;
+		border: 1px solid #ccc;
+		background: #f8f8f8
+	}
 
-        .tool-btn.primary {
-            background: #0b74de;
-            color: #fff;
-            border-color: #0b74de
-        }
+	.tool-btn.primary {
+		background: #0b74de;
+		color: #fff;
+		border-color: #0b74de
+	}
 
-        .site-footer {
-            position: fixed;
-            right: 0;
-            left: 0;
-            bottom: 0;
-            height: var(--footer-height);
-            background: #fafafa;
-            border-top: 1px solid #eee;
-            display: flex;
-            align-items: center;
-            z-index: 30
-        }
+	.site-footer {
+		position: fixed;
+		right: 0;
+		left: 0;
+		bottom: 0;
+		height: var(--footer-height);
+		background: #fafafa;
+		border-top: 1px solid #eee;
+		display: flex;
+		align-items: center;
+		z-index: 30
+	}
 
-        .footer-container {
-            max-width: 980px;
-            margin: 0 auto;
-            padding: 0 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center
-        }
+	.footer-container {
+		max-width: 980px;
+		margin: 0 auto;
+		padding: 0 1rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center
+	}
 
-        .bookmark-banner {
-            display: block;
-            background: #ffe066;
-            color: #333;
-            padding: .5em 1em;
-            text-align: center;
-            font-weight: 500
-        }
+	.bookmark-banner {
+		display: block;
+		background: #ffe066;
+		color: #333;
+		padding: .5em 1em;
+		text-align: center;
+		font-weight: 500
+	}
 
-        .muted {
-            color: #666
-        }
+	.muted {
+		color: #666
+	}
 
-        .muted-small {
-            color: #666;
-            font-size: .9rem
-        }
-    </style>
-    <link id="main-css" rel="stylesheet" href="style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
-        crossorigin="anonymous"></script>
+	.muted-small {
+		color: #666;
+		font-size: .9rem
+	}
+	</style>
+	<link id="main-css" rel="stylesheet" href="style.css">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <header class="site-header">
-        <div class="nav-container"><a class="brand" href="."><img data-src="media/logo.svg" class="logo"
-                    alt="WebTools"><span class="site-title">WebTools</span></a>
-            <nav class="nav-menu"><a href=".">Home</a><a href="PrivacyPolicy/">Privacy</a><a
-                    href="TermsOfService/">Terms</a></nav>
-        </div>
-    </header>
+	<header class="site-header">
+		<div class="nav-container"><a class="brand" href="."><img data-src="media/logo.svg" class="logo" alt="WebTools"><span class="site-title">WebTools</span></a>
+			<nav class="nav-menu"><a href=".">Home</a><a href="PrivacyPolicy/">Privacy</a><a href="TermsOfService/">Terms</a></nav>
+		</div>
+	</header>
+	<main class="container" style="padding-top:2.25rem; padding-bottom:2.25rem;">
+		<section class="tool-ui">
+			<h1>404 — Page not found</h1>
+			<p class="muted">The link you followed does not exist on this site.</p>
+			<p>Requested URL: <code id="missingPath"></code></p>
+			<div style="margin-top:1.25rem;display:flex;gap:.5rem;align-items:center">
+				<a class="tool-btn primary home-link" href=".">Go to Home</a>
+				<button class="tool-btn" id="goBack">Go back</button>
+				<span id="countdown" class="muted-small" style="margin-left:1rem">Redirecting to home in 6s…</span>
+			</div>
+		</section>
+	</main>
+	<footer class="site-footer">
+		<div class="footer-container">
+			<div class="footer-left"><img data-src="media/logo.svg" class="footer-logo">
+				<div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+			</div>
+			<div class="footer-links"><a href="Contact/">Contact</a><a href="PrivacyPolicy/">Privacy Policy</a><a href="TermsOfService/">Terms of Service</a></div>
+		</div>
+	</footer>
+	<script>
+	(function() {
+		try {
+			var pathEl = document.getElementById('missingPath');
+			if(pathEl) pathEl.textContent = location.pathname + location.search;
+			var rootBase = '/';
 
-    <main class="container" style="padding-top:2.25rem; padding-bottom:2.25rem;">
-        <section class="tool-ui">
-            <h1>404 — Page not found</h1>
-            <p class="muted">The link you followed does not exist on this site.</p>
-            <p>Requested URL: <code id="missingPath"></code></p>
-
-            <div style="margin-top:1.25rem;display:flex;gap:.5rem;align-items:center">
-                <a class="tool-btn primary home-link" href=".">Go to Home</a>
-                <button class="tool-btn" id="goBack">Go back</button>
-                <span id="countdown" class="muted-small" style="margin-left:1rem">Redirecting to home in 6s…</span>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-left"><img data-src="media/logo.svg" class="footer-logo">
-                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
-                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
-            </div>
-            <div class="footer-links"><a href="Contact/">Contact</a><a href="PrivacyPolicy/">Privacy Policy</a><a
-                    href="TermsOfService/">Terms of Service</a></div>
-        </div>
-    </footer>
-
-    <script>
-        (function () {
-            try {
-                // Show the requested path
-                var pathEl = document.getElementById('missingPath');
-                if (pathEl) pathEl.textContent = location.pathname + location.search;
-
-                // Determine where the site root is. Some deployments publish the site from /src/,
-                // others publish from /. To make links work even when the 404 is served for a deep
-                // path (e.g. /a/b/c/d/e), we attempt a quick HEAD fetch for /src/index.html. If it
-                // exists we assume the site root is /src/, otherwise we fallback to /.
-                var rootBase = '/';
-
-                function rewriteLinks(base) {
-                    // Make nav/footer/home links absolute so they always point to the real root
-                    var home = document.querySelector('.home-link');
-                    if (home) home.setAttribute('href', base);
-                    var brand = document.querySelector('.brand');
-                    if (brand) brand.setAttribute('href', base);
-                    // nav menu and footer links
-                    document.querySelectorAll('.nav-menu a, .footer-links a').forEach(function (a) {
-                        var href = a.getAttribute('href') || '';
-                        // If href is already absolute (starts with / or http), leave it.
-                        if (/^\//.test(href) || /^https?:\/\//.test(href)) return;
-                        a.setAttribute('href', base + href.replace(/^\.?\/?/, ''));
-                    });
-                }
-
-                // Try HEAD fetching /src/index.html to detect whether /src/ is the published root.
-                // Use a short timeout pattern via Promise.race.
-                var timeout = new Promise(function (res) { setTimeout(function () { res({ ok: false, timeout: true }); }, 800); });
-                var probe = fetch('/src/index.html', { method: 'HEAD' }).then(function (r) { return r; }).catch(function () { return { ok: false }; });
-
-                Promise.race([timeout, probe]).then(function (r) {
-                    if (r && r.ok) rootBase = '/src/';
-                    else rootBase = '/';
-
-                    // Rewrite asset paths (stylesheet, favicon, images) so they load from the detected root.
-                    try {
-                        var css = document.getElementById('main-css');
-                        if (css) css.href = rootBase.replace(/\/$/, '') + '/style.css';
-
-                        // favicon
-                        var icons = document.querySelectorAll('link[rel~="icon"]');
-                        icons.forEach(function (lnk) {
-                            var href = lnk.getAttribute('href') || '';
-                            if (!/^https?:\/\//.test(href) && !/^\//.test(href)) {
-                                lnk.href = rootBase.replace(/\/$/, '') + '/' + href.replace(/^\.?\/?/, '');
-                            }
-                        });
-
-                        // images with data-src
-                        document.querySelectorAll('img[data-src]').forEach(function (img) {
-                            var src = img.getAttribute('data-src');
-                            img.src = rootBase.replace(/\/$/, '') + '/' + src.replace(/^\.?\/?/, '');
-                        });
-                    } catch (e) { console.warn('asset rewrite failed', e); }
-
-                    rewriteLinks(rootBase);
-
-                    // Countdown + redirect (uses rootBase)
-                    var countdownEl = document.getElementById('countdown');
-                    var t = 6;
-                    var interval = setInterval(function () {
-                        t -= 1;
-                        if (countdownEl) countdownEl.textContent = 'Redirecting to home in ' + t + 's…';
-                        if (t <= 0) {
-                            clearInterval(interval);
-                            location.href = rootBase;
-                        }
-                    }, 1000);
-
-                    var backBtn = document.getElementById('goBack');
-                    if (backBtn) backBtn.addEventListener('click', function () { history.back(); });
-                    var homeLink = document.querySelector('.home-link');
-                    if (homeLink) homeLink.addEventListener('click', function () { clearInterval(interval); });
-                });
-
-            } catch (e) { console.warn(e); }
-        })();
-    </script>
+			function rewriteLinks(base) {
+				var home = document.querySelector('.home-link');
+				if(home) home.setAttribute('href', base);
+				var brand = document.querySelector('.brand');
+				if(brand) brand.setAttribute('href', base);
+				document.querySelectorAll('.nav-menu a, .footer-links a').forEach(function(a) {
+					var href = a.getAttribute('href') || '';
+					if(/^\//.test(href) || /^https?:\/\//.test(href)) return;
+					a.setAttribute('href', base + href.replace(/^\.?\/?/, ''));
+				});
+			}
+			var timeout = new Promise(function(res) {
+				setTimeout(function() {
+					res({
+						ok: false,
+						timeout: true
+					});
+				}, 800);
+			});
+			var probe = fetch('/src/index.html', {
+				method: 'HEAD'
+			}).then(function(r) {
+				return r;
+			}).catch(function() {
+				return {
+					ok: false
+				};
+			});
+			Promise.race([timeout, probe]).then(function(r) {
+				if(r && r.ok) rootBase = '/src/';
+				else rootBase = '/';
+				try {
+					var css = document.getElementById('main-css');
+					if(css) css.href = rootBase.replace(/\/$/, '') + '/style.css';
+					var icons = document.querySelectorAll('link[rel~="icon"]');
+					icons.forEach(function(lnk) {
+						var href = lnk.getAttribute('href') || '';
+						if(!/^https?:\/\//.test(href) && !/^\//.test(href)) {
+							lnk.href = rootBase.replace(/\/$/, '') + '/' + href.replace(/^\.?\/?/, '');
+						}
+					});
+					document.querySelectorAll('img[data-src]').forEach(function(img) {
+						var src = img.getAttribute('data-src');
+						img.src = rootBase.replace(/\/$/, '') + '/' + src.replace(/^\.?\/?/, '');
+					});
+				} catch (e) {
+					console.warn('asset rewrite failed', e);
+				}
+				rewriteLinks(rootBase);
+				var countdownEl = document.getElementById('countdown');
+				var t = 6;
+				var interval = setInterval(function() {
+					t -= 1;
+					if(countdownEl) countdownEl.textContent = 'Redirecting to home in ' + t + 's…';
+					if(t <= 0) {
+						clearInterval(interval);
+						location.href = rootBase;
+					}
+				}, 1000);
+				var backBtn = document.getElementById('goBack');
+				if(backBtn) backBtn.addEventListener('click', function() {
+					history.back();
+				});
+				var homeLink = document.querySelector('.home-link');
+				if(homeLink) homeLink.addEventListener('click', function() {
+					clearInterval(interval);
+				});
+			});
+		} catch (e) {
+			console.warn(e);
+		}
+	})();
+	</script>
 </body>
 
 </html>

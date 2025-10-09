@@ -271,7 +271,7 @@ body {
 .dashboard-hero {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 1rem;
     padding: 2rem 0;
 }
@@ -660,7 +660,6 @@ textarea {
         align-items: flex-start;
     }
 
-    /* Ensure content can scroll above fixed footer on small screens */
     main,
     .dashboard-main,
     .container {
@@ -711,17 +710,14 @@ textarea {
     height: 0;
 }
 
-/* ensure the main content area is never shorter than the viewport minus header/footer
-   so the footer does not overlap content and users can scroll to read everything */
+
 main,
 .dashboard-main,
 .container {
     min-height: calc(100vh - var(--header-height) - var(--footer-height));
-    /* ensure the final content can be scrolled above the fixed footer */
     padding-bottom: calc(var(--footer-height) + 1rem);
 }
 
-/* Bookmark banner: default hidden on small screens, visible on desktop */
 .bookmark-banner {
     background: #ffe066;
     color: #333;
@@ -730,7 +726,6 @@ main,
     font-weight: 500;
     font-size: 1.05em;
     display: none;
-    /* hide by default (mobile-first) */
 }
 
 .bookmark-banner span {
@@ -739,7 +734,6 @@ main,
 
 @media (min-width: 721px) {
 
-    /* show banner on desktop widths */
     .bookmark-banner {
         display: block;
     }

@@ -2,58 +2,48 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Time Zone Converter — WebTools</title>
-    <meta name="description" content="Convert datetimes between time zones.">
-    <meta name="keywords" content="time zone, converter, datetime, browser tool">
-    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../style.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Time Zone Converter — WebTools</title>
+	<meta name="description" content="Convert datetimes between time zones.">
+	<meta name="keywords" content="time zone, converter, datetime, browser tool">
+	<link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
-    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
-    <header class="site-header">
-        <div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo"
-                    alt="WebTools"><span class="site-title">WebTools</span></a>
-            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
-                    href="../../TermsOfService/">Terms</a></nav>
-        </div>
-    </header>
-    <main class="container">
-        <section class="tool-grid">
-            <div class="tool-panel">
-                <div class="tool-ui">
-                    <h1>Time Zone Converter</h1><label class="muted-small">Local datetime</label><input id="dt"
-                        type="datetime-local" class="tool-input"><label class="muted-small">To timezone
-                        (IANA)</label><input id="tz" class="tool-input" placeholder="e.g., America/New_York">
-                    <div style="margin-top:.5rem"><button id="conv" class="tool-btn primary">Convert</button></div>
-                    <div id="out" style="margin-top:.5rem" class="muted-small"></div>
-                </div>
-            </div>
-            <aside class="tool-panel">
-                <div class="tool-ui"><label class="muted-small">Note</label>
-                    <p class="muted">Uses Intl API where available; if your browser lacks timezone support, results may
-                        vary.</p>
-                </div>
-            </aside>
-        </section>
-    </main>
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
-                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
-                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
-            </div>
-            <div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy
-                    Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
-        </div>
-    </footer>
-    <script>
-        document.getElementById('conv').addEventListener('click', () => { const v = document.getElementById('dt').value; const tz = document.getElementById('tz').value.trim(); if (!v || !tz) { alert('Provide datetime and timezone'); return; } const d = new Date(v); try { const str = d.toLocaleString('en-US', { timeZone: tz }); document.getElementById('out').textContent = str + ' (' + tz + ')'; } catch (e) { document.getElementById('out').textContent = 'Timezone not supported in this browser'; } });
-    </script>
+	<div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
+	<header class="site-header">
+		<div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo" alt="WebTools"><span class="site-title">WebTools</span></a>
+			<nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a href="../../TermsOfService/">Terms</a></nav>
+		</div>
+	</header>
+	<main class="container">
+		<section class="tool-grid">
+			<div class="tool-panel">
+				<div class="tool-ui">
+					<h1>Time Zone Converter</h1><label class="muted-small">Local datetime</label><input id="dt" type="datetime-local" class="tool-input"><label class="muted-small">To timezone (IANA)</label><input id="tz" class="tool-input" placeholder="e.g., America/New_York">
+					<div style="margin-top:.5rem"><button id="conv" class="tool-btn primary">Convert</button></div>
+					<div id="out" style="margin-top:.5rem" class="muted-small"></div>
+				</div>
+			</div>
+			<aside class="tool-panel">
+				<div class="tool-ui"><label class="muted-small">Note</label>
+					<p class="muted">Uses Intl API where available; if your browser lacks timezone support, results may vary.</p>
+				</div>
+			</aside>
+		</section>
+	</main>
+	<footer class="site-footer">
+		<div class="footer-container">
+			<div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
+				<div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+			</div>
+			<div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
+		</div>
+	</footer>
+	<script src="script.js"></script>
 </body>
 
 </html>

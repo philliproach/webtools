@@ -2,55 +2,47 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Feature Detector — WebTools</title>
-    <meta name="description" content="Detect browser features and supported APIs.">
-    <meta name="keywords" content="feature, detect, browser, api, tool">
-    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../style.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Feature Detector — WebTools</title>
+	<meta name="description" content="Detect browser features and supported APIs.">
+	<meta name="keywords" content="feature, detect, browser, api, tool">
+	<link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
-    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
-    <header class="site-header">
-        <div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo"
-                    alt="WebTools"><span class="site-title">WebTools</span></a>
-            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
-                    href="../../TermsOfService/">Terms</a></nav>
-        </div>
-    </header>
-    <main class="container">
-        <section class="tool-grid">
-            <div class="tool-panel">
-                <div class="tool-ui">
-                    <h1>Feature Detector</h1>
-                    <div id="out" class="muted-small"></div>
-                </div>
-            </div>
-            <aside class="tool-panel">
-                <div class="tool-ui"><label class="muted-small">Why</label>
-                    <p class="muted">Quickly see which modern browser APIs are available.</p>
-                </div>
-            </aside>
-        </section>
-    </main>
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
-                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
-                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
-            </div>
-            <div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy
-                    Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
-        </div>
-    </footer>
-    <script>
-        const features = [['Service Worker', 'serviceWorker' in navigator], ['WebAssembly', typeof WebAssembly !== 'undefined'], ['WebCrypto', !!(window.crypto && crypto.subtle)], ['OffscreenCanvas', 'OffscreenCanvas' in window], ['WebGL', (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl') || c.getContext('experimental-webgl')); } catch (e) { return false; } })()], ['WebRTC', 'RTCPeerConnection' in window], ['Clipboard API', navigator.clipboard && navigator.clipboard.writeText], ['File System Access', 'showOpenFilePicker' in window || 'chooseFileSystemEntries' in window], ['Notifications', 'Notification' in window], ['Push', 'PushManager' in window], ['WebMIDI', 'requestMIDIAccess' in navigator]];
-        const out = document.getElementById('out'); out.innerHTML = features.map(f => `<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(0,0,0,.04)"><span>${f[0]}</span><strong style="color:${f[1] ? '#16a34a' : '#d73a49'}">${f[1] ? 'Supported' : 'Missing'}</strong></div>`).join('');
-    </script>
+	<div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
+	<header class="site-header">
+		<div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo" alt="WebTools"><span class="site-title">WebTools</span></a>
+			<nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a href="../../TermsOfService/">Terms</a></nav>
+		</div>
+	</header>
+	<main class="container">
+		<section class="tool-grid">
+			<div class="tool-panel">
+				<div class="tool-ui">
+					<h1>Feature Detector</h1>
+					<div id="out" class="muted-small"></div>
+				</div>
+			</div>
+			<aside class="tool-panel">
+				<div class="tool-ui"><label class="muted-small">Why</label>
+					<p class="muted">Quickly see which modern browser APIs are available.</p>
+				</div>
+			</aside>
+		</section>
+	</main>
+	<footer class="site-footer">
+		<div class="footer-container">
+			<div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
+				<div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+			</div>
+			<div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
+		</div>
+	</footer>
+	<script src="script.js"></script>
 </body>
 
 </html>

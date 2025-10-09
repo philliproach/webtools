@@ -2,68 +2,49 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Color Palette Extractor — WebTools</title>
-    <meta name="description"
-        content="Extract a color palette from an uploaded image instantly. Free online color palette extractor for designers and artists.">
-    <meta name="keywords" content="color palette, palette extractor, image, online tool, design, art">
-    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../style.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Color Palette Extractor — WebTools</title>
+	<meta name="description" content="Extract a color palette from an uploaded image instantly. Free online color palette extractor for designers and artists.">
+	<meta name="keywords" content="color palette, palette extractor, image, online tool, design, art">
+	<link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
-    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
-    <header class="site-header">
-        <div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo"
-                    alt="WebTools"><span class="site-title">WebTools</span></a>
-            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
-                    href="../../TermsOfService/">Terms</a></nav>
-        </div>
-    </header>
-    <main class="container">
-        <section class="tool-grid">
-            <div class="tool-panel">
-                <div class="tool-ui">
-                    <h1>Color Palette Extractor</h1><input id="file" type="file" accept="image/*"><label
-                        class="muted-small">Palette size</label><input id="size" type="number" class="tool-input"
-                        value="6" min="2" max="20">
-                    <div style="margin-top:.5rem"><button id="extract" class="tool-btn primary">Extract Palette</button>
-                    </div>
-                    <div id="swatches" style="margin-top:1rem;display:flex;flex-wrap:wrap;gap:.5rem"></div>
-                </div>
-            </div>
-            <aside class="tool-panel">
-                <div class="tool-ui"><label class="muted-small">How it works</label>
-                    <p class="muted">We downscale the image and pick the most frequent colors. This runs entirely in
-                        your browser.</p>
-                </div>
-            </aside>
-        </section>
-    </main>
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
-                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
-                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
-            </div>
-            <div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy
-                    Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
-        </div>
-    </footer>
-    <script>
-        function getImageData(file) { return new Promise((res, rej) => { const fr = new FileReader(); fr.onload = () => { const img = new Image(); img.onload = () => { const w = 80; const h = Math.round(img.height * (w / img.width)); const c = document.createElement('canvas'); c.width = w; c.height = h; const ctx = c.getContext('2d'); ctx.drawImage(img, 0, 0, w, h); res(ctx.getImageData(0, 0, w, h)); }; img.onerror = rej; img.src = fr.result; }; fr.readAsDataURL(file); }); }
-        function rgbToHex(r, g, b) { return '#' + [r, g, b].map(x => x.toString(16).padStart(2, '0')).join(''); }
-        document.getElementById('extract').addEventListener('click', async () => {
-            const f = document.getElementById('file').files[0]; if (!f) { alert('Select an image'); return; } const size = Math.max(2, Math.min(20, parseInt(document.getElementById('size').value) || 6)); const imgData = await getImageData(f); const counts = new Map(); for (let i = 0; i < imgData.data.length; i += 4) { const r = imgData.data[i], g = imgData.data[i + 1], b = imgData.data[i + 2]; const key = Math.round(r / 16) + ',' + Math.round(g / 16) + ',' + Math.round(b / 16); counts.set(key, (counts.get(key) || 0) + 1); }
-            const arr = Array.from(counts.entries()).sort((a, b) => b[1] - a[1]); const swatches = document.getElementById('swatches'); swatches.innerHTML = ''; for (let i = 0; i < size && i < arr.length; i++) {
-                const [key] = arr[i]; const [rr, gg, bb] = key.split(',').map(x => parseInt(x) * 16 + 8);
-                const hex = rgbToHex(rr, gg, bb); const el = document.createElement('div'); el.style.width = '72px'; el.style.height = '72px'; el.style.borderRadius = '8px'; el.style.background = hex; el.style.display = 'flex'; el.style.alignItems = 'flex-end'; el.style.justifyContent = 'center'; el.style.padding = '.35rem'; el.style.boxShadow = '0 1px 3px rgba(0,0,0,.12)'; const label = document.createElement('div'); label.style.background = 'rgba(255,255,255,.8)'; label.style.fontSize = '12px'; label.style.padding = '2px 6px'; label.style.borderRadius = '4px'; label.textContent = hex; label.style.color = '#000'; el.appendChild(label); swatches.appendChild(el);
-            }
-        });
-    </script>
+	<div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
+	<header class="site-header">
+		<div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo" alt="WebTools"><span class="site-title">WebTools</span></a>
+			<nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a href="../../TermsOfService/">Terms</a></nav>
+		</div>
+	</header>
+	<main class="container">
+		<section class="tool-grid">
+			<div class="tool-panel">
+				<div class="tool-ui">
+					<h1>Color Palette Extractor</h1><input id="file" type="file" accept="image/*"><label class="muted-small">Palette size</label><input id="size" type="number" class="tool-input" value="6" min="2" max="20">
+					<div style="margin-top:.5rem"><button id="extract" class="tool-btn primary">Extract Palette</button>
+					</div>
+					<div id="swatches" style="margin-top:1rem;display:flex;flex-wrap:wrap;gap:.5rem"></div>
+				</div>
+			</div>
+			<aside class="tool-panel">
+				<div class="tool-ui"><label class="muted-small">How it works</label>
+					<p class="muted">We downscale the image and pick the most frequent colors. This runs entirely in your browser.</p>
+				</div>
+			</aside>
+		</section>
+	</main>
+	<footer class="site-footer">
+		<div class="footer-container">
+			<div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
+				<div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+			</div>
+			<div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
+		</div>
+	</footer>
+	<script src="script.js"></script>
 </body>
 
 </html>

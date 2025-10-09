@@ -2,57 +2,48 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>JWT Decoder — WebTools</title>
-    <meta name="description" content="Decode JSON Web Tokens (JWT) in your browser.">
-    <meta name="keywords" content="jwt, decoder, token, browser tool">
-    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../style.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>JWT Decoder — WebTools</title>
+	<meta name="description" content="Decode JSON Web Tokens (JWT) in your browser.">
+	<meta name="keywords" content="jwt, decoder, token, browser tool">
+	<link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
-    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
-    <header class="site-header">
-        <div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo"
-                    alt="WebTools"><span class="site-title">WebTools</span></a>
-            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
-                    href="../../TermsOfService/">Terms</a></nav>
-        </div>
-    </header>
-    <main class="container">
-        <section class="tool-grid">
-            <div class="tool-panel">
-                <div class="tool-ui">
-                    <h1>JWT Decoder</h1><label class="muted-small">JWT</label><textarea id="jwt"
-                        class="tool-textarea"></textarea>
-                    <div style="margin-top:.5rem"><button id="dec" class="tool-btn primary">Decode</button></div>
-                    <pre id="out" style="margin-top:.5rem;white-space:pre-wrap;word-break:break-all"></pre>
-                </div>
-            </div>
-            <aside class="tool-panel">
-                <div class="tool-ui"><label class="muted-small">Privacy</label>
-                    <p class="muted">JWT is decoded locally; no data leaves your browser.</p>
-                </div>
-            </aside>
-        </section>
-    </main>
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
-                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
-                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
-            </div>
-            <div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy
-                    Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
-        </div>
-    </footer>
-    <script>
-        function b64uDecode(s) { s = s.replace(/-/g, '+').replace(/_/g, '/'); while (s.length % 4) s += '='; try { return atob(s); } catch (e) { return null; } }
-        document.getElementById('dec').addEventListener('click', () => { const token = document.getElementById('jwt').value.trim(); if (!token) { alert('Paste a JWT'); return; } const parts = token.split('.'); if (parts.length < 2) { document.getElementById('out').textContent = 'Invalid JWT'; return; } const head = b64uDecode(parts[0]); const payload = b64uDecode(parts[1]); let out = 'Header:\n' + (head ? JSON.stringify(JSON.parse(head), null, 2) : head) + '\n\nPayload:\n' + (payload ? JSON.stringify(JSON.parse(payload), null, 2) : payload); document.getElementById('out').textContent = out; });
-    </script>
+	<div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
+	<header class="site-header">
+		<div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo" alt="WebTools"><span class="site-title">WebTools</span></a>
+			<nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a href="../../TermsOfService/">Terms</a></nav>
+		</div>
+	</header>
+	<main class="container">
+		<section class="tool-grid">
+			<div class="tool-panel">
+				<div class="tool-ui">
+					<h1>JWT Decoder</h1><label class="muted-small">JWT</label><textarea id="jwt" class="tool-textarea"></textarea>
+					<div style="margin-top:.5rem"><button id="dec" class="tool-btn primary">Decode</button></div>
+					<pre id="out" style="margin-top:.5rem;white-space:pre-wrap;word-break:break-all"></pre>
+				</div>
+			</div>
+			<aside class="tool-panel">
+				<div class="tool-ui"><label class="muted-small">Privacy</label>
+					<p class="muted">JWT is decoded locally; no data leaves your browser.</p>
+				</div>
+			</aside>
+		</section>
+	</main>
+	<footer class="site-footer">
+		<div class="footer-container">
+			<div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
+				<div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+			</div>
+			<div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
+		</div>
+	</footer>
+	<script src="script.js"></script>
 </body>
 
 </html>

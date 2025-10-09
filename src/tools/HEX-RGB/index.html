@@ -2,146 +2,102 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>HEX <-> RGB — WebTools</title>
-    <meta name="description"
-        content="Convert between HEX and RGB color formats instantly. Free online color converter for designers and developers.">
-    <meta name="keywords" content="hex, rgb, color converter, online tool, color formats, web design, developer tools">
-    <link rel="stylesheet" href="../../style.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>HEX <-> RGB — WebTools</title>
+	<meta name="description" content="Convert between HEX and RGB color formats instantly. Free online color converter for designers and developers.">
+	<meta name="keywords" content="hex, rgb, color converter, online tool, color formats, web design, developer tools">
+	<link rel="stylesheet" href="../../style.css">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <header class="site-header">
-        <div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo"
-                    alt="WebTools"><span class="site-title">WebTools</span></a>
-            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
-                    href="../../TermsOfService/">Terms</a></nav>
-        </div>
-    </header>
-    <main class="container" style="padding-top:2.25rem;padding-bottom:2.25rem;">
-        <section class="tool-grid">
-            <div class="tool-panel">
-                <div class="tool-ui">
-                    <h1>HEX &lt;-&gt; RGB</h1><label class="muted-small">HEX</label><input id="hex" class="tool-input"
-                        value="#3b82f6">
-                    <div style="margin-top:.5rem" class="tool-actions"><button id="toRgb" class="tool-btn primary">→
-                            RGB</button></div>
-                    <pre id="out" class="preview" style="margin-top:.6rem;min-height:60px"></pre>
-                </div>
-            </div>
-            <aside class="tool-panel">
-                <div class="tool-ui"><label class="muted-small">RGB → HEX</label><input id="r" type="number"
-                        placeholder="r" class="tool-input"><input id="g" type="number" placeholder="g"
-                        class="tool-input" style="margin-top:.5rem"><input id="b" type="number" placeholder="b"
-                        class="tool-input" style="margin-top:.5rem">
-                    <div style="margin-top:.5rem"><button id="toHex" class="tool-btn primary">→ HEX</button></div>
-                </div>
-            </aside>
-        </section>
-    </main>
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
-                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
-                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
-            </div>
-            <div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy
-                    Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
-        </div>
-    </footer>
-    <script>
-        function hexToRgb(hex) { hex = hex.replace('#', ''); if (hex.length === 3) hex = hex.split('').map(h => h + h).join(''); const bigint = parseInt(hex, 16); return `${(bigint >> 16) & 255}, ${(bigint >> 8) & 255}, ${bigint & 255}`; }
-        function rgbToHex(r, g, b) { return '#' + [r, g, b].map(n => Number(n).toString(16).padStart(2, '0')).join(''); }
-        document.getElementById('toRgb').addEventListener('click', () => { try { document.getElementById('out').textContent = hexToRgb(document.getElementById('hex').value || ''); } catch (e) { document.getElementById('out').textContent = 'Invalid HEX'; } });
-        document.getElementById('toHex').addEventListener('click', () => { const r = document.getElementById('r').value; const g = document.getElementById('g').value; const b = document.getElementById('b').value; document.getElementById('out').textContent = rgbToHex(r, g, b); });
-    </script>
-</body>
+	<header class="site-header">
+		<div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo" alt="WebTools"><span class="site-title">WebTools</span></a>
+			<nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a href="../../TermsOfService/">Terms</a></nav>
+		</div>
+	</header>
+	<main class="container" style="padding-top:2.25rem;padding-bottom:2.25rem;">
+		<section class="tool-grid">
+			<div class="tool-panel">
+				<div class="tool-ui">
+					<h1>HEX &lt;-&gt; RGB</h1><label class="muted-small">HEX</label><input id="hex" class="tool-input" value="#3b82f6">
+					<div style="margin-top:.5rem" class="tool-actions"><button id="toRgb" class="tool-btn primary">→ RGB</button></div>
+					<pre id="out" class="preview" style="margin-top:.6rem;min-height:60px"></pre>
+				</div>
+			</div>
+			<aside class="tool-panel">
+				<div class="tool-ui"><label class="muted-small">RGB → HEX</label><input id="r" type="number" placeholder="r" class="tool-input"><input id="g" type="number" placeholder="g" class="tool-input" style="margin-top:.5rem"><input id="b" type="number" placeholder="b" class="tool-input" style="margin-top:.5rem">
+					<div style="margin-top:.5rem"><button id="toHex" class="tool-btn primary">→ HEX</button></div>
+				</div>
+			</aside>
+		</section>
+	</main>
+	<footer class="site-footer">
+		<div class="footer-container">
+			<div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
+				<div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+			</div>
+			<div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
+		</div>
+	</footer>
 
+</body>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>HEX &lt;-&gt; RGB Converter</title>
-    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../style.css">
+	<meta charset="UTF-8">
+	<title>HEX &lt;-&gt; RGB Converter</title>
+	<link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
-    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
-    <header class="site-header">
-        <div class="nav-container">
-            <a class="brand" href="../../index.html">
-                <img src="../../media/logo.svg" alt="WebTools Logo" class="logo">
-                <span class="site-title">WebTools</span>
-            </a>
-            <nav class="nav-menu">
-                <a href="../../index.html">Home</a>
-                <a href="../../PrivacyPolicy/">Privacy</a>
-                <a href="../../TermsOfService/">Terms</a>
-            </nav>
-        </div>
-    </header>
-    <main class="tool-main">
-        <section class="tool-section">
-            <h1>HEX &lt;-&gt; RGB Converter</h1>
-            <p>Convert between HEX and RGB color formats quickly.</p>
-            <input type="text" id="hexInput" placeholder="#RRGGBB" style="width:120px;">
-            <button onclick="hexToRgb()">HEX to RGB</button>
-            <div id="rgbResult" style="margin-top:1em;"></div>
-            <input type="text" id="rgbInput" placeholder="R,G,B" style="width:120px;">
-            <button onclick="rgbToHex()">RGB to HEX</button>
-            <div id="hexResult" style="margin-top:1em;"></div>
-        </section>
-    </main>
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-left">
-                <img src="../../media/logo.svg" alt="WebTools Logo" class="footer-logo">
-                <div class="footer-content">
-                    <span class="footer-title">WebTools &copy; 2025</span>
-                    <span class="footer-desc">A collection of simple, secure browser-based tools.</span>
-                </div>
-            </div>
-            <div class="footer-links">
-                <a href="../../Contact/">Contact</a>
-                <a href="../../PrivacyPolicy/">Privacy Policy</a>
-                <a href="../../TermsOfService/">Terms of Service</a>
-            </div>
-        </div>
-    </footer>
-    <script>
-        function hexToRgb() {
-            var hex = document.getElementById('hexInput').value.replace('#', '');
-            if (hex.length !== 6) {
-                document.getElementById('rgbResult').textContent = 'Invalid HEX.';
-                return;
-            }
-            var r = parseInt(hex.substring(0, 2), 16);
-            var g = parseInt(hex.substring(2, 4), 16);
-            var b = parseInt(hex.substring(4, 6), 16);
-            document.getElementById('rgbResult').textContent = 'RGB: ' + r + ', ' + g + ', ' + b;
-        }
-        function rgbToHex() {
-            var rgb = document.getElementById('rgbInput').value.split(',');
-            if (rgb.length !== 3) {
-                document.getElementById('hexResult').textContent = 'Invalid RGB.';
-                return;
-            }
-            var r = parseInt(rgb[0]);
-            var g = parseInt(rgb[1]);
-            var b = parseInt(rgb[2]);
-            if (isNaN(r) || isNaN(g) || isNaN(b)) {
-                document.getElementById('hexResult').textContent = 'Invalid RGB.';
-                return;
-            }
-            var hex = '#' + [r, g, b].map(x => x.toString(16).padStart(2, '0')).join('');
-            document.getElementById('hexResult').textContent = 'HEX: ' + hex;
-        }
-    </script>
+	<div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
+	<header class="site-header">
+		<div class="nav-container">
+			<a class="brand" href="../../index.html">
+				<img src="../../media/logo.svg" alt="WebTools Logo" class="logo">
+				<span class="site-title">WebTools</span>
+			</a>
+			<nav class="nav-menu">
+				<a href="../../index.html">Home</a>
+				<a href="../../PrivacyPolicy/">Privacy</a>
+				<a href="../../TermsOfService/">Terms</a>
+			</nav>
+		</div>
+	</header>
+	<main class="tool-main">
+		<section class="tool-section">
+			<h1>HEX &lt;-&gt; RGB Converter</h1>
+			<p>Convert between HEX and RGB color formats quickly.</p>
+			<input type="text" id="hexInput" placeholder="#RRGGBB" style="width:120px;">
+			<button onclick="hexToRgb()">HEX to RGB</button>
+			<div id="rgbResult" style="margin-top:1em;"></div>
+			<input type="text" id="rgbInput" placeholder="R,G,B" style="width:120px;">
+			<button onclick="rgbToHex()">RGB to HEX</button>
+			<div id="hexResult" style="margin-top:1em;"></div>
+		</section>
+	</main>
+	<footer class="site-footer">
+		<div class="footer-container">
+			<div class="footer-left">
+				<img src="../../media/logo.svg" alt="WebTools Logo" class="footer-logo">
+				<div class="footer-content">
+					<span class="footer-title">WebTools &copy; 2025</span>
+					<span class="footer-desc">A collection of simple, secure browser-based tools.</span>
+				</div>
+			</div>
+			<div class="footer-links">
+				<a href="../../Contact/">Contact</a>
+				<a href="../../PrivacyPolicy/">Privacy Policy</a>
+				<a href="../../TermsOfService/">Terms of Service</a>
+			</div>
+		</div>
+	</footer>
+	<script src="script.js"></script>
 </body>
 
 </html>

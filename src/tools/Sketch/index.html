@@ -2,64 +2,49 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Sketch — WebTools</title>
-    <meta name="description" content="Simple sketching canvas.">
-    <meta name="keywords" content="sketch, drawing, canvas, browser tool">
-    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
-    <link rel="stylesheet" href="../../style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
-        crossorigin="anonymous"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Sketch — WebTools</title>
+	<meta name="description" content="Simple sketching canvas.">
+	<meta name="keywords" content="sketch, drawing, canvas, browser tool">
+	<link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+	<link rel="stylesheet" href="../../style.css">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
-    <header class="site-header">
-        <div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo"
-                    alt="WebTools"><span class="site-title">WebTools</span></a>
-            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
-                    href="../../TermsOfService/">Terms</a></nav>
-        </div>
-    </header>
-    <main class="container">
-        <section class="tool-grid">
-            <div class="tool-panel">
-                <div class="tool-ui">
-                    <h1>Sketch</h1>
-                    <div style="display:flex;gap:.5rem"><input id="color" type="color" value="#ff0000"><input id="size"
-                            type="range" min="1" max="60" value="6"><button id="clear" class="tool-btn">Clear</button><a
-                            id="save" class="tool-btn primary" style="display:none">Save</a></div>
-                    <div style="margin-top:1rem"><canvas id="c" width="800" height="400"
-                            style="border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.08);max-width:100%"></canvas>
-                    </div>
-                </div>
-            </div>
-            <aside class="tool-panel">
-                <div class="tool-ui"><label class="muted-small">Tip</label>
-                    <p class="muted">Draw with pointer or mouse. Save as PNG when ready.</p>
-                </div>
-            </aside>
-        </section>
-    </main>
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
-                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
-                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
-            </div>
-            <div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy
-                    Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
-        </div>
-    </footer>
-    <script>
-        const c = document.getElementById('c'); const ctx = c.getContext('2d'); let drawing = false; let lastX = 0, lastY = 0; function toLocal(e) { const rect = c.getBoundingClientRect(); return { x: (e.clientX - rect.left) * (c.width / rect.width), y: (e.clientY - rect.top) * (c.height / rect.height) } }
-        c.addEventListener('pointerdown', e => { drawing = true; const p = toLocal(e); lastX = p.x; lastY = p.y; });
-        c.addEventListener('pointermove', e => { if (!drawing) return; const p = toLocal(e); ctx.strokeStyle = document.getElementById('color').value; ctx.lineWidth = document.getElementById('size').value; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(lastX, lastY); ctx.lineTo(p.x, p.y); ctx.stroke(); lastX = p.x; lastY = p.y; document.getElementById('save').style.display = 'inline-flex'; });
-        ['pointerup', 'pointerleave'].forEach(ev => c.addEventListener(ev, () => drawing = false));
-        document.getElementById('clear').addEventListener('click', () => { ctx.clearRect(0, 0, c.width, c.height); document.getElementById('save').style.display = 'none'; });
-        document.getElementById('save').addEventListener('click', () => { const url = c.toDataURL('image/png'); document.getElementById('save').href = url; document.getElementById('save').download = 'sketch.png'; });
-    </script>
+	<div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
+	<header class="site-header">
+		<div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo" alt="WebTools"><span class="site-title">WebTools</span></a>
+			<nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a href="../../TermsOfService/">Terms</a></nav>
+		</div>
+	</header>
+	<main class="container">
+		<section class="tool-grid">
+			<div class="tool-panel">
+				<div class="tool-ui">
+					<h1>Sketch</h1>
+					<div style="display:flex;gap:.5rem"><input id="color" type="color" value="#ff0000"><input id="size" type="range" min="1" max="60" value="6"><button id="clear" class="tool-btn">Clear</button><a id="save" class="tool-btn primary" style="display:none">Save</a></div>
+					<div style="margin-top:1rem"><canvas id="c" width="800" height="400" style="border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,.08);max-width:100%"></canvas>
+					</div>
+				</div>
+			</div>
+			<aside class="tool-panel">
+				<div class="tool-ui"><label class="muted-small">Tip</label>
+					<p class="muted">Draw with pointer or mouse. Save as PNG when ready.</p>
+				</div>
+			</aside>
+		</section>
+	</main>
+	<footer class="site-footer">
+		<div class="footer-container">
+			<div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
+				<div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+			</div>
+			<div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
+		</div>
+	</footer>
+	<script src="script.js"></script>
 </body>
 
 </html>

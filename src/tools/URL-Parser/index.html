@@ -2,51 +2,28 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>URL Parser — WebTools</title>
-    <meta name="description"
-        content="Parse and analyze URLs instantly. Free online URL parser for web developers and SEO.">
-    <meta name="keywords" content="url parser, url analyzer, online tool, web development, seo, parse url">
-    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../style.css">
+	<meta charset="UTF-8">
+	<title>URL Parser — WebTools</title>
+	<meta name="description" content="Parse and analyze URLs instantly. Free online URL parser for web developers and SEO.">
+	<meta name="keywords" content="url parser, url analyzer, online tool, web development, seo, parse url">
+	<link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
-    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
-    <header>
-        <a href="../../index.html"><img src="../../media/logo.svg" alt="WebTools Logo"
-                style="height:32px;vertical-align:middle;"></a>
-        <h1>URL Parser</h1>
-    </header>
-    <main>
-        <p>Break a URL into its components and inspect query params.</p>
-        <input type="text" id="urlInput" placeholder="Enter URL..." style="width:100%;max-width:400px;">
-        <button onclick="parseUrl()">Parse</button>
-        <div id="urlResult" style="margin-top:1em;word-break:break-all;"></div>
-        <script>
-            function parseUrl() {
-                try {
-                    const url = new URL(document.getElementById('urlInput').value);
-                    let html = `<b>Protocol:</b> ${url.protocol}<br>`;
-                    html += `<b>Host:</b> ${url.host}<br>`;
-                    html += `<b>Path:</b> ${url.pathname}<br>`;
-                    html += `<b>Query:</b> ${url.search}<br>`;
-                    html += `<b>Hash:</b> ${url.hash}<br>`;
-                    if (url.searchParams && url.searchParams.toString()) {
-                        html += `<b>Params:</b><br>`;
-                        url.searchParams.forEach((v, k) => {
-                            html += `${k}: ${v}<br>`;
-                        });
-                    }
-                    document.getElementById('urlResult').innerHTML = html;
-                } catch (e) {
-                    document.getElementById('urlResult').textContent = 'Invalid URL';
-                }
-            }
-        </script>
-    </main>
+	<div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
+	<header>
+		<a href="../../index.html"><img src="../../media/logo.svg" alt="WebTools Logo" style="height:32px;vertical-align:middle;"></a>
+		<h1>URL Parser</h1>
+	</header>
+	<main>
+		<p>Break a URL into its components and inspect query params.</p>
+		<input type="text" id="urlInput" placeholder="Enter URL..." style="width:100%;max-width:400px;">
+		<button onclick="parseUrl()">Parse</button>
+		<div id="urlResult" style="margin-top:1em;word-break:break-all;"></div>
+		<script src="script.js"></script>
+	</main>
 </body>
 
 </html>

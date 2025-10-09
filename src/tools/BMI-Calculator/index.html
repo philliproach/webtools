@@ -2,58 +2,49 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>BMI Calculator — WebTools</title>
-    <meta name="description" content="Calculate Body Mass Index (BMI) quickly.">
-    <meta name="keywords" content="bmi, calculator, body mass index, browser tool">
-    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../style.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>BMI Calculator — WebTools</title>
+	<meta name="description" content="Calculate Body Mass Index (BMI) quickly.">
+	<meta name="keywords" content="bmi, calculator, body mass index, browser tool">
+	<link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
-    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
-    <header class="site-header">
-        <div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo"
-                    alt="WebTools"><span class="site-title">WebTools</span></a>
-            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
-                    href="../../TermsOfService/">Terms</a></nav>
-        </div>
-    </header>
-    <main class="container">
-        <section class="tool-grid">
-            <div class="tool-panel">
-                <div class="tool-ui">
-                    <h1>BMI Calculator</h1><label class="muted-small">Weight (kg)</label><input id="weight"
-                        class="tool-input" type="number" value="70"><label class="muted-small">Height (cm)</label><input
-                        id="height" class="tool-input" type="number" value="170">
-                    <div style="margin-top:.5rem"><button id="calc" class="tool-btn primary">Calculate BMI</button>
-                    </div>
-                    <div id="out" style="margin-top:.5rem" class="muted-small"></div>
-                </div>
-            </div>
-            <aside class="tool-panel">
-                <div class="tool-ui"><label class="muted-small">Note</label>
-                    <p class="muted">BMI is a general estimate and not a medical diagnosis.</p>
-                </div>
-            </aside>
-        </section>
-    </main>
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
-                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
-                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
-            </div>
-            <div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy
-                    Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
-        </div>
-    </footer>
-    <script>
-        document.getElementById('calc').addEventListener('click', () => { const w = parseFloat(document.getElementById('weight').value) || 0; const h = parseFloat(document.getElementById('height').value) || 0; const m = h / 100; const bmi = w / (m * m); let cat = ''; if (bmi < 18.5) cat = 'Underweight'; else if (bmi < 25) cat = 'Normal'; else if (bmi < 30) cat = 'Overweight'; else cat = 'Obese'; document.getElementById('out').innerHTML = `BMI: ${bmi.toFixed(1)} — ${cat}`; });
-    </script>
+	<div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
+	<header class="site-header">
+		<div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo" alt="WebTools"><span class="site-title">WebTools</span></a>
+			<nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a href="../../TermsOfService/">Terms</a></nav>
+		</div>
+	</header>
+	<main class="container">
+		<section class="tool-grid">
+			<div class="tool-panel">
+				<div class="tool-ui">
+					<h1>BMI Calculator</h1><label class="muted-small">Weight (kg)</label><input id="weight" class="tool-input" type="number" value="70"><label class="muted-small">Height (cm)</label><input id="height" class="tool-input" type="number" value="170">
+					<div style="margin-top:.5rem"><button id="calc" class="tool-btn primary">Calculate BMI</button>
+					</div>
+					<div id="out" style="margin-top:.5rem" class="muted-small"></div>
+				</div>
+			</div>
+			<aside class="tool-panel">
+				<div class="tool-ui"><label class="muted-small">Note</label>
+					<p class="muted">BMI is a general estimate and not a medical diagnosis.</p>
+				</div>
+			</aside>
+		</section>
+	</main>
+	<footer class="site-footer">
+		<div class="footer-container">
+			<div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
+				<div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+			</div>
+			<div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
+		</div>
+	</footer>
+	<script src="script.js"></script>
 </body>
 
 </html>

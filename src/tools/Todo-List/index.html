@@ -2,58 +2,48 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Todo List — WebTools</title>
-    <meta name="description" content="Simple todo list with localStorage.">
-    <meta name="keywords" content="todo, list, tasks, browser tool">
-    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../style.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Todo List — WebTools</title>
+	<meta name="description" content="Simple todo list with localStorage.">
+	<meta name="keywords" content="todo, list, tasks, browser tool">
+	<link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
-    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
-    <header class="site-header">
-        <div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo"
-                    alt="WebTools"><span class="site-title">WebTools</span></a>
-            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
-                    href="../../TermsOfService/">Terms</a></nav>
-        </div>
-    </header>
-    <main class="container">
-        <section class="tool-grid">
-            <div class="tool-panel">
-                <div class="tool-ui">
-                    <h1>Todo List</h1>
-                    <div style="display:flex;gap:.5rem"><input id="task" class="tool-input"
-                            placeholder="New task"><button id="add" class="tool-btn primary">Add</button></div>
-                    <div id="tasks" style="margin-top:1rem"></div>
-                </div>
-            </div>
-            <aside class="tool-panel">
-                <div class="tool-ui"><label class="muted-small">Local storage</label>
-                    <p class="muted">Tasks are stored only in your browser. Clear via the UI when done.</p>
-                </div>
-            </aside>
-        </section>
-    </main>
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
-                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
-                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
-            </div>
-            <div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy
-                    Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
-        </div>
-    </footer>
-    <script>
-        function render() { const list = JSON.parse(localStorage.getItem('webtools-todos') || '[]'); const el = document.getElementById('tasks'); el.innerHTML = list.map(t => `<div style="display:flex;align-items:center;justify-content:space-between;padding:.5rem;border:1px solid rgba(0,0,0,.06);border-radius:6px;margin-bottom:.5rem"><label style="display:flex;align-items:center;gap:.5rem"><input type="checkbox" data-id="${t.id}" ${t.done ? 'checked' : ''}> <span style="text-decoration:${t.done ? 'line-through' : ''}">${escapeHtml(t.text)}</span></label><div><button data-id="${t.id}" class="del tool-btn">Delete</button></div></div>`).join(''); document.querySelectorAll('.del').forEach(b => b.addEventListener('click', e => { const id = e.target.dataset.id; let arr = JSON.parse(localStorage.getItem('webtools-todos') || '[]'); arr = arr.filter(x => x.id != id); localStorage.setItem('webtools-todos', JSON.stringify(arr)); render(); })); document.querySelectorAll('input[type=checkbox]').forEach(cb => cb.addEventListener('change', e => { const id = e.target.dataset.id; const arr = JSON.parse(localStorage.getItem('webtools-todos') || '[]'); const it = arr.find(x => x.id == id); if (it) { it.done = e.target.checked; localStorage.setItem('webtools-todos', JSON.stringify(arr)); render(); } })); }
-        function escapeHtml(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
-        document.getElementById('add').addEventListener('click', () => { const t = document.getElementById('task').value.trim(); if (!t) return; const arr = JSON.parse(localStorage.getItem('webtools-todos') || '[]'); arr.unshift({ id: Date.now(), text: t, done: false }); localStorage.setItem('webtools-todos', JSON.stringify(arr)); document.getElementById('task').value = ''; render(); }); render();
-    </script>
+	<div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
+	<header class="site-header">
+		<div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo" alt="WebTools"><span class="site-title">WebTools</span></a>
+			<nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a href="../../TermsOfService/">Terms</a></nav>
+		</div>
+	</header>
+	<main class="container">
+		<section class="tool-grid">
+			<div class="tool-panel">
+				<div class="tool-ui">
+					<h1>Todo List</h1>
+					<div style="display:flex;gap:.5rem"><input id="task" class="tool-input" placeholder="New task"><button id="add" class="tool-btn primary">Add</button></div>
+					<div id="tasks" style="margin-top:1rem"></div>
+				</div>
+			</div>
+			<aside class="tool-panel">
+				<div class="tool-ui"><label class="muted-small">Local storage</label>
+					<p class="muted">Tasks are stored only in your browser. Clear via the UI when done.</p>
+				</div>
+			</aside>
+		</section>
+	</main>
+	<footer class="site-footer">
+		<div class="footer-container">
+			<div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
+				<div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+			</div>
+			<div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
+		</div>
+	</footer>
+	<script src="script.js"></script>
 </body>
 
 </html>

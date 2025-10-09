@@ -2,59 +2,48 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Readability Analyzer — WebTools</title>
-    <meta name="description" content="Analyze text readability (Flesch-Kincaid).">
-    <meta name="keywords" content="readability, analyzer, flesch-kincaid, browser tool">
-    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../style.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Readability Analyzer — WebTools</title>
+	<meta name="description" content="Analyze text readability (Flesch-Kincaid).">
+	<meta name="keywords" content="readability, analyzer, flesch-kincaid, browser tool">
+	<link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
-    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
-    <header class="site-header">
-        <div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo"
-                    alt="WebTools"><span class="site-title">WebTools</span></a>
-            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
-                    href="../../TermsOfService/">Terms</a></nav>
-        </div>
-    </header>
-    <main class="container">
-        <section class="tool-grid">
-            <div class="tool-panel">
-                <div class="tool-ui">
-                    <h1>Readability Analyzer</h1><textarea id="txt" class="tool-textarea"
-                        placeholder="Paste text here..."></textarea>
-                    <div style="margin-top:.5rem"><button id="run" class="tool-btn primary">Analyze</button></div>
-                    <div id="out" style="margin-top:.5rem" class="muted-small"></div>
-                </div>
-            </div>
-            <aside class="tool-panel">
-                <div class="tool-ui"><label class="muted-small">About</label>
-                    <p class="muted">Estimates grade level and reading time using word/syllable heuristics. Works
-                        offline in your browser.</p>
-                </div>
-            </aside>
-        </section>
-    </main>
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
-                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
-                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
-            </div>
-            <div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy
-                    Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
-        </div>
-    </footer>
-    <script>
-        function countSyllables(word) { word = word.toLowerCase(); if (word.length <= 3) return 1; word = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, ''); word = word.replace(/^y/, ''); const matches = word.match(/[aeiouy]{1,2}/g); return matches ? matches.length : 1; }
-        function words(text) { return text.trim().split(/\s+/).filter(Boolean); }
-        document.getElementById('run').addEventListener('click', () => { const t = document.getElementById('txt').value || ''; const w = words(t); const wordCount = w.length; const sentenceCount = (t.match(/[.!?]+/g) || []).length || 1; const syllables = w.reduce((s, wd) => s + countSyllables(wd), 0); const flesch = 206.835 - 1.015 * (wordCount / sentenceCount) - 84.6 * (syllables / wordCount || 0); const grade = 0.39 * (wordCount / sentenceCount) + 11.8 * (syllables / wordCount || 0) - 15.59; const mins = Math.max(1, Math.round(wordCount / 200)); document.getElementById('out').innerHTML = `<div>Words: ${wordCount}</div><div>Sentences: ${sentenceCount}</div><div>Syllables: ${syllables}</div><div>Flesch Reading Ease: ${flesch.toFixed(1)}</div><div>Grade Level (approx): ${grade.toFixed(1)}</div><div>Est. reading time: ${mins} min</div>`; });
-    </script>
+	<div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
+	<header class="site-header">
+		<div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo" alt="WebTools"><span class="site-title">WebTools</span></a>
+			<nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a href="../../TermsOfService/">Terms</a></nav>
+		</div>
+	</header>
+	<main class="container">
+		<section class="tool-grid">
+			<div class="tool-panel">
+				<div class="tool-ui">
+					<h1>Readability Analyzer</h1><textarea id="txt" class="tool-textarea" placeholder="Paste text here..."></textarea>
+					<div style="margin-top:.5rem"><button id="run" class="tool-btn primary">Analyze</button></div>
+					<div id="out" style="margin-top:.5rem" class="muted-small"></div>
+				</div>
+			</div>
+			<aside class="tool-panel">
+				<div class="tool-ui"><label class="muted-small">About</label>
+					<p class="muted">Estimates grade level and reading time using word/syllable heuristics. Works offline in your browser.</p>
+				</div>
+			</aside>
+		</section>
+	</main>
+	<footer class="site-footer">
+		<div class="footer-container">
+			<div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
+				<div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+			</div>
+			<div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
+		</div>
+	</footer>
+	<script src="script.js"></script>
 </body>
 
 </html>

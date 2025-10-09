@@ -1,0 +1,29 @@
+	body {
+		background: #fff;
+		color: #222;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		body {
+			background: #18181b;
+			color: #f3f3f3;
+		}
+
+		.tool-section {
+			background: #23232a !important;
+			color: #f3f3f3 !important;
+		}
+
+		input,
+		button,
+		div#ytResult {
+			background: #18181b !important;
+			color: #f3f3f3 !important;
+			border-color: #333 !important;
+		}
+
+		label,
+		h1 {
+			color: #f3f3f3 !important;
+		}
+	}

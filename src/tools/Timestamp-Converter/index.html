@@ -2,67 +2,55 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Timestamp Converter — WebTools</title>
-    <meta name="description" content="Convert Unix timestamps to human dates and back.">
-    <meta name="keywords" content="timestamp, converter, unix, date, browser tool">
-    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../style.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Timestamp Converter — WebTools</title>
+	<meta name="description" content="Convert Unix timestamps to human dates and back.">
+	<meta name="keywords" content="timestamp, converter, unix, date, browser tool">
+	<link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
-    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
-    <header class="site-header">
-        <div class="nav-container">
-            <a class="brand" href="../../"><img src="../../media/logo.svg" class="logo" alt="WebTools"><span
-                    class="site-title">WebTools</span></a>
-            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
-                    href="../../TermsOfService/">Terms</a></nav>
-        </div>
-    </header>
-    <main class="container" style="padding-top:2.25rem;padding-bottom:2.25rem;">
-        <section class="tool-grid">
-            <div class="tool-panel">
-                <div class="tool-ui">
-                    <h1>Timestamp Converter</h1>
-                    <p class="muted">Convert Unix timestamps (seconds or ms) to readable dates and vice versa.</p>
-                    <label class="muted-small">Timestamp</label>
-                    <input id="ts" class="tool-input" placeholder="1633024800 or 1633024800000">
-                    <div class="tool-actions" style="margin-top:.5rem"><button id="toDate" class="tool-btn primary">→
-                            Date</button><button id="now" class="tool-btn">Now</button></div>
-                    <pre id="out" class="preview" style="margin-top:.6rem;min-height:60px"></pre>
-                </div>
-            </div>
-            <aside class="tool-panel">
-                <div class="tool-ui">
-                    <label class="muted-small">Date → Timestamp</label>
-                    <input id="dateIn" type="datetime-local" class="tool-input">
-                    <div style="margin-top:.5rem"><button id="toTs" class="tool-btn primary">→ Timestamp (s)</button>
-                    </div>
-                </div>
-            </aside>
-        </section>
-    </main>
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
-                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
-                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
-            </div>
-            <div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy
-                    Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
-        </div>
-    </footer>
-    <script>
-        document.getElementById('toDate').addEventListener('click', () => {
-            const v = document.getElementById('ts').value.trim(); if (!v) return; let n = Number(v); if (String(v).length === 10) n = n * 1000; const d = new Date(n); document.getElementById('out').textContent = d.toString();
-        });
-        document.getElementById('now').addEventListener('click', () => { const n = Date.now(); document.getElementById('out').textContent = `ms: ${n}\ns: ${Math.floor(n / 1000)}`; });
-        document.getElementById('toTs').addEventListener('click', () => { const v = document.getElementById('dateIn').value; if (!v) return; const t = new Date(v).getTime(); document.getElementById('out').textContent = `ms: ${t}\ns: ${Math.floor(t / 1000)}`; });
-    </script>
+	<div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
+	<header class="site-header">
+		<div class="nav-container">
+			<a class="brand" href="../../"><img src="../../media/logo.svg" class="logo" alt="WebTools"><span class="site-title">WebTools</span></a>
+			<nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a href="../../TermsOfService/">Terms</a></nav>
+		</div>
+	</header>
+	<main class="container" style="padding-top:2.25rem;padding-bottom:2.25rem;">
+		<section class="tool-grid">
+			<div class="tool-panel">
+				<div class="tool-ui">
+					<h1>Timestamp Converter</h1>
+					<p class="muted">Convert Unix timestamps (seconds or ms) to readable dates and vice versa.</p>
+					<label class="muted-small">Timestamp</label>
+					<input id="ts" class="tool-input" placeholder="1633024800 or 1633024800000">
+					<div class="tool-actions" style="margin-top:.5rem"><button id="toDate" class="tool-btn primary">→ Date</button><button id="now" class="tool-btn">Now</button></div>
+					<pre id="out" class="preview" style="margin-top:.6rem;min-height:60px"></pre>
+				</div>
+			</div>
+			<aside class="tool-panel">
+				<div class="tool-ui">
+					<label class="muted-small">Date → Timestamp</label>
+					<input id="dateIn" type="datetime-local" class="tool-input">
+					<div style="margin-top:.5rem"><button id="toTs" class="tool-btn primary">→ Timestamp (s)</button>
+					</div>
+				</div>
+			</aside>
+		</section>
+	</main>
+	<footer class="site-footer">
+		<div class="footer-container">
+			<div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
+				<div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+			</div>
+			<div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
+		</div>
+	</footer>
+	<script src="script.js"></script>
 </body>
 
 </html>

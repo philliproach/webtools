@@ -2,106 +2,74 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Youtube Downloader — WebTools</title>
-    <meta name="description"
-        content="Download Youtube videos to your device instantly. Free online Youtube downloader, client-side fetch, no server required.">
-    <meta name="keywords" content="youtube downloader, video downloader, online tool, client-side, fetch video">
-    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
-    <link rel="stylesheet" href="../../style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
-        crossorigin="anonymous"></script>
-    <style>
-        body {
-            background: #fff;
-            color: #222;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            body {
-                background: #18181b;
-                color: #f3f3f3;
-            }
-
-            .tool-section {
-                background: #23232a !important;
-                color: #f3f3f3 !important;
-            }
-
-            input,
-            button,
-            div#ytResult {
-                background: #18181b !important;
-                color: #f3f3f3 !important;
-                border-color: #333 !important;
-            }
-
-            label,
-            h1 {
-                color: #f3f3f3 !important;
-            }
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Youtube Downloader — WebTools</title>
+	<meta name="description" content="Download Youtube videos to your device instantly. Free online Youtube downloader, client-side fetch, no server required.">
+	<meta name="keywords" content="youtube downloader, video downloader, online tool, client-side, fetch video">
+	<link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+	<link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="style.css">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
-    <header class="site-header">
-        <div class="nav-container">
-            <a class="brand" href="../../index.html">
-                <img src="../../media/logo.svg" alt="WebTools Logo" class="logo">
-                <span class="site-title">WebTools</span>
-            </a>
-            <nav class="nav-menu">
-                <a href="../../index.html">Home</a>
-                <a href="../../PrivacyPolicy/">Privacy</a>
-                <a href="../../TermsOfService/">Terms</a>
-            </nav>
-        </div>
-    </header>
-    <main class="tool-main">
-        <section class="tool-section"
-            style="max-width:500px;margin:2em auto;padding:2em;background:#fff;border-radius:16px;box-shadow:0 2px 16px 0 rgba(0,0,0,0.07);text-align:center;">
-            <h1 style="margin-bottom:0.5em;font-size:2em;color:#222;">Youtube Downloader</h1>
-            <p style="color:#555;margin-bottom:1.5em;">Download Youtube videos to your device.<br><span
-                    style="color:#c00;font-weight:500;">Note:</span> Most browsers block direct downloads due to CORS
-                and Youtube restrictions. This tool will attempt to fetch the video file, but may not work for all
-                videos.</p>
-            <input type="text" id="ytUrl" placeholder="Paste Youtube video URL..."
-                style="width:100%;max-width:400px;padding:0.75em 1em;border-radius:8px;border:1px solid #ddd;font-size:1em;margin-bottom:1em;">
-            <button onclick="downloadYoutube()"
-                style="padding:0.7em 2em;border-radius:8px;background:#ef4444;color:#fff;font-weight:600;border:none;box-shadow:0 1px 4px 0 rgba(0,0,0,0.07);cursor:pointer;">Download</button>
-            <div id="ytResult" style="margin-top:1.5em;font-size:1.1em;color:#333;"></div>
-        </section>
-    </main>
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-left">
-                <img src="../../media/logo.svg" alt="WebTools Logo" class="footer-logo">
-                <div class="footer-content">
-                    <span class="footer-title">WebTools &copy; 2025</span>
-                    <span class="footer-desc">A collection of simple, secure browser-based tools.</span>
-                </div>
-            </div>
-            <div class="footer-links">
-                <a href="../../Contact/">Contact</a>
-                <a href="../../PrivacyPolicy/">Privacy Policy</a>
-                <a href="../../TermsOfService/">Terms of Service</a>
-            </div>
-        </div>
-    </footer>
-    <script>
-        function downloadYoutube() {
-            const url = document.getElementById('ytUrl').value;
-            if (!url) return;
-            document.getElementById('ytResult').textContent = 'Attempting to download...';
-            // This is a placeholder. Direct download is blocked by Youtube/CORS. Suggest using third-party services.
-            setTimeout(() => {
-                document.getElementById('ytResult').innerHTML = 'Direct download is blocked by Youtube. <br>Try <a href="https://yt1s.com" target="_blank">yt1s.com</a> or <a href="https://y2mate.com" target="_blank">y2mate.com</a>.';
-            }, 1500);
-        }
-    </script>
+	<div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
+	<header class="site-header">
+		<div class="nav-container">
+			<a class="brand" href="../../index.html">
+				<img src="../../media/logo.svg" alt="WebTools Logo" class="logo">
+				<span class="site-title">WebTools</span>
+			</a>
+			<nav class="nav-menu">
+				<a href="../../index.html">Home</a>
+				<a href="../../PrivacyPolicy/">Privacy</a>
+				<a href="../../TermsOfService/">Terms</a>
+			</nav>
+		</div>
+	</header>
+	<main class="tool-main">
+		<section class="tool-section" style="max-width:720px;margin:2em auto;padding:1.25rem;background:var(--surface-overlay);border-radius:12px;">
+			<h1>YouTube — Download Helper</h1>
+			<p class="muted">This page helps you build a local yt-dlp command to download a YouTube video to your own device. This site won't download videos for you. You must run the generated command locally. Do not use downloaded content in ways that violate copyright or the service terms.</p>
+			<label>Video URL</label>
+			<input id="ytUrl" type="url" placeholder="https://youtube.com/watch?v=..." style="width:100%;padding:.6rem;border-radius:8px;border:1px solid var(--card-border);margin-bottom:.5rem">
+			<div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.5rem;align-items:center">
+				<label style="white-space:nowrap">Format</label>
+				<select id="ytFormat">
+					<option value="best">Best video</option>
+					<option value="mp4">MP4 (best)</option>
+					<option value="bestaudio">Audio only</option>
+				</select>
+				<label style="white-space:nowrap">Output filename</label>
+				<input id="ytOut" placeholder="%(title)s.%(ext)s" style="min-width:12rem;padding:.4rem;border-radius:6px;border:1px solid var(--card-border)">
+			</div>
+			<div style="display:flex;gap:.5rem;margin-bottom:.75rem">
+				<button id="genYt" class="tool-btn">Generate Command</button>
+				<button id="copyYt" class="tool-btn">Copy</button>
+			</div>
+			<label>Command (run locally)</label>
+			<textarea id="ytCmd" readonly style="width:100%;min-height:120px;padding:.6rem;border-radius:8px;border:1px solid var(--card-border);font-family:monospace"></textarea>
+			<div class="muted" style="margin-top:.6rem">Need yt-dlp? Visit <a href="https://github.com/yt-dlp/yt-dlp" target="_blank">yt-dlp on GitHub</a>. Always respect copyright.</div>
+		</section>
+	</main>
+	<footer class="site-footer">
+		<div class="footer-container">
+			<div class="footer-left">
+				<img src="../../media/logo.svg" alt="WebTools Logo" class="footer-logo">
+				<div class="footer-content">
+					<span class="footer-title">WebTools &copy; 2025</span>
+					<span class="footer-desc">A collection of simple, secure browser-based tools.</span>
+				</div>
+			</div>
+			<div class="footer-links">
+				<a href="../../Contact/">Contact</a>
+				<a href="../../PrivacyPolicy/">Privacy Policy</a>
+				<a href="../../TermsOfService/">Terms of Service</a>
+			</div>
+		</div>
+	</footer>
+	<script src="script.js"></script>
 </body>
 
 </html>

@@ -2,135 +2,66 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Python Editor Online — WebTools</title>
-    <meta name="description" content="Edit and run Python code in your browser using Pyodide.">
-    <meta name="keywords" content="python, editor, online, pyodide, browser tool">
-    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
-    <link rel="stylesheet" href="../../style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
-        crossorigin="anonymous"></script>
-    <style>
-        body {
-            background: #fff;
-            color: #222;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            body {
-                background: #18181b;
-                color: #f3f3f3;
-            }
-
-            .tool-section {
-                background: #23232a !important;
-                color: #f3f3f3 !important;
-            }
-
-            textarea,
-            pre {
-                background: #18181b !important;
-                color: #f3f3f3 !important;
-                border-color: #333 !important;
-            }
-
-            label,
-            h1 {
-                color: #f3f3f3 !important;
-            }
-        }
-    </style>
-    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.0/full/pyodide.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Python Editor Online — WebTools</title>
+	<meta name="description" content="Edit and run Python code in your browser using Pyodide.">
+	<meta name="keywords" content="python, editor, online, pyodide, browser tool">
+	<link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+	<link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="style.css">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/pyodide/v0.24.0/full/pyodide.js"></script>
 </head>
 
 <body>
-    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
-    <header class="site-header">
-        <div class="nav-container">
-            <a class="brand" href="../../index.html">
-                <img src="../../media/logo.svg" alt="WebTools Logo" class="logo">
-                <span class="site-title">WebTools</span>
-            </a>
-            <nav class="nav-menu">
-                <a href="../../index.html">Home</a>
-                <a href="../../PrivacyPolicy/">Privacy</a>
-                <a href="../../TermsOfService/">Terms</a>
-            </nav>
-        </div>
-    </header>
-    <main class="tool-main">
-        <section class="tool-section"
-            style="max-width:900px;margin:2em auto;padding:2em;background:#fff;border-radius:16px;box-shadow:0 2px 16px 0 rgba(0,0,0,0.07);">
-            <h1 style="margin-bottom:1em;font-size:2em;color:#222;">Python Editor Online</h1>
-            <div style="display:flex;gap:2em;flex-wrap:wrap;align-items:flex-start;">
-                <div style="flex:1;min-width:300px;">
-                    <label for="pyInput" style="font-weight:600;">Python Code</label>
-                    <textarea id="pyInput"
-                        style="width:100%;height:300px;font-family:monospace;font-size:1em;padding:1em;border-radius:8px;border:1px solid #ddd;margin-top:0.5em;resize:vertical;background:#f9fafb;"
-                        placeholder="Type Python code here..."></textarea>
-                </div>
-                <div style="flex:1;min-width:300px;">
-                    <label style="font-weight:600;">Output</label>
-                    <pre id="pyOutput"
-                        style="width:100%;height:300px;border-radius:8px;border:1px solid #ddd;background:#fff;margin-top:0.5em;padding:1em;overflow:auto;font-family:monospace;font-size:1em;box-shadow:0 1px 8px 0 rgba(0,0,0,0.04);"></pre>
-                </div>
-            </div>
-            <button onclick="runPython()"
-                style="margin-top:1.5em;padding:0.7em 2em;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;border:none;box-shadow:0 1px 4px 0 rgba(0,0,0,0.07);cursor:pointer;">Run</button>
-        </section>
-    </main>
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-left">
-                <img src="../../media/logo.svg" alt="WebTools Logo" class="footer-logo">
-                <div class="footer-content">
-                    <span class="footer-title">WebTools &copy; 2025</span>
-                    <span class="footer-desc">A collection of simple, secure browser-based tools.</span>
-                </div>
-            </div>
-            <div class="footer-links">
-                <a href="../../Contact/">Contact</a>
-                <a href="../../PrivacyPolicy/">Privacy Policy</a>
-                <a href="../../TermsOfService/">Terms of Service</a>
-            </div>
-        </div>
-    </footer>
-    <script>
-        let pyodideReady = false;
-        let pyodide;
-        async function loadPyodide() {
-            pyodide = await window.loadPyodide();
-            pyodideReady = true;
-        }
-        loadPyodide();
-        async function runPython() {
-            if (!pyodideReady) {
-                document.getElementById('pyOutput').textContent = 'Pyodide is still loading...';
-                return;
-            }
-            const code = document.getElementById('pyInput').value;
-            let output = '';
-            try {
-                // Redirect stdout and stderr
-                pyodide.setStdout({
-                    batched: (s) => { output += s; },
-                });
-                pyodide.setStderr({
-                    batched: (s) => { output += s; },
-                });
-                await pyodide.runPythonAsync(code);
-                document.getElementById('pyOutput').textContent = output;
-            } catch (e) {
-                output += e;
-                document.getElementById('pyOutput').textContent = output;
-            } finally {
-                // Reset stdout/stderr to default
-                pyodide.setStdout();
-                pyodide.setStderr();
-            }
-        }
-    </script>
+	<div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
+	<header class="site-header">
+		<div class="nav-container">
+			<a class="brand" href="../../index.html">
+				<img src="../../media/logo.svg" alt="WebTools Logo" class="logo">
+				<span class="site-title">WebTools</span>
+			</a>
+			<nav class="nav-menu">
+				<a href="../../index.html">Home</a>
+				<a href="../../PrivacyPolicy/">Privacy</a>
+				<a href="../../TermsOfService/">Terms</a>
+			</nav>
+		</div>
+	</header>
+	<main class="tool-main">
+		<section class="tool-section" style="max-width:900px;margin:2em auto;padding:2em;background:#fff;border-radius:16px;box-shadow:0 2px 16px 0 rgba(0,0,0,0.07);">
+			<h1 style="margin-bottom:1em;font-size:2em;color:#222;">Python Editor Online</h1>
+			<div style="display:flex;gap:2em;flex-wrap:wrap;align-items:flex-start;">
+				<div style="flex:1;min-width:300px;">
+					<label for="pyInput" style="font-weight:600;">Python Code</label>
+					<textarea id="pyInput" style="width:100%;height:300px;font-family:monospace;font-size:1em;padding:1em;border-radius:8px;border:1px solid #ddd;margin-top:0.5em;resize:vertical;background:#f9fafb;" placeholder="Type Python code here..."></textarea>
+				</div>
+				<div style="flex:1;min-width:300px;">
+					<label style="font-weight:600;">Output</label>
+					<pre id="pyOutput" style="width:100%;height:300px;border-radius:8px;border:1px solid #ddd;background:#fff;margin-top:0.5em;padding:1em;overflow:auto;font-family:monospace;font-size:1em;box-shadow:0 1px 8px 0 rgba(0,0,0,0.04);"></pre>
+				</div>
+			</div>
+			<button onclick="runPython()" style="margin-top:1.5em;padding:0.7em 2em;border-radius:8px;background:#6366f1;color:#fff;font-weight:600;border:none;box-shadow:0 1px 4px 0 rgba(0,0,0,0.07);cursor:pointer;">Run</button>
+		</section>
+	</main>
+	<footer class="site-footer">
+		<div class="footer-container">
+			<div class="footer-left">
+				<img src="../../media/logo.svg" alt="WebTools Logo" class="footer-logo">
+				<div class="footer-content">
+					<span class="footer-title">WebTools &copy; 2025</span>
+					<span class="footer-desc">A collection of simple, secure browser-based tools.</span>
+				</div>
+			</div>
+			<div class="footer-links">
+				<a href="../../Contact/">Contact</a>
+				<a href="../../PrivacyPolicy/">Privacy Policy</a>
+				<a href="../../TermsOfService/">Terms of Service</a>
+			</div>
+		</div>
+	</footer>
+	<script src="script.js"></script>
 </body>
 
 </html>

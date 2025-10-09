@@ -1,0 +1,63 @@
+	.ie-controls {
+		display: flex;
+		gap: .5rem;
+		flex-wrap: wrap;
+		align-items: center;
+		margin-bottom: .75rem
+	}
+
+	.ie-canvas-wrap {
+		position: relative;
+		background: var(--surface-overlay);
+		border-radius: 8px;
+		padding: 8px
+	}
+
+	#canvas {
+		max-width: 100%;
+		display: block;
+		background: transparent;
+		position: relative;
+		z-index: 1;
+		width: 100%;
+		height: auto;
+	}
+
+	#overlay {
+		position: absolute;
+		left: 8px;
+		top: 8px;
+		pointer-events: none;
+		z-index: 2;
+	}
+
+	.tool-row {
+		display: flex;
+		gap: .5rem;
+		align-items: center
+	}
+
+	.muted-note {
+		color: var(--muted)
+	}
+
+	input,
+	select,
+	textarea,
+	.tool-input,
+	input[type="range"] {
+		background: var(--surface, var(--surface-overlay));
+		color: var(--text);
+		border: 1px solid var(--card-border);
+		padding: .35rem .5rem;
+		border-radius: 6px;
+	}
+
+	input[type="color"] {
+		padding: 0;
+		height: 2rem;
+	}
+
+	input[type="range"] {
+		accent-color: var(--accent);
+	}

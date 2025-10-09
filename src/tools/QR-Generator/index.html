@@ -2,91 +2,75 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>QR Code Generator — WebTools</title>
-    <meta name="description" content="Generate QR codes from text or URLs. Client-side generation, download as PNG.">
-    <meta name="keywords" content="qr, code, generator, browser tool">
-    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../style.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>QR Code Generator — WebTools</title>
+	<meta name="description" content="Generate QR codes from text or URLs. Client-side generation, download as PNG.">
+	<meta name="keywords" content="qr, code, generator, browser tool">
+	<link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="../../style.css">
 </head>
 
 <body>
-    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
-    <header class="site-header">
-        <div class="nav-container">
-            <a class="brand" href="../../">
-                <img src="../../media/logo.svg" alt="WebTools Logo" class="logo">
-                <span class="site-title">WebTools</span>
-            </a>
-            <nav class="nav-menu">
-                <a href="../../">Home</a>
-                <a href="../../PrivacyPolicy/">Privacy</a>
-                <a href="../../TermsOfService/">Terms</a>
-            </nav>
-        </div>
-    </header>
-    <main class="container" style="padding-top:2.25rem; padding-bottom:2.25rem;">
-        <section class="tool-grid">
-            <div class="tool-panel">
-                <div class="tool-ui">
-                    <h1>QR Code Generator</h1>
-                    <p class="muted">Enter text or a URL to create a QR code.</p>
-                    <label class="muted-small">Text or URL</label>
-                    <input id="txt" class="tool-input" placeholder="https://example.com">
-                    <div class="tool-actions" style="margin-top:.5rem">
-                        <button id="gen" class="tool-btn primary">Generate</button>
-                        <button id="clear-qr" class="tool-btn ghost">Clear</button>
-                    </div>
-                </div>
-            </div>
-            <aside class="tool-panel">
-                <div class="tool-ui">
-                    <label class="muted-small">Preview</label>
-                    <div id="qr" class="preview"
-                        style="display:flex;align-items:center;justify-content:center;min-height:240px"></div>
-                    <div style="margin-top:.5rem;display:flex;gap:.5rem;">
-                        <a id="dl" class="tool-btn primary" style="display:none">Download PNG</a>
-                        <button id="copy-qr" class="tool-btn">Copy Image</button>
-                    </div>
-                </div>
-            </aside>
-        </section>
-    </main>
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-left">
-                <img src="../../media/logo.svg" alt="WebTools Logo" class="footer-logo">
-                <div class="footer-content">
-                    <span class="footer-title">WebTools &copy; 2025</span>
-                    <span class="footer-desc">A collection of simple, secure browser-based tools.</span>
-                </div>
-            </div>
-            <div class="footer-links">
-                <a href="../../Contact/">Contact</a>
-                <a href="../../PrivacyPolicy/">Privacy Policy</a>
-                <a href="../../TermsOfService/">Terms of Service</a>
-            </div>
-        </div>
-    </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
-    <script>
-        const qEl = document.getElementById('qr');
-        const q = new QRious({ element: document.createElement('canvas'), size: 360 });
-        qEl.appendChild(q.element);
-        document.getElementById('gen').addEventListener('click', () => {
-            const v = document.getElementById('txt').value || window.location.href;
-            q.set({ value: v });
-            const url = q.element.toDataURL('image/png');
-            const a = document.getElementById('dl'); a.href = url; a.download = 'qr.png'; a.style.display = 'inline-flex';
-        });
-        document.getElementById('clear-qr').addEventListener('click', () => { q.set({ value: '' }); document.getElementById('txt').value = ''; document.getElementById('dl').style.display = 'none'; });
-        document.getElementById('copy-qr').addEventListener('click', async () => {
-            const data = q.element.toDataURL('image/png'); const res = await fetch(data); const blob = await res.blob(); await navigator.clipboard.write([new ClipboardItem({ [blob.type]: blob })]); alert('Image copied to clipboard');
-        });
-    </script>
+	<div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
+	<header class="site-header">
+		<div class="nav-container">
+			<a class="brand" href="../../">
+				<img src="../../media/logo.svg" alt="WebTools Logo" class="logo">
+				<span class="site-title">WebTools</span>
+			</a>
+			<nav class="nav-menu">
+				<a href="../../">Home</a>
+				<a href="../../PrivacyPolicy/">Privacy</a>
+				<a href="../../TermsOfService/">Terms</a>
+			</nav>
+		</div>
+	</header>
+	<main class="container" style="padding-top:2.25rem; padding-bottom:2.25rem;">
+		<section class="tool-grid">
+			<div class="tool-panel">
+				<div class="tool-ui">
+					<h1>QR Code Generator</h1>
+					<p class="muted">Enter text or a URL to create a QR code.</p>
+					<label class="muted-small">Text or URL</label>
+					<input id="txt" class="tool-input" placeholder="https://example.com">
+					<div class="tool-actions" style="margin-top:.5rem">
+						<button id="gen" class="tool-btn primary">Generate</button>
+						<button id="clear-qr" class="tool-btn ghost">Clear</button>
+					</div>
+				</div>
+			</div>
+			<aside class="tool-panel">
+				<div class="tool-ui">
+					<label class="muted-small">Preview</label>
+					<div id="qr" class="preview" style="display:flex;align-items:center;justify-content:center;min-height:240px"></div>
+					<div style="margin-top:.5rem;display:flex;gap:.5rem;">
+						<a id="dl" class="tool-btn primary" style="display:none">Download PNG</a>
+						<button id="copy-qr" class="tool-btn">Copy Image</button>
+					</div>
+				</div>
+			</aside>
+		</section>
+	</main>
+	<footer class="site-footer">
+		<div class="footer-container">
+			<div class="footer-left">
+				<img src="../../media/logo.svg" alt="WebTools Logo" class="footer-logo">
+				<div class="footer-content">
+					<span class="footer-title">WebTools &copy; 2025</span>
+					<span class="footer-desc">A collection of simple, secure browser-based tools.</span>
+				</div>
+			</div>
+			<div class="footer-links">
+				<a href="../../Contact/">Contact</a>
+				<a href="../../PrivacyPolicy/">Privacy Policy</a>
+				<a href="../../TermsOfService/">Terms of Service</a>
+			</div>
+		</div>
+	</footer>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+	<script src="script.js"></script>
 </body>
 
 </html>

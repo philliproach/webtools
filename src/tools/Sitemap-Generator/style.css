@@ -1,0 +1,63 @@
+	.tool-controls {
+		display: flex;
+		flex-wrap: wrap;
+		gap: .5rem;
+		margin-bottom: 1rem
+	}
+
+	.tool-input {
+		min-width: 260px;
+		flex: 1
+	}
+
+	.result-box {
+		display: flex;
+		gap: 1rem
+	}
+
+	.result-box textarea {
+		width: 100%;
+		height: 320px;
+		font-family: monospace;
+		padding: .75rem
+	}
+
+	textarea,
+	input,
+	.tool-input {
+		background: var(--input-bg, #fff);
+		color: var(--input-fg, #111);
+		border: 1px solid var(--input-border, #ddd);
+		border-radius: 6px;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		:root {
+			--input-bg: #071021;
+			--input-fg: #e6eef6;
+			--input-border: #233040;
+		}
+
+		.muted-note,
+		.status {
+			color: #9aa6b2
+		}
+	}
+
+	.muted-note {
+		color: #666;
+		font-size: .95rem
+	}
+
+	.status {
+		margin-top: .5rem;
+		color: #666
+	}
+
+	.failed {
+		color: #b33
+	}
+
+	.success {
+		color: #085f0f
+	}
