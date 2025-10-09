@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Table Generator — WebTools</title>
+    <meta name="description"
+        content="Generate editable HTML tables, CSV, Markdown, JSON and simple bar charts. Create tables, edit cells, export and copy results.">
+    <meta name="keywords"
+        content="table generator, html table, markdown table, csv, export table, table editor, chart, bar chart">
+    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .tg-controls {
+            display: flex;
+            gap: .5rem;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: .75rem
+        }
+
+        .tg-grid {
+            margin-top: 1rem
+        }
+
+        .tg-table {
+            width: 100%;
+            border-collapse: collapse
+        }
+
+        .tg-table td,
+        .tg-table th {
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            padding: .5rem;
+        }
+
+        .tg-table th {
+            background: var(--surface-overlay);
+        }
+
+        .tg-output {
+            width: 100%;
+            height: 260px;
+            font-family: monospace;
+            padding: .75rem
+        }
+
+        .chart-bar {
+            height: 24px;
+            background: var(--accent);
+            margin: 6px 0;
+            color: #fff;
+            padding-left: .5rem;
+            display: flex;
+            align-items: center
+        }
+
+        .tg-small {
+            font-size: .9rem
+        }
+
+        /* Make form controls readable in both light & dark modes */
+        .tg-controls input[type="number"],
+        .tg-controls select {
+            padding: .25rem .5rem;
+            border-radius: 6px;
+            border: 1px solid var(--card-border, rgba(0, 0, 0, 0.08));
+            background: var(--input-bg, #fff);
+            color: var(--text, #111);
+            min-height: 30px;
+        }
+
+        .tg-controls input[type="number"]:focus,
+        .tg-controls select:focus {
+            outline: 2px solid rgba(11, 116, 222, 0.12);
+            outline-offset: 1px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+
+            .tg-controls input[type="number"],
+            .tg-controls select {
+                background: var(--input-bg-dark, #071021);
+                color: var(--input-color-dark, #e6eef6);
+                border-color: rgba(255, 255, 255, 0.06);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
+    <header class="site-header">
+        <div class="nav-container">
+            <a class="brand" href="../../"><img src="../../media/logo.svg" class="logo" alt="WebTools"><span
+                    class="site-title">WebTools</span></a>
+            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
+                    href="../../TermsOfService/">Terms</a></nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="tool-ui">
+            <h1>Table Generator</h1>
+            <p class="muted">Create an editable table, switch output style (HTML table, CSV, Markdown, JSON, Bar Chart),
+                and export or copy the result.</p>
+
+            <div class="tg-controls">
+                <label class="tg-small">Rows: <input id="rows" type="number" min="1" value="4"
+                        style="width:5rem"></label>
+                <label class="tg-small">Cols: <input id="cols" type="number" min="1" value="3"
+                        style="width:5rem"></label>
+                <button id="genBtn" class="tool-btn">Generate</button>
+                <button id="addRow" class="tool-btn">Add Row</button>
+                <button id="addCol" class="tool-btn">Add Col</button>
+                <select id="styleSelect" class="tg-small">
+                    <option value="table">HTML Table</option>
+                    <option value="csv">CSV</option>
+                    <option value="markdown">Markdown</option>
+                    <option value="json">JSON</option>
+                    <option value="barchart">Bar Chart (col1=label, col2=value)</option>
+                </select>
+                <div style="margin-left:auto;display:flex;gap:.5rem">
+                    <button id="loadSample" class="tool-btn">Load Sample</button>
+                    <button id="clearBtn" class="tool-btn">Clear</button>
+                </div>
+            </div>
+
+            <div id="editorArea" class="tg-grid"></div>
+
+            <div style="margin-top:.75rem;display:flex;gap:.5rem;align-items:center">
+                <label class="muted-note">Output:</label>
+                <button id="renderBtn" class="tool-btn primary">Render Output</button>
+                <button id="copyBtn" class="tool-btn">Copy</button>
+                <button id="downloadBtn" class="tool-btn">Download</button>
+            </div>
+
+            <textarea id="output" class="tg-output" placeholder="Rendered output will appear here..."></textarea>
+            <div id="chartArea" style="margin-top:.75rem"></div>
+
+            <div style="margin-top:1rem" class="muted-note">Tip: Double-click a cell to edit it. For bar charts, make
+                sure column 2 contains numeric values.</div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
+                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
+                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+            </div>
+            <div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy
+                    Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            const rowsEl = document.getElementById('rows');
+            const colsEl = document.getElementById('cols');
+            const genBtn = document.getElementById('genBtn');
+            const editorArea = document.getElementById('editorArea');
+            const loadSample = document.getElementById('loadSample');
+            const clearBtn = document.getElementById('clearBtn');
+            const addRow = document.getElementById('addRow');
+            const addCol = document.getElementById('addCol');
+            const styleSelect = document.getElementById('styleSelect');
+            const renderBtn = document.getElementById('renderBtn');
+            const outputEl = document.getElementById('output');
+            const copyBtn = document.getElementById('copyBtn');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const chartArea = document.getElementById('chartArea');
+
+            let table = [];
+
+            function makeTable(r, c) {
+                table = [];
+                for (let i = 0; i < r; i++) {
+                    const row = [];
+                    for (let j = 0; j < c; j++) row.push(i === 0 ? ('Header ' + (j + 1)) : '');
+                    table.push(row);
+                }
+                renderEditor();
+            }
+
+            function renderEditor() {
+                editorArea.innerHTML = '';
+                const tbl = document.createElement('table'); tbl.className = 'tg-table';
+                const thead = document.createElement('thead');
+                const hrow = document.createElement('tr');
+                (table[0] || []).forEach((v, ci) => {
+                    const th = document.createElement('th'); th.contentEditable = 'true'; th.textContent = v || 'Header ' + (ci + 1);
+                    th.addEventListener('input', () => { table[0][ci] = th.textContent; });
+                    hrow.appendChild(th);
+                });
+                thead.appendChild(hrow); tbl.appendChild(thead);
+                const tbody = document.createElement('tbody');
+                for (let i = 1; i < table.length; i++) {
+                    const tr = document.createElement('tr');
+                    table[i].forEach((v, ci) => {
+                        const td = document.createElement('td'); td.contentEditable = 'true'; td.textContent = v || '';
+                        td.addEventListener('input', () => { table[i][ci] = td.textContent; });
+                        tr.appendChild(td);
+                    });
+                    tbody.appendChild(tr);
+                }
+                tbl.appendChild(tbody);
+                editorArea.appendChild(tbl);
+            }
+
+            function tableToCSV() {
+                return table.map(r => r.map(cell => '"' + String(cell).replace(/"/g, '""') + '"').join(',')).join('\n');
+            }
+
+            function tableToMarkdown() {
+                const header = table[0] || [];
+                const rows = table.slice(1) || [];
+                const hdr = '| ' + header.join(' | ') + ' |';
+                const sep = '| ' + header.map(() => '---').join(' | ') + ' |';
+                const body = rows.map(r => '| ' + r.join(' | ') + ' |').join('\n');
+                return [hdr, sep, body].join('\n');
+            }
+
+            function tableToJSON() {
+                const keys = table[0] || [];
+                const rows = table.slice(1) || [];
+                return JSON.stringify(rows.map(r => {
+                    const obj = {};
+                    keys.forEach((k, ci) => obj[k || ('col' + (ci + 1))] = r[ci] || '');
+                    return obj;
+                }), null, 2);
+            }
+
+            function renderOutput() {
+                chartArea.innerHTML = '';
+                const mode = styleSelect.value;
+                if (mode === 'table') {
+                    const wrapper = document.createElement('div');
+                    const tbl = document.createElement('table'); tbl.className = 'tg-table';
+                    const thead = document.createElement('thead'); const htr = document.createElement('tr');
+                    (table[0] || []).forEach(h => { const th = document.createElement('th'); th.textContent = h; htr.appendChild(th); }); thead.appendChild(htr);
+                    tbl.appendChild(thead);
+                    const tbody = document.createElement('tbody');
+                    table.slice(1).forEach(r => { const tr = document.createElement('tr'); r.forEach(c => { const td = document.createElement('td'); td.textContent = c; tr.appendChild(td); }); tbody.appendChild(tr); });
+                    tbl.appendChild(tbody); wrapper.appendChild(tbl);
+                    outputEl.value = wrapper.innerHTML;
+                } else if (mode === 'csv') {
+                    outputEl.value = tableToCSV();
+                } else if (mode === 'markdown') {
+                    outputEl.value = tableToMarkdown();
+                } else if (mode === 'json') {
+                    outputEl.value = tableToJSON();
+                } else if (mode === 'barchart') {
+                    const rows = table.slice(1) || [];
+                    const parsed = rows.map(r => ({ label: r[0] || '', value: parseFloat((r[1] || '').toString().replace(/[^0-9\.\-]/g, '')) || 0 }));
+                    const max = Math.max(1, ...parsed.map(p => p.value));
+                    chartArea.innerHTML = '';
+                    parsed.forEach(p => {
+                        const div = document.createElement('div');
+                        div.className = 'chart-bar';
+                        const pct = Math.round((p.value / max) * 100);
+                        div.style.width = pct + '%';
+                        div.textContent = p.label + ' (' + p.value + ')';
+                        chartArea.appendChild(div);
+                    });
+                    outputEl.value = 'Bar chart displayed below';
+                }
+            }
+
+            genBtn.addEventListener('click', () => { const r = parseInt(rowsEl.value, 10) || 1; const c = parseInt(colsEl.value, 10) || 1; makeTable(r, c); });
+            loadSample.addEventListener('click', () => {
+                table = [['Name', 'Value', 'Notes'], ['Apples', '10', 'green'], ['Bananas', '7', 'yellow'], ['Cherries', '15', 'red']]; renderEditor();
+            });
+            clearBtn.addEventListener('click', () => { table = [['Header 1']]; renderEditor(); outputEl.value = ''; chartArea.innerHTML = ''; });
+            addRow.addEventListener('click', () => { const c = table[0] ? table[0].length : 1; const r = new Array(c).fill(''); table.push(r); renderEditor(); });
+            addCol.addEventListener('click', () => { table.forEach((row, ri) => { row.push(ri === 0 ? ('Header ' + row.length) : ''); }); renderEditor(); });
+            renderBtn.addEventListener('click', () => { renderOutput(); try { outputEl.scrollIntoView({ behavior: 'smooth', block: 'center' }); outputEl.focus({ preventScroll: true }); } catch (e) { } });
+            copyBtn.addEventListener('click', () => { const txt = outputEl.value; if (!txt) return alert('Nothing to copy'); navigator.clipboard.writeText(txt).then(() => { copyBtn.textContent = 'Copied'; setTimeout(() => copyBtn.textContent = 'Copy', 1200); }); });
+            downloadBtn.addEventListener('click', () => {
+                const mode = styleSelect.value; const content = outputEl.value || '';
+                const ext = mode === 'json' ? 'json' : (mode === 'csv' ? 'csv' : (mode === 'markdown' ? 'md' : 'html'));
+                const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+                const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'table.' + ext; document.body.appendChild(a); a.click(); a.remove();
+            });
+
+            makeTable(4, 3);
+
+        })();
+    </script>
+</body>
+
+</html>

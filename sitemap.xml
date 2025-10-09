@@ -279,4 +279,24 @@
 </url>
 
 
+<url>
+  <loc>https://wtoolkit.org/src/tools/Code-Formatter/</loc>
+  <lastmod>2025-10-09T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Table-Generator/</loc>
+  <lastmod>2025-10-09T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Sitemap-Generator/</loc>
+  <lastmod>2025-10-09T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://wtoolkit.org/src/tools/Image-Editor/</loc>
+  <lastmod>2025-10-09T00:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
 </urlset>

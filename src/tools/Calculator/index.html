@@ -14,6 +14,26 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5884999339267099"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../style.css">
+    <style>
+        #display.tool-input {
+            background: var(--surface, var(--surface-overlay));
+            color: var(--text);
+            border: 1px solid var(--card-border);
+        }
+
+        .calc-btn {
+            background: var(--surface-overlay);
+            color: var(--text);
+            border: 1px solid var(--card-border);
+            padding: .6rem .5rem;
+            font-size: 1rem;
+            border-radius: 6px;
+        }
+
+        .calc-btn.op {
+            background: var(--surface);
+        }
+    </style>
 </head>
 
 <body>
@@ -83,14 +103,12 @@
         function safeAppend(ch) { expr += ch; update(); }
         document.querySelectorAll('.calc-btn').forEach(b => { b.addEventListener('click', e => { const id = b.id; if (id === 'clear') { expr = ''; update(); return; } if (id === 'back') { expr = expr.slice(0, -1); update(); return; } if (id === 'equals') { evaluate(); return; } const v = b.dataset.val; if (v) safeAppend(v); }); });
         function evaluate() {
-            try { // only allow digits, operators, dots, parentheses and spaces
+            try { 
                 if (!/^[0-9+\-*/(). %]+$/.test(expr)) { alert('Invalid characters'); return; }
-                // handle percent: replace 'number%' with '(number/100)'
                 const withPercent = expr.replace(/(\d+(?:\.\d+)?)%/g, '($1/100)');
                 const result = Function('return (' + withPercent + ')')(); expr = String(result); update();
             } catch (e) { alert('Error in expression'); }
         }
-        // keyboard support
         window.addEventListener('keydown', e => { if (e.key === 'Enter') { evaluate(); e.preventDefault(); return; } if (e.key === 'Backspace') { expr = expr.slice(0, -1); update(); return; } if (/^[0-9+\-*/().%]$/.test(e.key)) { expr += e.key; update(); } });
         update();
     </script>

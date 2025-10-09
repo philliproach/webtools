@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Sitemap Generator — WebTools</title>
+    <meta name="description"
+        content="Generate a sitemap.xml by crawling same-origin pages or by pasting URLs. Handles download and copy of sitemap XML.">
+    <meta name="keywords" content="sitemap, sitemap generator, xml, seo, crawl, sitemap.xml">
+    <link rel="icon" type="image/svg+xml" href="../../media/logo.svg">
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .tool-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+            margin-bottom: 1rem
+        }
+
+        .tool-input {
+            min-width: 260px;
+            flex: 1
+        }
+
+        .result-box {
+            display: flex;
+            gap: 1rem
+        }
+
+        .result-box textarea {
+            width: 100%;
+            height: 320px;
+            font-family: monospace;
+            padding: .75rem
+        }
+
+        textarea,
+        input,
+        .tool-input {
+            background: var(--input-bg, #fff);
+            color: var(--input-fg, #111);
+            border: 1px solid var(--input-border, #ddd);
+            border-radius: 6px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --input-bg: #071021;
+                --input-fg: #e6eef6;
+                --input-border: #233040;
+            }
+
+            .muted-note,
+            .status {
+                color: #9aa6b2
+            }
+        }
+
+        .muted-note {
+            color: #666;
+            font-size: .95rem
+        }
+
+        .status {
+            margin-top: .5rem;
+            color: #666
+        }
+
+        .failed {
+            color: #b33
+        }
+
+        .success {
+            color: #085f0f
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
+    <header class="site-header">
+        <div class="nav-container">
+            <a class="brand" href="../../"><img src="../../media/logo.svg" class="logo" alt="WebTools"><span
+                    class="site-title">WebTools</span></a>
+            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
+                    href="../../TermsOfService/">Terms</a></nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="tool-ui">
+            <h1>Sitemap Generator</h1>
+            <p class="muted">Generate a sitemap.xml for a site by crawling links (same-host) or by pasting a list of
+                URLs. Note: client-side crawling may be blocked by CORS on remote hosts; see notes below.</p>
+
+            <div class="tool-controls">
+                <input id="baseUrl" class="tool-input" placeholder="https://example.com/"
+                    value="https://wtoolkit.org/src/">
+                <input id="maxPages" type="number" min="1" value="200" style="width:120px" title="Max pages to crawl">
+                <input id="maxDepth" type="number" min="0" value="2" style="width:120px" title="Crawl depth">
+                <button id="startBtn" class="tool-btn primary">Generate sitemap</button>
+                <button id="downloadBtn" class="tool-btn">Download XML</button>
+                <button id="copyBtn" class="tool-btn">Copy XML</button>
+            </div>
+
+            <div style="margin-bottom: .75rem">
+                <label class="muted-note">Or paste newline-separated URLs (used instead of crawling when
+                    present):</label>
+                <textarea id="pasteUrls" placeholder="https://example.com/page1\nhttps://example.com/page2"
+                    style="width:100%;height:120px;margin-top:.5rem"></textarea>
+            </div>
+
+            <div class="status" id="status">Ready</div>
+
+            <div class="result-box" style="margin-top:1rem">
+                <textarea id="sitemapOut" placeholder="sitemap.xml will appear here"></textarea>
+            </div>
+
+            <details style="margin-top:1rem">
+                <summary>How this works & limitations</summary>
+                <ul>
+                    <li>This tool can crawl pages on the same host (same origin) starting from the base URL. It follows
+                        &lt;a href&gt; links and limits by depth and max pages.</li>
+                    <li>Client-side crawling uses fetch; many remote sites disallow cross-origin requests (CORS) — if
+                        you see fetch errors the crawl will skip those pages. Run this tool from the same host (or use a
+                        server-side crawler) for full coverage.</li>
+                    <li>You can instead paste a list of URLs in the box above; the tool will generate a sitemap XML from
+                        that list.</li>
+                    <li>Sitemap entries use <code>&lt;priority&gt;0.64&lt;/priority&gt;</code> by default and current
+                        timestamp for &lt;lastmod&gt;.</li>
+                    <li>To submit the sitemap to search engines: upload the sitemap to your site (e.g.,
+                        https://example.com/sitemap.xml) then add it to the search console / webmaster tools for
+                        Google/Bing.</li>
+                </ul>
+            </details>
+
+            <div style="margin-top:1rem" class="muted-note">
+                Quick submission links (you must own/verify the site):
+                <ul>
+                    <li><a href="https://search.google.com/search-console/about" target="_blank" rel="noopener">Google
+                            Search Console</a></li>
+                    <li><a href="https://www.bing.com/webmasters/" target="_blank" rel="noopener">Bing Webmaster
+                            Tools</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
+                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
+                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+            </div>
+            <div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy
+                    Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            const startBtn = document.getElementById('startBtn');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const copyBtn = document.getElementById('copyBtn');
+            const baseEl = document.getElementById('baseUrl');
+            const pasteEl = document.getElementById('pasteUrls');
+            const outEl = document.getElementById('sitemapOut');
+            const statusEl = document.getElementById('status');
+            const maxPagesEl = document.getElementById('maxPages');
+            const maxDepthEl = document.getElementById('maxDepth');
+
+            function logStatus(msg, cls) { statusEl.textContent = msg; statusEl.className = cls ? ('status ' + cls) : 'status'; }
+
+            function normalizeUrl(u) { try { return (new URL(u)).href.replace(/#.*$/, ''); } catch (e) { return null; } }
+
+            async function crawl(startUrl, maxPages, maxDepth) {
+                const start = normalizeUrl(startUrl);
+                if (!start) throw new Error('Invalid start URL');
+                const origin = (new URL(start)).origin;
+                const visited = new Set();
+                const queue = [{ url: start, depth: 0 }];
+                const results = [];
+                const failures = [];
+
+                while (queue.length && results.length < maxPages) {
+                    const { url, depth } = queue.shift();
+                    if (visited.has(url)) continue;
+                    visited.add(url);
+                    try {
+                        logStatus(`Fetching ${url} (found ${results.length})`);
+                        const resp = await fetch(url, { mode: 'cors' });
+                        if (!resp.ok) { failures.push({ url, status: resp.status }); continue; }
+                        const text = await resp.text();
+                        results.push(url);
+                        if (depth < maxDepth) {
+                            try {
+                                const doc = new DOMParser().parseFromString(text, 'text/html');
+                                const anchors = Array.from(doc.querySelectorAll('a[href]')).map(a => a.getAttribute('href'));
+                                for (const href of anchors) {
+                                    try {
+                                        const abs = new URL(href, url);
+                                        if (abs.origin === origin) {
+                                            const candidate = abs.href.replace(/#.*$/, '');
+                                            if (!visited.has(candidate) && !queue.some(q => q.url === candidate)) {
+                                                queue.push({ url: candidate, depth: depth + 1 });
+                                            }
+                                        }
+                                    } catch (e) { }
+                                }
+                            } catch (e) {/* parsing issues ignored */ }
+                        }
+                    } catch (err) {
+                        failures.push({ url, error: err.message });
+                    }
+                }
+
+                return { results, failures };
+            }
+
+            function urlsToSitemap(urls) {
+                const lastmod = new Date().toISOString();
+                const lines = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'];
+                for (const u of urls) {
+                    lines.push('  <url>');
+                    lines.push('    <loc>' + escapeXml(u) + '</loc>');
+                    lines.push('    <lastmod>' + lastmod + '</lastmod>');
+                    lines.push('    <priority>0.64</priority>');
+                    lines.push('  </url>');
+                }
+                lines.push('</urlset>');
+                return lines.join('\n');
+            }
+
+            function escapeXml(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+
+            async function generate() {
+                outEl.value = '';
+                const pasted = pasteEl.value.trim();
+                const maxPages = parseInt(maxPagesEl.value, 10) || 200;
+                const maxDepth = parseInt(maxDepthEl.value, 10) || 2;
+
+                if (pasted) {
+                    const lines = pasted.split(/\r?\n/).map(l => l.trim()).filter(Boolean).map(normalizeUrl).filter(Boolean);
+                    if (!lines.length) { logStatus('No valid URLs found in paste', 'failed'); return; }
+                    const xml = urlsToSitemap([...new Set(lines)]);
+                    outEl.value = xml;
+                    logStatus('Sitemap generated from pasted URLs', 'success');
+                    return;
+                }
+
+                const base = baseEl.value.trim();
+                if (!base) { logStatus('Enter a base URL', 'failed'); return; }
+
+                try {
+                    logStatus('Starting crawl…');
+                    const { results, failures } = await crawl(base, maxPages, maxDepth);
+                    if (results.length === 0) {
+                        logStatus('No pages found during crawl. Likely blocked by CORS or invalid start URL.', 'failed');
+                        outEl.value = '';
+                        return;
+                    }
+                    const xml = urlsToSitemap(results);
+                    outEl.value = xml;
+                    let msg = `Crawl finished: ${results.length} pages.`;
+                    if (failures.length) msg += ` ${failures.length} pages failed (CORS or HTTP errors).`;
+                    logStatus(msg, failures.length ? 'failed' : 'success');
+                } catch (e) {
+                    logStatus('Error: ' + e.message, 'failed');
+                }
+            }
+
+            function downloadXml() {
+                const xml = outEl.value || '';
+                if (!xml) { logStatus('Nothing to download', 'failed'); return; }
+                const blob = new Blob([xml], { type: 'application/xml' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url; a.download = 'sitemap.xml';
+                document.body.appendChild(a); a.click(); a.remove();
+                URL.revokeObjectURL(url);
+                logStatus('Download started', 'success');
+            }
+
+            async function copyXml() {
+                const val = outEl.value || '';
+                if (!val) { logStatus('Nothing to copy', 'failed'); return; }
+                try {
+                    await navigator.clipboard.writeText(val);
+                    logStatus('Copied to clipboard', 'success');
+                } catch (e) {
+                    logStatus('Copy failed: ' + e.message, 'failed');
+                }
+            }
+
+            startBtn.addEventListener('click', generate);
+            downloadBtn.addEventListener('click', downloadXml);
+            copyBtn.addEventListener('click', copyXml);
+
+        })();
+    </script>
+</body>
+
+</html>
