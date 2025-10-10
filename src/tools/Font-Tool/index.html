@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href="/media/logo.svg" type="image/svg+xml">
+    <!-- relative fallback so favicon shows when opened via file:// or nested paths -->
+    <link rel="icon" href="../../media/logo.svg" type="image/svg+xml">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Font Tool - WebTools</title>
+    <meta name="description"
+        content="Preview and test fonts in your browser. Choose font, size and weight, then copy the text for use in designs or documents.">
+    <link rel="canonical" href="https://wtoolkit.org/src/tools/Font-Tool/">
+    <meta name="robots" content="index,follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Font Tool - WebTools">
+    <meta charset="utf-8">
+    <link rel="icon" href="/media/logo.svg" type="image/svg+xml">
+    <link rel="canonical" href="https://wtoolkit.org/src/tools/Font-Tool/">
+    <meta name="robots" content="index,follow">
+    <script
+        type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://wtoolkit.org/src/tools/Font-Tool/","name":"Font Tool - WebTools","description":"Preview and test fonts in your browser. Choose font, size and weight, then copy the text for use in designs or documents."}</script>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Font Tool - WebTools</title>
+    <meta name="description"
+        content="Preview and test fonts in your browser. Choose font, size and weight, then copy the text for use in designs or documents.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Font Tool — WebTools">
+    <meta property="og:description"
+        content="Preview and test fonts in your browser. Choose font, size and weight, then copy the text for use in designs or documents.">
+    <meta property="og:url" content="https://wtoolkit.org/src/tools/Font-Tool/">
+    <meta property="og:site_name" content="WebTools">
+    <meta property="og:image" content="https://wtoolkit.org/src/media/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Font Tool — WebTools">
+    <meta name="twitter:description"
+        content="Preview and test fonts in your browser. Choose font, size and weight, then copy the text for use in designs or documents.">
+    <meta name="twitter:image" content="https://wtoolkit.org/src/media/logo.png">
+    <meta name="keywords"
+        content="font, typography, font preview, font tool, webtools, preview fonts, copy text, design tool, client-side">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="bookmark-banner">We're hard to find! <span>Press CTRL + D</span> to bookmark this tool.</div>
+    <header class="site-header">
+        <div class="nav-container"><a class="brand" href="../../"><img src="../../media/logo.svg" class="logo"
+                    alt="WebTools"><span class="site-title">WebTools</span></a>
+            <nav class="nav-menu"><a href="../../">Home</a><a href="../../PrivacyPolicy/">Privacy</a><a
+                    href="../../TermsOfService/">Terms</a></nav>
+        </div>
+    </header>
+    <main class="container">
+        <section class="tool-grid">
+            <div class="tool-panel">
+                <div class="tool-ui">
+                    <h1>Font Tool</h1>
+                    <label for="text">Text</label>
+                    <textarea id="text"
+                        placeholder="Type some text...">The quick brown fox jumps over the lazy dog</textarea>
+
+                    <label for="font">Font / Style</label>
+                    <input id="fontSearch" placeholder="Search fonts or styles" aria-label="Search fonts">
+                    <select id="font">
+                        <option value="system">System UI (default)</option>
+                        <option value="'Roboto', sans-serif" data-google="Roboto">Roboto</option>
+                        <option value="'Inter', sans-serif" data-google="Inter">Inter</option>
+                        <option value="'Open Sans', sans-serif" data-google="Open+Sans">Open Sans</option>
+                        <option value="'Lato', sans-serif" data-google="Lato">Lato</option>
+                        <option value="'Montserrat', sans-serif" data-google="Montserrat">Montserrat</option>
+                        <option value="'Poppins', sans-serif" data-google="Poppins">Poppins</option>
+                        <option value="'Source Sans Pro', sans-serif" data-google="Source+Sans+3">Source Sans 3</option>
+                        <option value="'Nunito', sans-serif" data-google="Nunito">Nunito</option>
+                        <option value="'Merriweather', serif" data-google="Merriweather">Merriweather</option>
+                        <option value="'Playfair Display', serif" data-google="Playfair+Display">Playfair Display
+                        </option>
+                        <option value="'Raleway', sans-serif" data-google="Raleway">Raleway</option>
+                        <option value="'Oswald', sans-serif" data-google="Oswald">Oswald</option>
+                        <option value="'Noto Sans', sans-serif" data-google="Noto+Sans">Noto Sans</option>
+                        <option value="'Ubuntu', sans-serif" data-google="Ubuntu">Ubuntu</option>
+                        <option value="'PT Sans', sans-serif" data-google="PT+Sans">PT Sans</option>
+                        <option value="'Josefin Sans', sans-serif" data-google="Josefin+Sans">Josefin Sans</option>
+                        <option value="'Rubik', sans-serif" data-google="Rubik">Rubik</option>
+                        <option value="'Karla', sans-serif" data-google="Karla">Karla</option>
+                        <option value="'Fira Sans', sans-serif" data-google="Fira+Sans">Fira Sans</option>
+                        <option value="'Quicksand', sans-serif" data-google="Quicksand">Quicksand</option>
+                        <option value="'Alegreya', serif" data-google="Alegreya">Alegreya</option>
+                        <option value="'Inconsolata', monospace" data-google="Inconsolata">Inconsolata</option>
+                        <option value="'Work Sans', sans-serif" data-google="Work+Sans">Work Sans</option>
+                        <option value="'Bitter', serif" data-google="Bitter">Bitter</option>
+                        <option value="'Arimo', sans-serif" data-google="Arimo">Arimo</option>
+                        <option value="'Barlow', sans-serif" data-google="Barlow">Barlow</option>
+                        <option value="'Dancing Script', cursive" data-google="Dancing+Script">Dancing Script</option>
+                        <option value="fancy-1">𝔉𝓪𝓷𝓬𝔂 (Fraktur-style)</option>
+                        <option value="fancy-2">Ｆｕｌｌｗｉｄｔｈ</option>
+                        <option value="fancy-3">ᵗⁱⁿʸ ᵗᵉˣᵗ</option>
+                        <option value="fancy-4">𝕭𝖔𝖑𝖉 𝖦𝖾𝖺𝖙𝖍𝖎𝖼</option>
+                    </select>
+                    <div style="margin-top:.5rem;display:flex;align-items:center;gap:.5rem;">
+                        <label style="margin-right:.5rem" for="customGoogle">Custom Google font (name)</label>
+                        <span class="font-status" id="fontStatus" aria-live="polite"></span>
+                    </div>
+                    <label for="customGoogle">Custom Google font (name)</label>
+                    <input id="customGoogle" placeholder="e.g. Playfair Display" style="width:100%;margin-top:.5rem">
+
+                    <div class="controls">
+                        <label for="size">Size</label>
+                        <input id="size" type="number" min="8" max="144" value="20"> px
+
+                        <label for="weight">Weight</label>
+                        <select id="weight">
+                            <option value="400">Normal</option>
+                            <option value="700">Bold</option>
+                            <option value="300">Light</option>
+                        </select>
+
+                        <label style="margin-left:8px"><input type="checkbox" id="loadGoogle"> Load Google fonts when
+                            selected</label>
+                        <button id="copy" class="tool-btn primary">Copy Text</button>
+                        <button id="copyHtml" class="tool-btn">Copy as HTML</button>
+                    </div>
+
+                    <h2>Preview</h2>
+                    <div id="preview" class="preview"></div>
+                </div>
+            </div>
+            <aside class="tool-panel">
+                <div class="tool-ui"><label class="muted-small">Tips</label>
+                    <p class="muted">Choose a font or fancy transform. The "fancy" options convert ASCII to
+                        Unicode-styled text (like lingojam). Use "Load Google fonts" to fetch Roboto/Inter if you want a
+                        consistent render.</p>
+                </div>
+            </aside>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-left"><img src="../../media/logo.svg" class="footer-logo">
+                <div class="footer-content"><span class="footer-title">WebTools &copy; 2025</span><span
+                        class="footer-desc">A collection of simple, secure browser-based tools.</span></div>
+            </div>
+            <div class="footer-links"><a href="../../Contact/">Contact</a><a href="../../PrivacyPolicy/">Privacy
+                    Policy</a><a href="../../TermsOfService/">Terms of Service</a></div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+# robots.txt for WebTools
+
+User-agent: *
+Allow: /
+
+Sitemap: https://wtoolkit.org/sitemap.xml
